@@ -1,0 +1,15 @@
+{
+  "name": "unir-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Plataforma digital UNIR — participação cívica, transparência e angariação de membros",
+  "scripts": {
+    "dev": "cd apps/web && npm run dev",
+    "build": "cd apps/web && npm run build",
+    "deploy": "cd apps/web && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafatocantins/unir-platform"
+  }
+}
