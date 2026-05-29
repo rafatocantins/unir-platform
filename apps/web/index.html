@@ -341,9 +341,22 @@
             <input type="text" id="name" class="form__input" placeholder="Rafael Cabrita" required>
           </div>
           <div class="form__group">
-            <label for="postal">Código postal (para sabermos que és de Portugal)</label>
-            <input type="text" id="postal" class="form__input" placeholder="3000-000">
+            <label for="postal">Código postal</label>
+            <input type="text" id="postal" class="form__input" placeholder="3000-000" required>
           </div>
+          <div class="form__group">
+            <label for="morada">Morada completa</label>
+            <input type="text" id="morada" class="form__input" placeholder="Rua das Flores, 10, 3000-000 Coimbra" required>
+          </div>
+          <div class="form__group">
+            <label for="cc">Número do Cartão de Cidadão</label>
+            <input type="text" id="cc" class="form__input" placeholder="12345678" required>
+          </div>
+          <div class="form__group">
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" id="nascimento" class="form__input" required>
+          </div>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem; margin-bottom: 16px; text-align: center;">Estes dados são obrigatórios por lei para formalizar a assinatura do partido. São seguros e só usados para este fim.</p>
           <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Quero Assinar</button>
           <p class="form__footnote">Os teus dados estão seguros. São usados apenas para formalizar a assinatura do partido junto do Tribunal Constitucional.</p>
         </div>
