@@ -1,11 +1,17 @@
-// === CONTADOR ANIMADO ===
-const counterEl = document.getElementById('counterNumber');
-const finalCountEl = document.getElementById('finalCount');
-let currentCount = 10432;
+// === CONFIGURAÇÃO ===
+const ASSINATURAS_NECESSARIAS = 7500;
+let currentCount = 10432;  // valor inicial (mock)
 
-function animateCounter(element, target) {
+// === ELEMENTOS DOM ===
+const counterEl = document.getElementById('counterNumber');
+const remainingEl = document.getElementById('remainingCount');
+const signatureCountEl = document.getElementById('signatureCount');
+const progressFill = document.getElementById('progressFill');
+const remainingNumber = document.getElementById('remainingNumber');
+
+// === CONTADOR ANIMADO ===
+function animateNumber(element, target, duration = 1500) {
   if (!element) return;
-  const duration = 1500;
   const start = performance.now();
   const startVal = parseInt(element.textContent.replace(/,/g, '')) || 0;
 
@@ -20,17 +26,30 @@ function animateCounter(element, target) {
   requestAnimationFrame(update);
 }
 
-// Atualiza contador a cada 30s (simula tempo real)
-function updateCounter() {
-  const increment = Math.floor(Math.random() * 3) + 1;
-  currentCount += increment;
-  if (counterEl) animateCounter(counterEl, currentCount);
-  if (finalCountEl) animateCounter(finalCountEl, currentCount);
+function updateAllCounters(value) {
+  const remaining = Math.max(0, ASSINATURAS_NECESSARIAS - value);
+  const progress = Math.min(100, (value / ASSINATURAS_NECESSARIAS) * 100);
+
+  if (counterEl) animateNumber(counterEl, value);
+  if (signatureCountEl) animateNumber(signatureCountEl, value);
+  if (remainingEl) remainingEl.textContent = remaining.toLocaleString('pt-PT');
+  if (remainingNumber) remainingNumber.textContent = remaining.toLocaleString('pt-PT');
+  if (progressFill) progressFill.style.width = Math.min(100, progress) + '%';
 }
 
-if (counterEl) animateCounter(counterEl, currentCount);
-if (finalCountEl) animateCounter(finalCountEl, currentCount);
-setInterval(updateCounter, 30000);
+// Inicializar contadores
+updateAllCounters(currentCount);
+
+// Simular atualização a cada 45s (para demonstração)
+function simulateNewSignature() {
+  // Só simula se tiver menos de 7500
+  if (currentCount < ASSINATURAS_NECESSARIAS) {
+    const increment = Math.floor(Math.random() * 2) + 1;
+    currentCount += increment;
+    updateAllCounters(currentCount);
+  }
+}
+setInterval(simulateNewSignature, 45000);
 
 // === NAVEGAÇÃO ENTRE PASSOS DO FORMULÁRIO ===
 let currentStep = 1;
@@ -47,14 +66,14 @@ function nextStep() {
       const email = document.getElementById('email').value.trim();
       const name = document.getElementById('name').value.trim();
       if (!email || !name) {
-        alert('Preenche o email e o nome para continuar.');
+        alert('Preenche o email e o nome para continuares. É rápido.');
         return;
       }
     }
     if (currentStep === 2) {
       const checked = document.querySelectorAll('#step2 input[type="checkbox"]:checked');
       if (checked.length === 0) {
-        alert('Escolhe pelo menos um tema de interesse.');
+        alert('Escolhe pelo menos um tema. Saber o que te interessa ajuda-nos a priorizar.');
         return;
       }
     }
@@ -84,18 +103,19 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     timestamp: new Date().toISOString()
   };
 
-  console.log('📋 Dados submetidos:', data);
-
-  // SIMULAÇÃO: guardar no localStorage
+  // Guardar no localStorage
   const submissions = JSON.parse(localStorage.getItem('unir_signups') || '[]');
   submissions.push(data);
   localStorage.setItem('unir_signups', JSON.stringify(submissions));
+
+  // Incrementar contador real
+  currentCount++;
+  updateAllCounters(currentCount);
 
   // Mostrar mensagem de sucesso
   document.getElementById('signupForm').style.display = 'none';
   const successMsg = document.getElementById('successMessage');
   successMsg.style.display = 'block';
-  animateCounter(document.getElementById('finalCount'), currentCount);
 });
 
 // === HAMBURGUER MENU ===
@@ -104,7 +124,14 @@ document.getElementById('navToggle')?.addEventListener('click', function() {
   links.classList.toggle('nav__links--open');
 });
 
-// === INTERSEÇÃO PARA ANIMAÇÕES DE SCROLL ===
+// === FECHAR MENU AO CLICAR NUM LINK ===
+document.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('nav__links--open');
+  });
+});
+
+// === ANIMAÇÕES DE SCROLL ===
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -114,7 +141,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.card, .step, .team__member').forEach(el => {
+document.querySelectorAll('.card, .step, .team__member, .slogan, .signatures__step').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

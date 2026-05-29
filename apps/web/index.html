@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UNIR - O Partido que Funciona</title>
-  <meta name="description" content="Tecnologia, justiça, soberania. Assina o UNIR e faz parte da mudança política em Portugal.">
-  <meta property="og:title" content="UNIR - O Partido que Funciona">
-  <meta property="og:description" content="Cansado da mesma política? Há alternativa. Assina agora e faz parte da mudança.">
+  <title>UNIR - O Partido que Funciona. Literalmente.</title>
+  <meta name="description" content="Tecnologia, justiça, soberania. Precisamos de 7.500 assinaturas para fundar o UNIR. Assina e faz parte da mudança.">
+  <meta property="og:title" content="UNIR - O Partido que Funciona. Literalmente.">
+  <meta property="og:description" content="Cansado da mesma política? Há alternativa. Assina e ajuda-nos a fundar o partido.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rafatocantins.github.io/unir-platform/">
   <meta name="theme-color" content="#0D47A1">
-  <meta name="google-site-verification" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🗳️</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
 </head>
 <body>
   <!-- NAV -->
@@ -26,9 +25,10 @@
         <span class="nav__logo-text">UNIR</span>
       </a>
       <div class="nav__links" id="navLinks">
+        <a href="#porque" class="nav__link">Porquê</a>
+        <a href="#bio" class="nav__link">Quem Sou</a>
         <a href="#propostas" class="nav__link">Propostas</a>
-        <a href="#como-funciona" class="nav__link">Como Funciona</a>
-        <a href="#equipa" class="nav__link">Equipa</a>
+        <a href="#assinaturas" class="nav__link">Assinaturas</a>
         <a href="#assinar" class="nav__link nav__link--cta">Assinar</a>
       </div>
       <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
@@ -39,15 +39,18 @@
   <section class="hero">
     <div class="hero__bg"></div>
     <div class="hero__inner container">
-      <h1 class="hero__title">Cansado da mesma política?<br><span class="hero__title--accent">Há alternativa.</span></h1>
-      <p class="hero__subtitle">Tecnologia, justiça, soberania. Sem conversa fiada.</p>
+      <h1 class="hero__title">
+        Eles chamam-lhe política.<br>
+        <span class="hero__title--accent">Nós chamamos-lhe o problema.</span>
+      </h1>
+      <p class="hero__subtitle">O UNIR não é mais do mesmo. É tecnologia ao serviço da justiça. É soberania real. É um partido que funciona — literalmente.</p>
 
       <div class="hero__counter" id="counter">
         <span class="hero__counter-number" id="counterNumber">0</span>
-        <span class="hero__counter-label">pessoas já assinaram este mês</span>
+        <span class="hero__counter-label">pessoas já assinaram. Faltam <strong id="remainingCount">7.500</strong> para fundar o partido.</span>
       </div>
 
-      <a href="#assinar" class="btn btn--primary btn--large hero__cta">Quero fazer parte</a>
+      <a href="#assinar" class="btn btn--primary btn--large hero__cta">Assinar Agora — É Grátis</a>
 
       <div class="hero__pillars">
         <div class="pillar">
@@ -64,86 +67,272 @@
         </div>
       </div>
 
-      <a href="#propostas" class="hero__scroll">↓ Conhece as propostas</a>
+      <a href="#porque" class="hero__scroll">↓ Porque é que isto é diferente</a>
+    </div>
+  </section>
+
+  <!-- SLOGANS -->
+  <section class="section slogans" id="porque">
+    <div class="container">
+      <div class="slogans__grid">
+        <div class="slogan">
+          <div class="slogan__text">"Não aceitamos promessas. Exigimos prazos."</div>
+          <div class="slogan__sub">Cada proposta tem data, métricas e responsável. Sem "vamos estudar".</div>
+        </div>
+        <div class="slogan">
+          <div class="slogan__text">"A corrupção não é cultural. É impunidade."</div>
+          <div class="slogan__sub">Rastreio automático de cruzamento de dados. Transparência em tempo real. Penas efectivas.</div>
+        </div>
+        <div class="slogan">
+          <div class="slogan__text">"Portugal não é um país pequeno. É um país mal posicionado."</div>
+          <div class="slogan__sub">260 milhões de falantes de português. Ponte entre três continentes. Soberania digital possível.</div>
+        </div>
+        <div class="slogan">
+          <div class="slogan__text">"Não precisamos de mais políticos. Precisamos de pessoas que resolvem."</div>
+          <div class="slogan__sub">Engenheiros, professores, médicos, programadores — cidadãos a governar, não carreiristas.</div>
+        </div>
+        <div class="slogan">
+          <div class="slogan__text">"A tecnologia não é o futuro. É o presente que os partidos ignoram."</div>
+          <div class="slogan__sub">IA nos tribunais. Cloud soberana. Identidade digital com privacidade. Estado que funciona.</div>
+        </div>
+        <div class="slogan">
+          <div class="slogan__text">"7.500 assinaturas separam Portugal do primeiro partido que funciona como deve ser."</div>
+          <div class="slogan__sub">Cada assinatura é um voto de confiança. Cada assinatura aproxima-nos de um Portugal que funciona.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO RAFAEL -->
+  <section class="section bio" id="bio">
+    <div class="container">
+      <h2 class="section__title">Porquê Eu?</h2>
+      <p class="section__subtitle">Não sou político de carreira. Sou um gajo que se fartou.</p>
+
+      <div class="bio__inner">
+        <div>
+          <div class="bio__photo">RC</div>
+        </div>
+        <div class="bio__content">
+          <h3>Rafael Cabrita</h3>
+          <p class="bio__role">Engenheiro de Software · Product Manager · Cidadão Português</p>
+
+          <div class="bio__text">
+            <p>Chamo-me Rafael, tenho 35 anos, e sou engenheiro de software há mais de uma década. Trabalhei em frontend, UX/UI, IA e produtos digitais. Sou pai de uma menina de 5 anos. E estou farto.</p>
+
+            <p>Farto de ver políticos a prometer e a não cumprir. Farto de saber que perdemos 18 mil milhões de euros por ano em corrupção — o equivalente a todo o orçamento da Saúde. Farto de ver Portugal a ficar para trás enquanto países mais pequenos que o nosso lideram na Europa digital.</p>
+
+            <p>Não sou político. Nunca fui. Não tenho ambições de carreira política. Tenho uma filha e não quero que ela cresça num país onde a justiça demora 8 anos, onde os corruptos raramente são condenados, e onde a tecnologia é tratada como um custo em vez de uma oportunidade.</p>
+
+            <div class="bio__highlight">
+              Eu não sei governar sozinho. E não vou fingir que sei. Mas sei construir equipas, sei ouvir especialistas, sei executar. E sei que Portugal tem pessoas melhores do que eu em cada área — precisamos é de um partido que as ponha a trabalhar.
+            </div>
+
+            <p>O UNIR não é sobre mim. É sobre nós. Sobre engenheiros, professores, médicos, agricultores, cientistas e cidadãos que estão cansados de ver o seu potencial desperdiçado por uma classe política que há décadas nos vende promessas em vez de resultados.</p>
+
+            <p>Eu dou o litro. O que tu dás?</p>
+          </div>
+
+          <div class="bio__cta">
+            <a href="#assinar" class="btn btn--primary">Assinar e Juntar-me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAÇÃO -->
+  <section class="section diff">
+    <div class="container">
+      <h2 class="section__title section__title--light">O Que Nos Torna Diferentes</h2>
+      <p class="section__subtitle section__subtitle--light">Não somos um partido como os outros. E é por isso que vão ganhar.</p>
+
+      <div class="diff__grid">
+        <div class="diff__col">
+          <h3>Eles</h3>
+          <div class="diff__item">
+            <div class="diff__item-title">Prometem tudo, cumprem nada</div>
+            <div class="diff__item-desc">Manifestos de 200 páginas que ninguém lê e que esquecem após as eleições.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Vivem de tweets e comunicados</div>
+            <div class="diff__item-desc">A comunicação substitui a ação. Se disseram que vão fazer, já parece que fizeram.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Carreiristas de partido</div>
+            <div class="diff__item-desc">Entram jovens, ficam décadas. A política é a profissão, não a missão.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Opacos por defeito</div>
+            <div class="diff__item-desc">Contratos, despesas, decisões — tudo fechado. Transparência é exceção, não regra.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Atrasados tecnologicamente</div>
+            <div class="diff__item-desc">Sistemas dos anos 90. Burocracia infinita. "Está em análise" é a resposta padrão.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Dependentes de Bruxelas e Washington</div>
+            <div class="diff__item-desc">Sem estratégia própria. Alinhamento automático. Interesse nacional é secundário.</div>
+          </div>
+        </div>
+
+        <div class="diff__col">
+          <div class="diff__divider"></div>
+          <h3>Nós</h3>
+          <div class="diff__item">
+            <div class="diff__item-title">Compromissos com data, métricas e responsável</div>
+            <div class="diff__item-desc">Cada proposta tem timeline pública. Vês o estado em tempo real. Cobramos se falhar.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Resultados, não comunicados</div>
+            <div class="diff__item-desc">O nosso trabalho é medido por entregas, não por entrevistas. Menos conversa, mais execução.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Cidadãos a governar, não políticos profissionais</div>
+            <div class="diff__item-desc">Mandatos limitados. Especialistas nas pastas. Deputados que voltam às suas profissões.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Transparentes por desenho</div>
+            <div class="diff__item-desc">Despesas, atas, decisões. Tudo público e pesquisável em tempo real. Plataforma aberta.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Estado inteligente, não burocrático</div>
+            <div class="diff__item-desc">IA na justiça, cloud soberana, identidade digital, zero papel. Governo que funciona como uma App.</div>
+          </div>
+          <div class="diff__item">
+            <div class="diff__item-title">Portugal primeiro</div>
+            <div class="diff__item-desc">Soberania tecnológica e militar. Parceria com Brasil e PALOPs. Posição própria no mundo multipolar.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__cta" style="margin-top: 48px;">
+        <a href="#assinar" class="btn btn--secondary btn--large">Quero um Portugal que funciona</a>
+      </div>
     </div>
   </section>
 
   <!-- PROPOSTAS -->
   <section class="section" id="propostas">
     <div class="container">
-      <h2 class="section__title">As Nossas Propostas</h2>
-      <p class="section__subtitle">Ideias concretas, não promessas vazias.</p>
+      <h2 class="section__title">Propostas Concretas</h2>
+      <p class="section__subtitle">Sem conversa. Com números, prazos e responsáveis.</p>
 
       <div class="propostas__grid">
         <article class="card">
           <span class="card__tag" style="--tag-color: #2E7D32;">Soberania</span>
           <h3 class="card__title">Portugal no Mundo Multipolar</h3>
-          <p class="card__text">Estratégia lusófona e tecnológica 2035. Redução da dependência externa, parceria estratégica com Brasil e PALOPs.</p>
+          <p class="card__text">Estratégia lusófona e tecnológica 2035. Redução da dependência externa, parceria estratégica com Brasil e PALOPs. Soberania militar e digital.</p>
           <div class="card__stats">
             <span class="card__stat">12.4K votos</span>
             <span class="card__stat card__stat--positive">87% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
 
         <article class="card">
           <span class="card__tag" style="--tag-color: #1565C0;">Justiça</span>
-          <h3 class="card__title">Justiça Digital SNIDV</h3>
-          <p class="card__text">Identidade digital verificada com privacidade por design. Banimento judicial efetivo. Responsabilização das plataformas.</p>
+          <h3 class="card__title">SNIDV — Identidade Digital Verificada</h3>
+          <p class="card__text">Identidade digital com privacidade por design. Banimento judicial efetivo. Responsabilização das plataformas. Fim da impunidade digital.</p>
           <div class="card__stats">
             <span class="card__stat">8.2K votos</span>
             <span class="card__stat card__stat--positive">92% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
 
         <article class="card">
           <span class="card__tag" style="--tag-color: #FF8F00;">Tecnologia</span>
           <h3 class="card__title">Estado Inteligente com IA</h3>
-          <p class="card__text">Automatização de processos judiciais, cloud soberana portuguesa, data centers verdes, e IA ética na administração pública.</p>
+          <p class="card__text">Automatização de processos judiciais. Cloud soberana portuguesa. Data centers verdes. IA ética na administração pública. Zero papel em 5 anos.</p>
           <div class="card__stats">
             <span class="card__stat">6.8K votos</span>
             <span class="card__stat card__stat--positive">91% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
 
         <article class="card">
           <span class="card__tag" style="--tag-color: #C62828;">Transparência</span>
           <h3 class="card__title">Combate Implacável à Corrupção</h3>
-          <p class="card__text">Sistema de rastreio automático de cruzamento de dados. Transparência total de contratos públicos. Penalizações efetivas.</p>
+          <p class="card__text">Sistema de rastreio automático de cruzamento de dados. Transparência total de contratos públicos. Penalizações efetivas. Fim dos €18 mil milhões perdidos.</p>
           <div class="card__stats">
             <span class="card__stat">5.1K votos</span>
             <span class="card__stat card__stat--positive">95% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
 
         <article class="card">
           <span class="card__tag" style="--tag-color: #0D47A1;">Educação</span>
           <h3 class="card__title">Escolas com IA Adaptativa</h3>
-          <p class="card__text">IA adaptativa em 50 escolas piloto já em 2027. Formação digital para professores. Currículo com pensamento computacional.</p>
+          <p class="card__text">50 escolas piloto em 2027. Formação digital para professores. Currículo com pensamento computacional. Portugal a preparar-se para o futuro, não para o passado.</p>
           <div class="card__stats">
             <span class="card__stat">4.3K votos</span>
             <span class="card__stat card__stat--positive">89% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
 
         <article class="card">
           <span class="card__tag" style="--tag-color: #2E7D32;">Economia</span>
-          <h3 class="card__title">Data Centers Verdes em Portugal</h3>
-          <p class="card__text">Aproveitar energia renovável e posição geoestratégica para tornar Portugal num hub de dados europeu soberano.</p>
+          <h3 class="card__title">Hub de Data Centers Verdes</h3>
+          <p class="card__text">Energia renovável, posição geoestratégica, cabos submarinos. Portugal como hub de dados europeu soberano. Milhares de empregos qualificados.</p>
           <div class="card__stats">
             <span class="card__stat">3.9K votos</span>
             <span class="card__stat card__stat--positive">93% a favor</span>
           </div>
-          <a href="#" class="card__link">Ler proposta →</a>
+          <a href="#" class="card__link">Ler proposta completa →</a>
         </article>
       </div>
 
       <div class="section__cta">
-        <a href="#assinar" class="btn btn--secondary btn--large">Concordas? Assina para votar</a>
+        <a href="#assinar" class="btn btn--primary btn--large">Concordas? Assina para votar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSINATURAS LEGAIS -->
+  <section class="section signatures" id="assinaturas">
+    <div class="container">
+      <h2 class="section__title">Faltam-te 7.500 Pessoas para Fundar um Partido</h2>
+      <p class="section__subtitle">A lei portuguesa exige 7.500 assinaturas de cidadãos recenseados para criar um partido político. Tu és uma delas?</p>
+
+      <div class="signatures__number" id="signatureCount">0</div>
+      <div class="signatures__label">assinaturas recolhidas de 7.500 necessárias</div>
+
+      <div class="signatures__progress-bar">
+        <div class="signatures__progress-fill" id="progressFill" style="width: 0%;"></div>
+      </div>
+      <div class="signatures__count">
+        Faltam <strong id="remainingNumber">7.500</strong> assinaturas para levar o UNIR ao Tribunal Constitucional
+      </div>
+
+      <div class="signatures__list">
+        <div class="signatures__step">
+          <div class="signatures__step-num">Passo 1</div>
+          <div class="signatures__step-title">Assinas aqui</div>
+          <div class="signatures__step-text">Preenches o formulário ao lado. Nome, email, código postal. 30 segundos. Sem custos.</div>
+        </div>
+        <div class="signatures__step">
+          <div class="signatures__step-num">Passo 2</div>
+          <div class="signatures__step-title">Confirmas a identidade</div>
+          <div class="signatures__step-text">Recebes um email com link de confirmação. Garantimos que és tu, recenseado em Portugal.</div>
+        </div>
+        <div class="signatures__step">
+          <div class="signatures__step-num">Passo 3</div>
+          <div class="signatures__step-title">Atingimos 7.500</div>
+          <div class="signatures__step-text">Quando chegarmos ao mínimo legal, submetemos as assinaturas ao Tribunal Constitucional. O partido nasce oficialmente.</div>
+        </div>
+        <div class="signatures__step">
+          <div class="signatures__step-num">Passo 4</div>
+          <div class="signatures__step-title">O partido é teu</div>
+          <div class="signatures__step-text">Se assinaste, és membro fundador. Tens direito a voto, proposta e fiscalização. O partido é dos cidadãos, não de uma clique.</div>
+        </div>
+      </div>
+
+      <div class="section__cta">
+        <a href="#assinar" class="btn btn--primary btn--large">Quero ser uma das 7.500 →</a>
       </div>
     </div>
   </section>
@@ -151,29 +340,29 @@
   <!-- COMO FUNCIONA -->
   <section class="section section--alt" id="como-funciona">
     <div class="container">
-      <h2 class="section__title">Como Funciona</h2>
-      <p class="section__subtitle">Democracia digital, passo a passo.</p>
+      <h2 class="section__title">Como Funciona o UNIR</h2>
+      <p class="section__subtitle">Democracia digital. Transparência radical. Resultados reais.</p>
 
       <div class="steps">
         <div class="step">
           <div class="step__number">1</div>
           <h3 class="step__title">Assinas</h3>
-          <p class="step__text">Registo em 30 segundos. Escolhes a tua quota mensal (ou zero). Passas a fazer parte.</p>
+          <p class="step__text">30 segundos. Escolhes a tua quota mensal (ou zero). Passas a ser membro fundador.</p>
         </div>
         <div class="step">
           <div class="step__number">2</div>
           <h3 class="step__title">Propões ou Votas</h3>
-          <p class="step__text">Lês propostas concretas, votas em 20 segundos ou sugeres as tuas próprias ideias.</p>
+          <p class="step__text">Lês propostas, votas em 20 segundos ou sugeres as tuas ideias. Cada voto conta.</p>
         </div>
         <div class="step">
           <div class="step__number">3</div>
           <h3 class="step__title">Vês o Impacto</h3>
-          <p class="step__text">Cada proposta aprovada tem timeline pública. Vês o estado, quem fez o quê, e quando fica feito.</p>
+          <p class="step__text">Cada proposta aprovada tem timeline pública. Vês o estado, quem fez o quê, e quando fica pronto.</p>
         </div>
         <div class="step">
           <div class="step__number">4</div>
           <h3 class="step__title">Fiscalizas</h3>
-          <p class="step__text">Despesas, decisões, atas. Tudo público e pesquisável. Transparência radical.</p>
+          <p class="step__text">Despesas, decisões, atas. Tudo público e pesquisável. Transparência radical, não conversa.</p>
         </div>
       </div>
     </div>
@@ -183,26 +372,26 @@
   <section class="section" id="equipa">
     <div class="container">
       <h2 class="section__title">Quem Está por Isto</h2>
-      <p class="section__subtitle">Cidadãos como tu. Sem política de carreira.</p>
+      <p class="section__subtitle">Pessoas normais. Cansadas do normal.</p>
 
       <div class="team__grid">
         <div class="team__member">
-          <div class="team__avatar">RT</div>
-          <h3 class="team__name">Rafael Tocantins</h3>
-          <p class="team__role">Estratégia e Tecnologia</p>
-          <p class="team__bio">Engenheiro de software, IA, produto. Desenvolveu a visão tecnológica do UNIR e o whitepaper de política externa.</p>
-        </div>
-        <div class="team__member">
-          <div class="team__avatar">AG</div>
-          <h3 class="team__name">Augustus</h3>
-          <p class="team__role">Conselheiro Estratégico</p>
-          <p class="team__bio">IA estratégica baseada em teoria dos jogos. Análise de risco, posicionamento geopolítico e desenho de produto.</p>
+          <div class="team__avatar">RC</div>
+          <h3 class="team__name">Rafael Cabrita</h3>
+          <p class="team__role">Fundador</p>
+          <p class="team__bio">Engenheiro de software, pai, cidadão. Farto de promessas vazias. Criou o UNIR porque ninguém mais o ia fazer.</p>
         </div>
         <div class="team__member">
           <div class="team__avatar">??</div>
           <h3 class="team__name">Tu?</h3>
           <p class="team__role">O teu lugar aqui</p>
-          <p class="team__bio">Esta plataforma é feita por pessoas como tu. Junta-te e contribui com a tua visão.</p>
+          <p class="team__bio">O UNIR precisa de ti. Da tua área, da tua visão, do teu trabalho. Assina e começa a construir.</p>
+        </div>
+        <div class="team__member">
+          <div class="team__avatar">+T</div>
+          <h3 class="team__name">Milhares como Tu</h3>
+          <p class="team__role">Os 7.500 que vão fundar o partido</p>
+          <p class="team__bio">Cada assinatura é uma pessoa que diz: "Chega. Vamos fazer diferente."</p>
         </div>
       </div>
     </div>
@@ -211,8 +400,8 @@
   <!-- ASSINAR -->
   <section class="section section--cta" id="assinar">
     <div class="container">
-      <h2 class="section__title section__title--light">Faz Parte da Mudança</h2>
-      <p class="section__subtitle section__subtitle--light">30 segundos. Sem burocracia. Sem compromisso imediato.</p>
+      <h2 class="section__title section__title--light">Sê Uma das 7.500 Pessoas Que Vão Fundar o UNIR</h2>
+      <p class="section__subtitle section__subtitle--light">30 segundos. Sem custos. Sem compromisso. Portugal precisa de ti.</p>
 
       <form class="signup-form" id="signupForm">
         <div class="form__step form__step--active" id="step1">
@@ -225,15 +414,15 @@
             <input type="email" id="email" class="form__input" placeholder="rafael@email.pt" required>
           </div>
           <div class="form__group">
-            <label for="name">Nome</label>
+            <label for="name">Nome Completo</label>
             <input type="text" id="name" class="form__input" placeholder="Rafael Cabrita" required>
           </div>
           <div class="form__group">
-            <label for="postal">Código Postal</label>
+            <label for="postal">Código Postal (para confirmar que és recenseado em Portugal)</label>
             <input type="text" id="postal" class="form__input" placeholder="3000-000">
           </div>
-          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Continuar</button>
-          <p class="form__footnote">Os teus dados estão seguros connosco. Política de privacidade.</p>
+          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Quero Assinar →</button>
+          <p class="form__footnote">Os teus dados estão seguros. São usados apenas para formalizar a assinatura do partido.</p>
         </div>
 
         <div class="form__step" id="step2">
@@ -252,7 +441,7 @@
             <label class="tag-option"><input type="checkbox" value="saude"><span>Saúde</span></label>
             <label class="tag-option"><input type="checkbox" value="cultura"><span>Cultura</span></label>
           </div>
-          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Continuar</button>
+          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Continuar →</button>
           <button type="button" class="btn btn--ghost btn--full" onclick="prevStep()">← Voltar</button>
         </div>
 
@@ -261,48 +450,53 @@
             <span>Passo 3/3</span>
             <div class="form__progress-bar"><div class="form__progress-fill" style="width: 100%;"></div></div>
           </div>
-          <p class="form__label">Escolhe a tua quota mensal</p>
+          <p class="form__label">A tua contribuição mensal (opcional)</p>
+          <p class="section__subtitle section__subtitle--light" style="font-size: 0.875rem; margin-bottom: 24px;">A assinatura é grátis. Se puderes contribuir, ajudas a pagar a plataforma e a campanha de recolha de assinaturas.</p>
           <div class="form__quota">
             <label class="quota-option">
               <input type="radio" name="quota" value="0" checked>
               <span class="quota__value">Grátis</span>
-              <span class="quota__desc">€0/mês — Acesso básico</span>
+              <span class="quota__desc">Assinar sem contribuição financeira</span>
             </label>
             <label class="quota-option quota-option--recommended">
               <input type="radio" name="quota" value="5">
-              <span class="quota__badge">Recomendado</span>
+              <span class="quota__badge">Ajuda imenso</span>
               <span class="quota__value">€5/mês</span>
-              <span class="quota__desc">Votar, propor, eventos prioritários</span>
+              <span class="quota__desc">Ajuda a pagar o servidor e a campanha</span>
             </label>
             <label class="quota-option">
               <input type="radio" name="quota" value="10">
               <span class="quota__value">€10/mês</span>
-              <span class="quota__desc">+ Grupos temáticos exclusivos</span>
+              <span class="quota__desc">+ Acesso a grupos temáticos exclusivos</span>
             </label>
             <label class="quota-option">
               <input type="radio" name="quota" value="25">
               <span class="quota__value">€25/mês</span>
-              <span class="quota__desc">+ Voto ponderado, dashboard político</span>
+              <span class="quota__desc">+ Voto ponderado em decisões estratégicas</span>
             </label>
             <div class="quota-option quota-option--custom">
               <span class="quota__value">Outro valor</span>
               <input type="number" class="form__input form__input--small" placeholder="€" min="1" id="customQuota">
             </div>
           </div>
-          <button type="submit" class="btn btn--secondary btn--full" id="submitBtn">Assinar e fazer parte</button>
+          <button type="submit" class="btn btn--secondary btn--full" id="submitBtn">Assinar e Fundar o Partido</button>
           <button type="button" class="btn btn--ghost btn--full" onclick="prevStep()">← Voltar</button>
         </div>
       </form>
 
       <div id="successMessage" class="success-message" style="display:none;">
-        <div class="success__icon">✅</div>
-        <h3 class="success__title">Bem-vindo ao UNIR!</h3>
-        <p class="success__text">Acabaste de dar o primeiro passo para mudar a política em Portugal.<br>Vais receber um email de confirmação em breve.</p>
+        <div class="success__icon">⚡</div>
+        <h3 class="success__title">Bem-vindo ao UNIR. És Um dos Fundadores.</h3>
+        <p class="success__text">Acabaste de assinar para fundar o primeiro partido português que funciona como deve ser.<br><br>Vais receber um email de confirmação. Quando chegarmos às 7.500 assinaturas, és dos primeiros a saber.</p>
         <div class="success__counter">
-          <span class="success__counter-num" id="finalCount">0</span>
-          <span class="success__counter-label">pessoas já assinaram este mês</span>
+          <span class="success__counter-num">+1</span>
+          <span class="success__counter-label">assinatura na nossa contagem. Faltam menos.</span>
         </div>
-        <a href="#" class="btn btn--outline">Partilhar com amigos</a>
+        <div style="margin-top: 24px;">
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; margin-bottom: 16px;">Partilha com quem também está farto:</p>
+          <a href="#" class="btn btn--outline" style="margin: 4px;">📱 Partilhar no WhatsApp</a>
+          <a href="#" class="btn btn--outline" style="margin: 4px;">🐦 Partilhar no Twitter/X</a>
+        </div>
       </div>
     </div>
   </section>
@@ -312,12 +506,12 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <span class="nav__logo-text">UNIR</span>
-        <p class="footer__tagline">O partido que funciona.</p>
+        <p class="footer__tagline">O partido que funciona. Literalmente.</p>
       </div>
       <div class="footer__links">
-        <a href="#" class="footer__link">Propostas</a>
-        <a href="#" class="footer__link">Whitepaper</a>
-        <a href="#" class="footer__link">Estatutos</a>
+        <a href="#porque" class="footer__link">Porquê</a>
+        <a href="#propostas" class="footer__link">Propostas</a>
+        <a href="#assinaturas" class="footer__link">Assinaturas</a>
         <a href="#" class="footer__link">Privacidade</a>
         <a href="#" class="footer__link">Contacto</a>
       </div>
@@ -326,7 +520,7 @@
         <a href="#" class="footer__social-link" aria-label="Twitter/X">🐦</a>
         <a href="#" class="footer__social-link" aria-label="WhatsApp">💬</a>
       </div>
-      <p class="footer__copy">© 2026 UNIR. Feito por cidadãos, para cidadãos.</p>
+      <p class="footer__copy">© 2026 UNIR. Construído por cidadãos. Para cidadãos.</p>
     </div>
   </footer>
 
