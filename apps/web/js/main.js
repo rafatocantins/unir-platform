@@ -1,6 +1,6 @@
 // === CONFIGURAÇÃO ===
 const ASSINATURAS_NECESSARIAS = 7500;
-let currentCount = 10432;  // valor inicial (mock)
+let currentCount = 0;  // valor real — começa a 0, sobe com cada submissão
 
 // === ELEMENTOS DOM ===
 const counterEl = document.getElementById('counterNumber');
