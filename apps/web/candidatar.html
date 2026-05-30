@@ -276,10 +276,9 @@
         <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
       </div>
       <div class="footer__links">
-        <a href="/#como" class="footer__link">Como é Diferente</a>
-        <a href="/#pessoas" class="footer__link">Propostas</a>
-        <a href="/#assinaturas" class="footer__link">Assinaturas</a>
-        <a href="/candidatar" class="footer__link">Integrar</a>
+        <a href="/" class="footer__link">Início</a>
+        <a href="/documentos/" class="footer__link">Documentos</a>
+        <a href="/candidatar/" class="footer__link">Integrar</a>
       </div>
       <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>
     </div>
@@ -294,6 +293,8 @@
         if (href.startsWith('//') || href.startsWith('http') || href.startsWith('/#')) return;
         if (href === '/candidatar' || href.startsWith('/candidatar')) {
           link.setAttribute('href', BASE_PATH_CAND + '/candidatar/');
+        } else if (href === '/documentos' || href.startsWith('/documentos')) {
+          link.setAttribute('href', BASE_PATH_CAND + '/documentos/');
         } else if (href === '/') {
           link.setAttribute('href', BASE_PATH_CAND + '/');
         } else if (href.startsWith('/#')) {

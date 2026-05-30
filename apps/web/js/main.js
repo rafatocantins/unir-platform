@@ -13,8 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Se for uma âncora tipo /#assinar, manter
     if (href.startsWith('/#')) return;
     // Se for /candidatar, prefixar com o caminho base
-    if (href === '/candidatar') {
+    if (href === '/candidatar' || href.startsWith('/candidatar')) {
       link.setAttribute('href', BASE_PATH + '/candidatar/');
+    }
+    // Se for /documentos
+    if (href === '/documentos' || href.startsWith('/documentos')) {
+      link.setAttribute('href', BASE_PATH + '/documentos/');
     }
     // Se for /, apontar para a raiz com /unir-platform/
     if (href === '/') {
