@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNIR</title>
+  <script>
+    // Redirect known paths
+    var path = window.location.pathname;
+    // Garantir que /candidatar funciona com e sem /
+    window.location.href = path.endsWith('/') ? path : path + '/';
+  </script>
+  <meta http-equiv="refresh" content="0;url=/">
+</head>
+<body>
+  <p>A redirecionar...</p>
+</body>
+</html>
