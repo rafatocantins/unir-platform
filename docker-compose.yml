@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./services/api:/app
+      - api_data:/app/.data
+    env_file:
+      - ./services/api/.env
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+
+volumes:
+  api_data:

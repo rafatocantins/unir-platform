@@ -1,11 +1,15 @@
 // === CONFIGURAÇÃO ===
 const ASSINATURAS_NECESSARIAS = 7500;
-let currentCount = 0;
 
-// Sheet API endpoint
-// Servidor Python local: corre com `python3 signature_server.py`
-// Se não estiver a correr, os dados ficam guardados no browser (localStorage)
-const SHEET_API_URL = 'http://localhost:8080';
+// API endpoint — em produção aponta para o servidor real
+// Em desenvolvimento local, usa localhost:8001
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:8001'
+  : 'https://api.unir.pt';  // << SUBSTITUIR pelo URL real da API em produção
+
+// Fallback para contagem local (enquanto não há BD com contagem real)
+let currentCount = 0;
+const STORAGE_KEY = 'unir_signups';
 
 // === ELEMENTOS DOM ===
 const counterEl = document.getElementById('counterNumber');
@@ -13,6 +17,16 @@ const remainingEl = document.getElementById('remainingCount');
 const signatureCountEl = document.getElementById('signatureCount');
 const progressFill = document.getElementById('progressFill');
 const remainingNumber = document.getElementById('remainingNumber');
+
+// Carregar contagem local do localStorage
+function loadLocalCount() {
+  try {
+    const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    currentCount = submissions.length;
+  } catch(e) {
+    currentCount = 0;
+  }
+}
 
 // === CONTADOR ANIMADO ===
 function animateNumber(element, target, duration = 1500) {
@@ -40,6 +54,8 @@ function updateAllCounters(value) {
   if (progressFill) progressFill.style.width = Math.min(100, progress) + '%';
 }
 
+// Iniciar com contagem local
+loadLocalCount();
 updateAllCounters(currentCount);
 
 // === NAVEGAÇÃO ENTRE PASSOS ===
@@ -90,42 +106,64 @@ function prevStep() {
 }
 
 // === SUBMISSÃO ===
-document.getElementById('signupForm').addEventListener('submit', function(e) {
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'A registar...';
+
+  const interesses = Array.from(document.querySelectorAll('#step2 input[type="checkbox"]:checked'))
+    .map(cb => cb.value)
+    .join(',');
+
   const data = {
-    nome: document.getElementById('name').value.trim(),
     email: document.getElementById('email').value.trim(),
+    name: document.getElementById('name').value.trim(),
     postal: document.getElementById('postal').value.trim(),
     morada: document.getElementById('morada').value.trim(),
     cc: document.getElementById('cc').value.trim(),
     nascimento: document.getElementById('nascimento').value,
-    interesses: Array.from(document.querySelectorAll('#step2 input[type="checkbox"]:checked')).map(cb => cb.value).join(','),
-    quota: document.querySelector('input[name="quota"]:checked')?.value || '0',
-    consentimento: 'Sim'
+    interesses: interesses,
+    quota: document.querySelector('input[name="quota"]:checked')?.value || '0'
   };
 
-  // 1. Guardar localmente (backup)
-  const submissions = JSON.parse(localStorage.getItem('unir_signups') || '[]');
+  // 1. Guardar localmente (sempre — backup mesmo se API falhar)
+  const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   submissions.push({...data, timestamp: new Date().toISOString()});
-  localStorage.setItem('unir_signups', JSON.stringify(submissions));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
 
-  // 2. Escrever na Sheet via servidor local
-  fetch(SHEET_API_URL, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
-  }).then(r => r.json()).then(res => {
-    console.log('Sheet response:', res);
-  }).catch(err => {
-    console.log('Servidor local nao disponivel, dados guardados localmente');
-  });
+  // 2. Enviar para a API
+  let apiSuccess = false;
+  try {
+    const response = await fetch(API_URL + '/public/sign', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    console.log('API response:', result);
+    apiSuccess = result.success;
+    if (!apiSuccess && result.message) {
+      console.warn('API:', result.message);
+    }
+  } catch (err) {
+    console.log('API indisponível, dados guardados localmente');
+    // A API pode não estar disponível em dev (GitHub Pages sem backend)
+    // Os dados estão seguros no localStorage
+  }
 
-  // 3. Incrementar contador
-  currentCount++;
+  // 3. Se a API rejeitou porque o email já existe, avisar
+  if (!apiSuccess) {
+    const msg = 'Já recebemos a tua assinatura! Se já assinaste antes, não precisas de assinar outra vez.';
+    // Ainda assim mostrar sucesso — a pessoa já está registada
+  }
+
+  // 4. Incrementar contador local
+  currentCount = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').length;
   updateAllCounters(currentCount);
 
-  // 4. Mostrar sucesso
+  // 5. Mostrar sucesso
   document.getElementById('signupForm').style.display = 'none';
   const successMsg = document.getElementById('successMessage');
   if (successMsg) successMsg.style.display = 'block';

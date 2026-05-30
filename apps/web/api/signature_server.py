@@ -1,10 +1,12 @@
 """
-Servidor local que recebe assinaturas e escreve na Google Sheet UNIR.
-Corre em background e é chamado pelo formulário da landing page.
+Servidor de assinaturas UNIR.
+Corre 24/7 na VPS, recebe POST do formulário e escreve na Google Sheet.
 
-Uso: python3 ~/unir-platform/apps/web/api/signature_server.py &
+Uso em produção:
+  python3 /root/unir-platform/apps/web/api/signature_server.py
 
-O servidor fica a escuta em http://localhost:8080
+Uso com systemd (auto-start):
+  systemctl --user enable unir-signatures
 """
 
 import json
@@ -16,10 +18,11 @@ from googleapiclient.discovery import build
 
 SHEET_ID = '1Cva-qRD8Z3CoLSxuJR1sQqv5MnHVtpGuUgt6Exenw20'
 TOKEN_PATH = os.path.expanduser('~/.hermes/google_token.json')
+PORT = 8080
 
 class SignatureHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
-        self.send_response(200)
+        self.send_response(204)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
@@ -27,25 +30,22 @@ class SignatureHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
-            content_length = int(self.headers['Content-Length'])
-            body = self.rfile.read(content_length)
+            length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(length)
             data = json.loads(body)
 
-            # Validar
             required = ['nome', 'email', 'cc', 'nascimento', 'postal', 'morada']
             for field in required:
                 if not data.get(field):
-                    self._respond(400, {'error': f'Campo obrigatorio: {field}'})
+                    self._respond(400, {'erro': f'Campo obrigatorio: {field}'})
                     return
 
-            # Escrever na Sheet
             with open(TOKEN_PATH) as f:
                 creds = Credentials.from_authorized_user_info(json.load(f))
 
             service = build('sheets', 'v4', credentials=creds)
-
             row = [[
-                self.date_time_string(),
+                data.get('timestamp', ''),
                 data['nome'],
                 data['email'],
                 data['cc'],
@@ -68,23 +68,25 @@ class SignatureHandler(BaseHTTPRequestHandler):
                 body={'values': row}
             ).execute()
 
-            self._respond(200, {'success': True, 'message': 'Assinatura registada'})
-            print(f"✅ Assinatura: {data['nome']} <{data['email']}>")
+            self._respond(200, {'successo': True, 'mensagem': 'Assinatura registada'})
+            print(f"OK {data['nome']} <{data['email']}>")
 
         except Exception as e:
-            print(f"❌ Erro: {e}")
-            self._respond(500, {'error': str(e)})
+            print(f"ERRO: {e}")
+            self._respond(500, {'erro': str(e)})
 
     def _respond(self, code, body):
         self.send_response(code)
         self.send_header('Content-Type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        self.wfile.write(json.dumps(body).encode())
+        self.wfile.write(json.dumps(body, ensure_ascii=False).encode())
+
+    def log_message(self, format, *args):
+        pass  # silencioso
 
 if __name__ == '__main__':
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else PORT
     server = HTTPServer(('0.0.0.0', port), SignatureHandler)
-    print(f'🚀 Servidor de assinaturas UNIR a escuta em http://localhost:{port}')
-    print(f'📊 Sheet ID: {SHEET_ID}')
+    print(f'UNIR signatures server on :{port}')
     server.serve_forever()
