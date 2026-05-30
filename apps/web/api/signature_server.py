@@ -1,9 +1,13 @@
 """
-Servidor de assinaturas UNIR.
-Corre 24/7 na VPS, recebe POST do formulário e escreve na Google Sheet.
+Servidor UNIR — assinaturas e candidaturas.
+Corre 24/7 na VPS, recebe POST e escreve nas respetivas Google Sheets.
+
+Endpoints:
+  POST /public/sign       — assinatura para fundar o partido (Sheet principal)
+  POST /public/candidatar — candidatura para integrar o partido (Sheet secundária)
 
 Uso em produção:
-  python3 /root/unir-platform/apps/web/api/signature_server.py
+  python3 /root/unir-platform/apps/web/api/signature_server.py [porta]
 
 Uso com systemd (auto-start):
   systemctl --user enable unir-signatures
@@ -14,13 +18,30 @@ import os
 import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
-SHEET_ID = '1Cva-qRD8Z3CoLSxuJR1sQqv5MnHVtpGuUgt6Exenw20'
-TOKEN_PATH = os.path.expanduser('~/.hermes/google_token.json')
+SHEET_ASSINATURAS = '1Cva-qRD8Z3CoLSxuJR1sQqv5MnHVtpGuUgt6Exenw20'
+SHEET_CANDIDATURAS = '1EeLxMGSZ5WbMYC_yX6tUILAznqlydpfJcugRdULUgdc'
+TOKEN_PATH = os.path.join(os.path.dirname(__file__), 'token.json')
 PORT = 8080
 
-class SignatureHandler(BaseHTTPRequestHandler):
+
+def get_sheets_service():
+    """Get authenticated Google Sheets service with token refresh."""
+    if not os.path.exists(TOKEN_PATH):
+        raise FileNotFoundError(f"Token not found at {TOKEN_PATH}")
+    with open(TOKEN_PATH) as f:
+        creds = Credentials.from_authorized_user_info(json.load(f))
+    if creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        with open(TOKEN_PATH, 'w') as f:
+            f.write(creds.to_json())
+    return build('sheets', 'v4', credentials=creds)
+
+
+class UnirHandler(BaseHTTPRequestHandler):
+
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -29,21 +50,26 @@ class SignatureHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
-        try:
-            length = int(self.headers.get('Content-Length', 0))
-            body = self.rfile.read(length)
-            data = json.loads(body)
+        path = self.path.rstrip('/')
 
+        if path == '/public/sign':
+            self._handle_sign()
+        elif path == '/public/candidatar':
+            self._handle_candidatura()
+        else:
+            self._respond(404, {'erro': 'Endpoint nao encontrado'})
+
+    def _handle_sign(self):
+        """Recebe assinatura para fundar o partido."""
+        try:
+            data = self._parse_body()
             required = ['nome', 'email', 'cc', 'nascimento', 'postal', 'morada']
             for field in required:
                 if not data.get(field):
-                    self._respond(400, {'erro': f'Campo obrigatorio: {field}'})
+                    self._respond(400, {'success': False, 'erro': f'Campo obrigatorio: {field}'})
                     return
 
-            with open(TOKEN_PATH) as f:
-                creds = Credentials.from_authorized_user_info(json.load(f))
-
-            service = build('sheets', 'v4', credentials=creds)
+            service = get_sheets_service()
             row = [[
                 data.get('timestamp', ''),
                 data['nome'],
@@ -52,28 +78,67 @@ class SignatureHandler(BaseHTTPRequestHandler):
                 data['nascimento'],
                 data['postal'],
                 data['morada'],
-                data.get('consentimento', 'Sim'),
-                data.get('quota', '0'),
-                data.get('interesses', ''),
-                'Pendente',
-                'Recolhida',
+                'Sim',  # consentimento
+                'Recolhida',  # estado
                 ''
             ]]
 
             service.spreadsheets().values().append(
-                spreadsheetId=SHEET_ID,
-                range='A2:M',
+                spreadsheetId=SHEET_ASSINATURAS,
+                range='A2:J',
                 valueInputOption='RAW',
                 insertDataOption='INSERT_ROWS',
                 body={'values': row}
             ).execute()
 
-            self._respond(200, {'successo': True, 'mensagem': 'Assinatura registada'})
-            print(f"OK {data['nome']} <{data['email']}>")
+            self._respond(200, {'success': True, 'mensagem': 'Assinatura registada'})
+            print(f"ASSINATURA OK: {data['nome']} <{data['email']}>")
 
         except Exception as e:
-            print(f"ERRO: {e}")
-            self._respond(500, {'erro': str(e)})
+            print(f"ERRO ASSINATURA: {e}")
+            self._respond(500, {'success': False, 'erro': str(e)})
+
+    def _handle_candidatura(self):
+        """Recebe candidatura para integrar o partido."""
+        try:
+            data = self._parse_body()
+            required = ['email', 'nome', 'area_formacao', 'motivacao']
+            for field in required:
+                if not data.get(field):
+                    self._respond(400, {'success': False, 'erro': f'Campo obrigatorio: {field}'})
+                    return
+
+            service = get_sheets_service()
+            row = [[
+                data.get('timestamp', ''),
+                data['nome'],
+                data['email'],
+                data.get('area_formacao', ''),
+                data.get('areas_interesse', ''),
+                data['motivacao'],
+                data.get('linkedin', ''),
+                'Pendente'  # estado: Pendente | Em analise | Aceite | Recusada
+            ]]
+
+            service.spreadsheets().values().append(
+                spreadsheetId=SHEET_CANDIDATURAS,
+                range='A2:H',
+                valueInputOption='RAW',
+                insertDataOption='INSERT_ROWS',
+                body={'values': row}
+            ).execute()
+
+            self._respond(200, {'success': True, 'mensagem': 'Candidatura recebida'})
+            print(f"CANDIDATURA OK: {data['nome']} <{data['email']}>")
+
+        except Exception as e:
+            print(f"ERRO CANDIDATURA: {e}")
+            self._respond(500, {'success': False, 'erro': str(e)})
+
+    def _parse_body(self):
+        length = int(self.headers.get('Content-Length', 0))
+        body = self.rfile.read(length)
+        return json.loads(body)
 
     def _respond(self, code, body):
         self.send_response(code)
@@ -85,8 +150,11 @@ class SignatureHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass  # silencioso
 
+
 if __name__ == '__main__':
     port = int(sys.argv[1]) if len(sys.argv) > 1 else PORT
-    server = HTTPServer(('0.0.0.0', port), SignatureHandler)
-    print(f'UNIR signatures server on :{port}')
+    server = HTTPServer(('0.0.0.0', port), UnirHandler)
+    print(f'UNIR server running on :{port}')
+    print(f'  POST /public/sign       -> Sheet assinaturas')
+    print(f'  POST /public/candidatar -> Sheet candidaturas')
     server.serve_forever()

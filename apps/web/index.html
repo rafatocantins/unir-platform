@@ -25,9 +25,10 @@
       </a>
       <div class="nav__links" id="navLinks">
         <a href="#como" class="nav__link">Como é Diferente</a>
-        <a href="#pessoas" class="nav__link">Para as Pessoas</a>
+        <a href="#pessoas" class="nav__link">Propostas</a>
         <a href="#quem" class="nav__link">Quem Sou</a>
-        <a href="#assinar" class="nav__link nav__link--cta">Assinar</a>
+        <a href="#assinar" class="nav__link nav__link--cta">Ajudar a Fundar</a>
+        <a href="/candidatar" class="nav__link nav__link--secondary">Integrar</a>
       </div>
       <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
     </div>
@@ -48,7 +49,7 @@
         <span class="hero__counter-label">pessoas já assinaram. Faltam <strong id="remainingCount">7.500</strong> para fundar o partido.</span>
       </div>
 
-      <a href="#assinar" class="btn btn--primary btn--large hero__cta">Quero Assinar — É Grátis</a>
+      <a href="#assinar" class="btn btn--primary btn--large hero__cta">Ajudar a Fundar — É Grátis</a>
 
       <div class="hero__pillars">
         <div class="pillar">
@@ -154,7 +155,7 @@
       </div>
 
       <div class="section__cta">
-        <a href="#assinar" class="btn btn--primary btn--large">Identificas-te? Assina e Ajuda a Mudar</a>
+        <a href="#assinar" class="btn btn--primary btn--large">Identificas-te? Ajuda a Fundar</a>
       </div>
     </div>
   </section>
@@ -239,7 +240,7 @@
           </div>
 
           <div class="bio__cta">
-            <a href="#assinar" class="btn btn--primary">Assinar e Fazer Parte</a>
+            <a href="#assinar" class="btn btn--primary">Ajudar a Fundar</a>
           </div>
         </div>
       </div>
@@ -266,7 +267,7 @@
         <div class="signatures__step">
           <div class="signatures__step-num">Passo 1</div>
           <div class="signatures__step-title">Assinas aqui</div>
-          <div class="signatures__step-text">Preenches o formulário. 30 segundos. Não precisas de contribuir com dinheiro.</div>
+          <div class="signatures__step-text">Preenches o formulário. 30 segundos. Só os dados que a lei exige. Não precisas de contribuir com dinheiro.</div>
         </div>
         <div class="signatures__step">
           <div class="signatures__step-num">Passo 2</div>
@@ -286,7 +287,7 @@
       </div>
 
       <div class="section__cta">
-        <a href="#assinar" class="btn btn--primary btn--large">Fazer Parte da Mudança</a>
+        <a href="#assinar" class="btn btn--primary btn--large">Ajudar a Fundar</a>
       </div>
     </div>
   </section>
@@ -308,7 +309,8 @@
           <div class="team__avatar">🤝</div>
           <h3 class="team__name">Tu</h3>
           <p class="team__role">És tu que fazes a diferença</p>
-          <p class="team__bio">O UNIR precisa de ti. Da tua área, da tua experiência, da tua voz. Assina e começa a construir o Portugal que mereces.</p>
+          <p class="team__bio">O UNIR precisa de ti. Da tua área, da tua experiência, da tua voz.</p>
+          <a href="/candidatar" class="btn btn--outline" style="display: inline-block; margin-top: 16px;">Quero Integrar</a>
         </div>
         <div class="team__member">
           <div class="team__avatar">🇵🇹</div>
@@ -320,18 +322,14 @@
     </div>
   </section>
 
-  <!-- ASSINAR -->
+  <!-- ASSINAR (SIMPLIFICADO — SÓ DADOS LEGAIS) -->
   <section class="section section--cta" id="assinar">
     <div class="container">
       <h2 class="section__title section__title--light">Falta a Tua Assinatura</h2>
-      <p class="section__subtitle section__subtitle--light">30 segundos. Sem custos. Sem compromisso. Só precisamos de ti para chegar aos 7.500.</p>
+      <p class="section__subtitle section__subtitle--light">30 segundos. Só os dados que a lei exige para formalizar a assinatura do partido. Sem custos. Sem compromisso.</p>
 
       <form class="signup-form" id="signupForm">
         <div class="form__step form__step--active" id="step1">
-          <div class="form__progress">
-            <span>Passo 1/3</span>
-            <div class="form__progress-bar"><div class="form__progress-fill" style="width: 33%;"></div></div>
-          </div>
           <div class="form__group">
             <label for="email">O teu email</label>
             <input type="email" id="email" class="form__input" placeholder="rafael@email.pt" required>
@@ -357,61 +355,8 @@
             <input type="date" id="nascimento" class="form__input" required>
           </div>
           <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem; margin-bottom: 16px; text-align: center;">Estes dados são obrigatórios por lei para formalizar a assinatura do partido. São seguros e só usados para este fim.</p>
-          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Quero Assinar</button>
+          <button type="submit" class="btn btn--secondary btn--full" id="submitBtn">Assinar para Fundar</button>
           <p class="form__footnote">Os teus dados estão seguros. São usados apenas para formalizar a assinatura do partido junto do Tribunal Constitucional.</p>
-        </div>
-
-        <div class="form__step" id="step2">
-          <div class="form__progress">
-            <span>Passo 2/3</span>
-            <div class="form__progress-bar"><div class="form__progress-fill" style="width: 66%;"></div></div>
-          </div>
-          <p class="form__label">O que gostavas de ver mudar primeiro?</p>
-          <div class="form__tags">
-            <label class="tag-option"><input type="checkbox" value="saude"><span>Saúde</span></label>
-            <label class="tag-option"><input type="checkbox" value="habitacao"><span>Habitação</span></label>
-            <label class="tag-option"><input type="checkbox" value="salarios"><span>Salários</span></label>
-            <label class="tag-option"><input type="checkbox" value="familia"><span>Família</span></label>
-            <label class="tag-option"><input type="checkbox" value="educacao"><span>Educação</span></label>
-            <label class="tag-option"><input type="checkbox" value="justica"><span>Justiça</span></label>
-            <label class="tag-option"><input type="checkbox" value="economia"><span>Economia</span></label>
-            <label class="tag-option"><input type="checkbox" value="ambiente"><span>Ambiente</span></label>
-          </div>
-          <button type="button" class="btn btn--primary btn--full" onclick="nextStep()">Continuar</button>
-          <button type="button" class="btn btn--ghost btn--full" onclick="prevStep()">Voltar</button>
-        </div>
-
-        <div class="form__step" id="step3">
-          <div class="form__progress">
-            <span>Passo 3/3</span>
-            <div class="form__progress-bar"><div class="form__progress-fill" style="width: 100%;"></div></div>
-          </div>
-          <p class="form__label">Queres contribuir para o partido?</p>
-          <p class="section__subtitle section__subtitle--light" style="font-size: 0.875rem; margin-bottom: 24px;">A assinatura é gratuita. Se puderes e quiseres contribuir, ajudas a pagar a campanha de recolha de assinaturas e a plataforma. Se não puderes, também és bem-vindo.</p>
-          <div class="form__quota">
-            <label class="quota-option">
-              <input type="radio" name="quota" value="0" checked>
-              <span class="quota__value">Assinar sem contribuir</span>
-              <span class="quota__desc">És bem-vindo na mesma</span>
-            </label>
-            <label class="quota-option">
-              <input type="radio" name="quota" value="5">
-              <span class="quota__value">5 euros por mês</span>
-              <span class="quota__desc">Ajudas a pagar a campanha</span>
-            </label>
-            <label class="quota-option">
-              <input type="radio" name="quota" value="10">
-              <span class="quota__value">10 euros por mês</span>
-              <span class="quota__desc">Ajudas a plataforma digital</span>
-            </label>
-            <label class="quota-option">
-              <input type="radio" name="quota" value="20">
-              <span class="quota__value">20 euros por mês</span>
-              <span class="quota__desc">Apoias o crescimento do partido</span>
-            </label>
-          </div>
-          <button type="submit" class="btn btn--secondary btn--full" id="submitBtn">Assinar</button>
-          <button type="button" class="btn btn--ghost btn--full" onclick="prevStep()">Voltar</button>
         </div>
       </form>
 
@@ -426,8 +371,12 @@
         <div style="margin-top: 32px;">
           <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; margin-bottom: 16px;">Partilha com alguém que também merece um Portugal melhor:</p>
           <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="#" class="btn btn--outline">Copiar Link</a>
+            <a href="#" class="btn btn--outline" onclick="copyLink()">Copiar Link</a>
           </div>
+        </div>
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15);">
+          <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-bottom: 8px;">Queres fazer mais que assinar?</p>
+          <a href="/candidatar" class="btn btn--outline" style="font-size: 0.85rem;">Candidatar-me a Integrar</a>
         </div>
       </div>
     </div>
@@ -443,6 +392,7 @@
         <a href="#como" class="footer__link">Como é Diferente</a>
         <a href="#pessoas" class="footer__link">Propostas</a>
         <a href="#assinaturas" class="footer__link">Assinaturas</a>
+        <a href="/candidatar" class="footer__link">Integrar</a>
         <a href="#" class="footer__link">Privacidade</a>
       </div>
       <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>

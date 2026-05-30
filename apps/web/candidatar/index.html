@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNIR - Quero Integrar</title>
+  <meta name="description" content="Candidata-te a integrar o UNIR. Se tens vontade de fazer diferente, há um lugar para ti.">
+  <meta property="og:title" content="UNIR - Quero Integrar">
+  <meta property="og:description" content="Candidata-te a integrar o UNIR. Se tens vontade de fazer diferente, há um lugar para ti.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rafatocantins.github.io/unir-platform/candidatar">
+  <meta name="theme-color" content="#0D47A1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
+  <style>
+    .candidatura {
+      padding: 120px 0 80px;
+      background: linear-gradient(135deg, #0a1628 0%, #0D47A1 100%);
+      min-height: 100vh;
+    }
+    .candidatura__title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .candidatura__subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+    .candidatura__form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .form-group .hint {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #FF8F00;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    .form-group select option {
+      background: #0a1628;
+      color: #fff;
+    }
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .form-group .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .form-group .checkbox-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      accent-color: #FF8F00;
+    }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .area-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+    }
+    .area-tag:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #FF8F00;
+    }
+    .area-tag input[type="checkbox"] {
+      width: auto;
+      accent-color: #FF8F00;
+    }
+    .candidatura__back {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .candidatura__back:hover {
+      color: rgba(255,255,255,0.8);
+    }
+    .success-msg {
+      text-align: center;
+      padding: 60px 40px;
+      display: none;
+    }
+    .success-msg .icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+    .success-msg h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .success-msg p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      max-width: 450px;
+      margin: 0 auto 24px;
+    }
+    @media (max-width: 640px) {
+      .candidatura {
+        padding: 100px 0 60px;
+      }
+      .candidatura__title { font-size: 1.6rem; }
+      .candidatura__form { padding: 24px; }
+      .areas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-icon">⚡</span>
+        <span class="nav__logo-text">UNIR</span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/#como" class="nav__link">Como é Diferente</a>
+        <a href="/#pessoas" class="nav__link">Propostas</a>
+        <a href="/#quem" class="nav__link">Quem Sou</a>
+        <a href="/#assinar" class="nav__link nav__link--cta">Ajudar a Fundar</a>
+        <a href="/candidatar" class="nav__link nav__link--secondary">Integrar</a>
+      </div>
+      <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section class="candidatura">
+    <div class="container">
+      <h1 class="candidatura__title">Queres Integrar o UNIR?</h1>
+      <p class="candidatura__subtitle">Se te identificas com os valores do partido e queres ter um papel ativo na construção de um Portugal diferente, candidata-te. Nós analisamos cada candidatura e depois falamos contigo.</p>
+
+      <form class="candidatura__form" id="candidaturaForm">
+        <div class="form-group">
+          <label>O teu email</label>
+          <input type="email" id="email" placeholder="rafael@email.pt" required>
+        </div>
+
+        <div class="form-group">
+          <label>O teu nome completo</label>
+          <input type="text" id="nome" placeholder="Rafael Cabrita" required>
+        </div>
+
+        <div class="form-group">
+          <label>Qual é a tua área de formação ou expertise?</label>
+          <input type="text" id="area" placeholder="Ex: Medicina, Direito, Engenharia, Educação, Economia..." required>
+        </div>
+
+        <div class="form-group">
+          <label>Queres contribuir em que áreas do governo?</label>
+          <div class="hint">Escolhe as que mais se alinham com a tua experiência ou interesse.</div>
+          <div class="areas-grid" id="areasGrid">
+            <label class="area-tag"><input type="checkbox" value="saude"><span>Saúde</span></label>
+            <label class="area-tag"><input type="checkbox" value="habitacao"><span>Habitação</span></label>
+            <label class="area-tag"><input type="checkbox" value="economia"><span>Economia</span></label>
+            <label class="area-tag"><input type="checkbox" value="educacao"><span>Educação</span></label>
+            <label class="area-tag"><input type="checkbox" value="justica"><span>Justiça</span></label>
+            <label class="area-tag"><input type="checkbox" value="familia"><span>Família</span></label>
+            <label class="area-tag"><input type="checkbox" value="tecnologia"><span>Tecnologia</span></label>
+            <label class="area-tag"><input type="checkbox" value="ambiente"><span>Ambiente</span></label>
+            <label class="area-tag"><input type="checkbox" value="defesa"><span>Defesa</span></label>
+            <label class="area-tag"><input type="checkbox" value="cultura"><span>Cultura</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>O que te motiva a querer integrar o UNIR?</label>
+          <div class="hint">Conta-nos um pouco sobre ti, a tua história, e porque queres fazer parte disto.</div>
+          <textarea id="motivacao" placeholder="Sou enfermeiro há 15 anos e vejo o SNS a morrer todos os dias. Quero ajudar a construir um partido que ponha a saúde das pessoas primeiro..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn ou GitHub (opcional)</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/...">
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="valores" required>
+            <span>Comprometo-me a agir de acordo com os valores do UNIR: transparência, serviço público, soluções reais e Portugal primeiro.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn--secondary btn--full" id="submitBtn" style="margin-top: 8px;">Enviar Candidatura</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <div class="icon">⚡</div>
+        <h3>Recebemos a tua candidatura</h3>
+        <p>Vamos analisar e entraremos em contacto pelo teu email. Enquanto isso, se ainda não assinaste para ajudar a fundar o partido, aproveita — cada assinatura conta para chegarmos aos 7.500.</p>
+        <a href="/#assinar" class="btn btn--primary">Assinar para Fundar</a>
+        <a href="/" class="candidatura__back">← Voltar à página inicial</a>
+      </div>
+
+      <a href="/" class="candidatura__back">← Voltar à página inicial</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-text">UNIR</span>
+        <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+      </div>
+      <div class="footer__links">
+        <a href="/#como" class="footer__link">Como é Diferente</a>
+        <a href="/#pessoas" class="footer__link">Propostas</a>
+        <a href="/#assinaturas" class="footer__link">Assinaturas</a>
+        <a href="/candidatar" class="footer__link">Integrar</a>
+      </div>
+      <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('nav__links--open');
+    });
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('nav__links--open');
+      });
+    });
+
+    // Submit candidatura
+    document.getElementById('candidaturaForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'A enviar...';
+
+      const areas = Array.from(document.querySelectorAll('#areasGrid input[type="checkbox"]:checked'))
+        .map(cb => cb.value)
+        .join(', ');
+
+      const data = {
+        email: document.getElementById('email').value.trim(),
+        nome: document.getElementById('nome').value.trim(),
+        area_formacao: document.getElementById('area').value.trim(),
+        areas_interesse: areas,
+        motivacao: document.getElementById('motivacao').value.trim(),
+        linkedin: document.getElementById('linkedin').value.trim(),
+        timestamp: new Date().toISOString()
+      };
+
+      // Guardar localmente
+      const storage = JSON.parse(localStorage.getItem('unir_candidaturas') || '[]');
+      storage.push(data);
+      localStorage.setItem('unir_candidaturas', JSON.stringify(storage));
+
+      // Enviar para API (quando existir)
+      try {
+        await fetch('https://api.unir.pt/public/candidatar', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+      } catch(err) {
+        console.log('API indisponível, dados guardados localmente');
+      }
+
+      // Mostrar sucesso
+      document.getElementById('candidaturaForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

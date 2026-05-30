@@ -2,10 +2,9 @@
 const ASSINATURAS_NECESSARIAS = 7500;
 
 // API endpoint — em produção aponta para o servidor real
-// Em desenvolvimento local, usa localhost:8001
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:8001'
-  : 'https://api.unir.pt';  // << SUBSTITUIR pelo URL real da API em produção
+  : 'https://api.unir.pt';
 
 // Fallback para contagem local (enquanto não há BD com contagem real)
 let currentCount = 0;
@@ -58,64 +57,13 @@ function updateAllCounters(value) {
 loadLocalCount();
 updateAllCounters(currentCount);
 
-// === NAVEGAÇÃO ENTRE PASSOS ===
-let currentStep = 1;
-
-function showStep(step) {
-  document.querySelectorAll('.form__step').forEach(el => el.classList.remove('form__step--active'));
-  const el = document.getElementById('step' + step);
-  if (el) el.classList.add('form__step--active');
-}
-
-function nextStep() {
-  if (currentStep < 3) {
-    if (currentStep === 1) {
-      const email = document.getElementById('email').value.trim();
-      const name = document.getElementById('name').value.trim();
-      const postal = document.getElementById('postal').value.trim();
-      const morada = document.getElementById('morada').value.trim();
-      const cc = document.getElementById('cc').value.trim();
-      const nascimento = document.getElementById('nascimento').value;
-
-      if (!email || !name || !postal || !morada || !cc || !nascimento) {
-        alert('Preenche todos os campos. É obrigatório por lei para formalizar a assinatura.');
-        return;
-      }
-      if (cc.length < 6) {
-        alert('Número de Cartão de Cidadão inválido.');
-        return;
-      }
-    }
-    if (currentStep === 2) {
-      const checked = document.querySelectorAll('#step2 input[type="checkbox"]:checked');
-      if (checked.length === 0) {
-        alert('Escolhe pelo menos uma área. Ajuda-nos a saber o que é prioritário para ti.');
-        return;
-      }
-    }
-    currentStep++;
-    showStep(currentStep);
-  }
-}
-
-function prevStep() {
-  if (currentStep > 1) {
-    currentStep--;
-    showStep(currentStep);
-  }
-}
-
-// === SUBMISSÃO ===
+// === SUBMISSÃO (simplificado — só dados legais) ===
 document.getElementById('signupForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const submitBtn = document.getElementById('submitBtn');
   submitBtn.disabled = true;
   submitBtn.textContent = 'A registar...';
-
-  const interesses = Array.from(document.querySelectorAll('#step2 input[type="checkbox"]:checked'))
-    .map(cb => cb.value)
-    .join(',');
 
   const data = {
     email: document.getElementById('email').value.trim(),
@@ -124,17 +72,28 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     morada: document.getElementById('morada').value.trim(),
     cc: document.getElementById('cc').value.trim(),
     nascimento: document.getElementById('nascimento').value,
-    interesses: interesses,
-    quota: document.querySelector('input[name="quota"]:checked')?.value || '0'
   };
 
-  // 1. Guardar localmente (sempre — backup mesmo se API falhar)
+  // 1. Validar campos obrigatórios
+  if (!data.email || !data.name || !data.postal || !data.morada || !data.cc || !data.nascimento) {
+    alert('Preenche todos os campos. É obrigatório por lei para formalizar a assinatura.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Assinar para Fundar';
+    return;
+  }
+  if (data.cc.length < 6) {
+    alert('Número de Cartão de Cidadão inválido.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Assinar para Fundar';
+    return;
+  }
+
+  // 2. Guardar localmente (backup mesmo se API falhar)
   const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   submissions.push({...data, timestamp: new Date().toISOString()});
   localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
 
-  // 2. Enviar para a API
-  let apiSuccess = false;
+  // 3. Enviar para a API
   try {
     const response = await fetch(API_URL + '/public/sign', {
       method: 'POST',
@@ -142,24 +101,14 @@ document.getElementById('signupForm').addEventListener('submit', async function(
       body: JSON.stringify(data)
     });
     const result = await response.json();
-    console.log('API response:', result);
-    apiSuccess = result.success;
-    if (!apiSuccess && result.message) {
+    if (!result.success && result.message) {
       console.warn('API:', result.message);
     }
   } catch (err) {
     console.log('API indisponível, dados guardados localmente');
-    // A API pode não estar disponível em dev (GitHub Pages sem backend)
-    // Os dados estão seguros no localStorage
   }
 
-  // 3. Se a API rejeitou porque o email já existe, avisar
-  if (!apiSuccess) {
-    const msg = 'Já recebemos a tua assinatura! Se já assinaste antes, não precisas de assinar outra vez.';
-    // Ainda assim mostrar sucesso — a pessoa já está registada
-  }
-
-  // 4. Incrementar contador local
+  // 4. Atualizar contador
   currentCount = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').length;
   updateAllCounters(currentCount);
 
@@ -179,6 +128,23 @@ document.querySelectorAll('.nav__link').forEach(link => {
     document.getElementById('navLinks').classList.remove('nav__links--open');
   });
 });
+
+// === FUNÇÃO COPIAR LINK ===
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Link copiado! Partilha com quem também quer um Portugal melhor.');
+  }).catch(() => {
+    // fallback
+    const input = document.createElement('input');
+    input.value = url;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    alert('Link copiado!');
+  });
+}
 
 // === SCROLL ANIMATIONS ===
 const observer = new IntersectionObserver((entries) => {
