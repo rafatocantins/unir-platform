@@ -278,6 +278,22 @@
   </footer>
 
   <script>
+    // Corrigir links absolutos para funcionarem com subpasta GitHub Pages
+    const BASE_PATH_CAND = window.location.pathname.replace(/\/[^/]*\/?$/, '');
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="/"]').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (href.startsWith('//') || href.startsWith('http') || href.startsWith('/#')) return;
+        if (href === '/candidatar' || href.startsWith('/candidatar')) {
+          link.setAttribute('href', BASE_PATH_CAND + '/candidatar/');
+        } else if (href === '/') {
+          link.setAttribute('href', BASE_PATH_CAND + '/');
+        } else if (href.startsWith('/#')) {
+          link.setAttribute('href', BASE_PATH_CAND + href);
+        }
+      });
+    });
+
     // Hamburger menu
     document.getElementById('navToggle').addEventListener('click', function() {
       document.getElementById('navLinks').classList.toggle('nav__links--open');

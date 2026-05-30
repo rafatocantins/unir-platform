@@ -1,12 +1,34 @@
 // === CONFIGURAÇÃO ===
 const ASSINATURAS_NECESSARIAS = 7500;
 
-// API endpoint — em produção aponta para o servidor real
+// Detetar caminho base automaticamente (funciona em subpastas GitHub Pages)
+const BASE_PATH = window.location.pathname.replace(/\/$/, '');
+
+// Corrigir links absolutos no DOM para funcionarem com subpasta
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="/"]').forEach(function(link) {
+    const href = link.getAttribute('href');
+    // Não modificar links externos ou âncoras
+    if (href.startsWith('//') || href.startsWith('http')) return;
+    // Se for uma âncora tipo /#assinar, manter
+    if (href.startsWith('/#')) return;
+    // Se for /candidatar, prefixar com o caminho base
+    if (href === '/candidatar') {
+      link.setAttribute('href', BASE_PATH + '/candidatar/');
+    }
+    // Se for /, apontar para a raiz com /unir-platform/
+    if (href === '/') {
+      link.setAttribute('href', BASE_PATH + '/');
+    }
+  });
+});
+
+// API endpoint
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:8001'
   : 'https://api.unir.pt';
 
-// Fallback para contagem local (enquanto não há BD com contagem real)
+// Fallback para contagem local
 let currentCount = 0;
 const STORAGE_KEY = 'unir_signups';
 
@@ -17,7 +39,6 @@ const signatureCountEl = document.getElementById('signatureCount');
 const progressFill = document.getElementById('progressFill');
 const remainingNumber = document.getElementById('remainingNumber');
 
-// Carregar contagem local do localStorage
 function loadLocalCount() {
   try {
     const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -53,11 +74,10 @@ function updateAllCounters(value) {
   if (progressFill) progressFill.style.width = Math.min(100, progress) + '%';
 }
 
-// Iniciar com contagem local
 loadLocalCount();
 updateAllCounters(currentCount);
 
-// === SUBMISSÃO (simplificado — só dados legais) ===
+// === SUBMISSÃO ===
 document.getElementById('signupForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
@@ -74,7 +94,6 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     nascimento: document.getElementById('nascimento').value,
   };
 
-  // 1. Validar campos obrigatórios
   if (!data.email || !data.name || !data.postal || !data.morada || !data.cc || !data.nascimento) {
     alert('Preenche todos os campos. É obrigatório por lei para formalizar a assinatura.');
     submitBtn.disabled = false;
@@ -88,12 +107,10 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     return;
   }
 
-  // 2. Guardar localmente (backup mesmo se API falhar)
   const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   submissions.push({...data, timestamp: new Date().toISOString()});
   localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
 
-  // 3. Enviar para a API
   try {
     const response = await fetch(API_URL + '/public/sign', {
       method: 'POST',
@@ -108,11 +125,9 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     console.log('API indisponível, dados guardados localmente');
   }
 
-  // 4. Atualizar contador
   currentCount = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').length;
   updateAllCounters(currentCount);
 
-  // 5. Mostrar sucesso
   document.getElementById('signupForm').style.display = 'none';
   const successMsg = document.getElementById('successMessage');
   if (successMsg) successMsg.style.display = 'block';
@@ -129,13 +144,12 @@ document.querySelectorAll('.nav__link').forEach(link => {
   });
 });
 
-// === FUNÇÃO COPIAR LINK ===
+// === COPIAR LINK ===
 function copyLink() {
   const url = window.location.href;
   navigator.clipboard.writeText(url).then(() => {
     alert('Link copiado! Partilha com quem também quer um Portugal melhor.');
   }).catch(() => {
-    // fallback
     const input = document.createElement('input');
     input.value = url;
     document.body.appendChild(input);
