@@ -2,9 +2,10 @@
 const ASSINATURAS_NECESSARIAS = 7500;
 let currentCount = 0;
 
-// Sheet API endpoint (Google Apps Script web app)
-// NOTA: substituir pela URL do webapp depois de deploy
-const SHEET_API_URL = '';  // Deixa vazio por agora — escrevemos diretamente no servidor
+// Sheet API endpoint
+// Servidor Python local: corre com `python3 signature_server.py`
+// Se não estiver a correr, os dados ficam guardados no browser (localStorage)
+const SHEET_API_URL = 'http://localhost:8080';
 
 // === ELEMENTOS DOM ===
 const counterEl = document.getElementById('counterNumber');
@@ -109,13 +110,15 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
   submissions.push({...data, timestamp: new Date().toISOString()});
   localStorage.setItem('unir_signups', JSON.stringify(submissions));
 
-  // 2. Escrever na Sheet via API Google
-  fetch('/api/write.php', {
+  // 2. Escrever na Sheet via servidor local
+  fetch(SHEET_API_URL, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)
+  }).then(r => r.json()).then(res => {
+    console.log('Sheet response:', res);
   }).catch(err => {
-    console.log('API não disponível, dados guardados localmente');
+    console.log('Servidor local nao disponivel, dados guardados localmente');
   });
 
   // 3. Incrementar contador
