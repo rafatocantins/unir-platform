@@ -89,8 +89,10 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; }
 .btn--primary:hover { background: #0A3D91; transform: translateY(-1px); }
 .btn--secondary { background: #2E7D32; color: #FFFFFF; }
 .btn--secondary:hover { background: #1B5E20; transform: translateY(-1px); }
-.btn--outline { background: transparent; border: 2px solid #FFFFFF; color: #FFFFFF; }
-.btn--outline:hover { background: rgba(255,255,255,0.1); }
+.btn--outline { background: transparent; border: 2px solid #0D47A1; color: #0D47A1; }
+.btn--outline:hover { background: rgba(13,71,161,0.08); }
+.btn--outline-light { background: transparent; border: 2px solid #FFFFFF; color: #FFFFFF; }
+.btn--outline-light:hover { background: rgba(255,255,255,0.1); }
 .btn--ghost { background: transparent; color: #616161; }
 .btn--ghost:hover { background: rgba(0,0,0,0.05); }
 .btn--large { padding: 16px 40px; font-size: 1.125rem; }
