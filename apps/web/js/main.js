@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // API endpoint
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:8001'
-  : 'https://api.unir.pt';
+  : 'https://72.61.201.161';
 
 // Fallback para contagem local
 let currentCount = 0;
