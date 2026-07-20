@@ -2,12 +2,12 @@
 # UNIR
 Unidos pela Nação, Inovação e Responsabilidade
 
-### JUSTIÇA DIGITAL
+**JUSTIÇA DIGITAL**
+
 Responsabilização das Plataformas
 e Identidade Digital Verificada
 
 Sistema Nacional de Verificação de Identidade Digital e Banimento Efetivo para Prevenção de Crimes Online
-
 
 Documento Estratégico
 Janeiro 2026
@@ -16,8 +16,8 @@ Janeiro 2026
 Portugal enfrenta uma explosão de criminalidade digital: mais de 21.500 casos de burla registados em 2023, com crescimento anual superior a 20%. Enquanto os burlões operam com impunidade nas redes sociais, as plataformas lucram sem responsabilização efetiva e os criminosos banidos regressam em minutos com novas contas.
 Este documento propõe uma abordagem inovadora: o Sistema Nacional de Identidade Digital Verificada (SNIDV), que torna as grandes plataformas co-responsáveis pela verificação de identidade dos utilizadores e pela eficácia real dos banimentos decretados por tribunais portugueses.
 
+**Principais Medidas:**
 
-### Principais Medidas:
 Verificação de identidade obrigatória via Face ID ou documento oficial para criar contas em plataformas com mais de 1 milhão de utilizadores em Portugal
 Base de dados nacional de banimentos digitais integrada com tribunais e plataformas
 Multas até 6% da faturação global para plataformas que não cumpram ordens de banimento
@@ -27,7 +27,6 @@ Canal prioritário Estado-Plataforma para remoção de conteúdos fraudulentos e
 # 2. O Problema: Criminalidade Digital Impune
 ## 2.1 Explosão das Burlas Online em Portugal
 Os números são alarmantes e demonstram uma tendência de crescimento acelerado que as autoridades não conseguem acompanhar:
-
 
 ## 2.2 Modos de Operação dos Criminosos
 A maioria das burlas online ocorre através de plataformas sociais e de comércio eletrónico, onde os criminosos exploram a falta de verificação de identidade. Os tipos mais comuns incluem:
@@ -48,7 +47,9 @@ Vítimas não conseguem recuperar perdas das plataformas que facilitaram a burla
 # 3. Enquadramento Regulatório Atual
 ## 3.1 Digital Services Act (DSA) da União Europeia
 O Regulamento dos Serviços Digitais (DSA), em vigor desde fevereiro de 2024, estabelece um novo quadro de responsabilização das plataformas digitais na UE. Portugal designou a ANACOM como Coordenador dos Serviços Digitais, com a ERC e o IGAC como autoridades competentes setoriais.
-### Principais obrigações do DSA:
+
+**Principais obrigações do DSA:**
+
 Remoção rápida de conteúdos ilegais após notificação
 Transparência em moderação de conteúdos e algoritmos
 Avaliação de riscos sistémicos para plataformas muito grandes (VLOPs)
@@ -70,19 +71,25 @@ A Austrália implementou em dezembro de 2025 um banimento de redes sociais para 
 O SNIDV é um sistema que liga a identidade civil portuguesa às contas em plataformas digitais, permitindo que banimentos judiciais sejam tecnicamente efetivos e que criminosos não possam simplesmente criar novas contas.
 
 ## 4.2 Componentes do Sistema
-### 4.2.1 Verificação de Identidade Obrigatória
+
+**4.2.1 Verificação de Identidade Obrigatória**
+
 Plataformas com mais de 1 milhão de utilizadores ativos em Portugal devem implementar verificação de identidade para criação de novas contas através de:
 Video selfie com prova de vida (liveness detection) comparado com foto de documento oficial
 Chave Móvel Digital ou autenticacao.gov.pt
 Cartão de Cidadão com chip (NFC) lido por smartphone
 Integração futura com European Digital Identity Wallet
-**4.2.2 Base de Dados Nacional de Banimentos Digitais**
+
+***4.2.2 Base de Dados Nacional de Banimentos Digitais***
+
 Sistema centralizado, gerido pelo Ministério da Justiça em articulação com a ANACOM, que:
 Regista banimentos de plataformas decretados por tribunais como pena acessória
 Comunica automaticamente às plataformas relevantes via API segura
 Bloqueia criação de novas contas por pessoas banidas
 Permite verificação anónima (resposta sim/não sem revelar identidade à plataforma)
-### 4.2.3 API de Integração Plataformas-Estado
+
+**4.2.3 API de Integração Plataformas-Estado**
+
 Interface técnica que permite:
 Plataformas consultarem (sem identificar) se um utilizador está banido
 Autoridades emitirem ordens de remoção prioritárias (24h para conteúdos fraudulentos)
@@ -99,7 +106,9 @@ Recusa de cooperação com autoridades para identificação de burlões
 A responsabilidade solidária significa que a vítima pode exigir reparação diretamente à plataforma, que depois terá direito de regresso contra o burlão.
 
 ## 5.2 Regime Sancionatório Reforçado
-### Coimas aplicáveis às plataformas:
+
+**Coimas aplicáveis às plataformas:**
+
 Não implementação de verificação de identidade: até 4% da faturação global
 Incumprimento de banimento judicial: até 6% da faturação global
 Não remoção de conteúdo fraudulento em 24h: €500.000 por caso
@@ -131,7 +140,9 @@ Cyberstalking, assédio online e partilha não consensual de imagens íntimas
 Crimes sexuais contra menores com uso de meios digitais
 Incitamento à violência ou discriminação online
 ## 7.2 Duração e Proporcionalidade
-### Durações máximas de banimento propostas:
+
+**Durações máximas de banimento propostas:**
+
 Crimes com pena até 1 ano: 1 ano de banimento
 Crimes com pena de 1 a 5 anos: 3 anos de banimento
 Crimes com pena superior a 5 anos: 5 anos de banimento
@@ -171,11 +182,10 @@ Identidade Verificada: Quem publica conteúdo ou transaciona online deve ser ide
 Banimento Efetivo: Decisões judiciais de banimento devem ser tecnicamente executáveis, não meras declarações sem efeito prático.
 Responsabilização das Plataformas: Quem lucra com a atividade dos utilizadores deve partilhar responsabilidade quando essa atividade causa danos.
 
-
 Esta proposta não é sobre vigilância ou fim da privacidade. É sobre responsabilidade. É sobre garantir que o espaço digital, onde cada vez mais portugueses vivem, trabalham e se relacionam, tenha as mesmas regras básicas de responsabilização que existem no mundo físico.
 Se um burlão for condenado e banido de uma praça pública, não pode simplesmente colocar uma máscara e voltar. O mesmo princípio deve aplicar-se ao espaço digital.
 
+***UNIR - Unidos pela Nação, Inovação e Responsabilidade***
 
-**UNIR - Unidos pela Nação, Inovação e Responsabilidade**
 Documento Estratégico | Janeiro 2026
 Série: Justiça e Transparência
