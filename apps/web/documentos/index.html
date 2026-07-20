@@ -139,6 +139,12 @@
     .modal-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
     .modal-body th, .modal-body td { border: 1px solid #e0e0e0; padding: 8px 12px; text-align: left; }
     .modal-body th { background: #f5f5f5; font-weight: 600; }
+    .modal-body .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border-radius: 8px; border: 1px solid #e0e0e0; }
+    .modal-body .table-wrapper table { margin: 0; border: none; width: 100%; min-width: 500px; }
+    .modal-body .table-wrapper table th,
+    .modal-body .table-wrapper table td { white-space: nowrap; }
+    .modal-body .table-wrapper table th:first-child,
+    .modal-body .table-wrapper table td:first-child { white-space: normal; min-width: 140px; }
     .modal-body hr { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
     .modal-body strong { color: #212121; }
     .modal-body code { background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
@@ -233,10 +239,10 @@
         id: 'manifesto',
         icon: '⚡',
         title: 'Manifesto Fundador',
-        subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade',
+        subtitle: 'UNIR - Unidos pela Nação, Inovação e Responsabilidade',
         meta: 'Documento Fundacional · Janeiro 2026',
         desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças. Assenta em Soluções Reais, rejeitando o espectro esquerda-direita tradicional.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Manifesto_Fundador.md',
         url_download: BASE + '/docs/whitepapers/UNIR_Manifesto_Fundador.docx',
         tipo: 'DOCX (16 KB)'
       },
@@ -269,7 +275,7 @@
         subtitle: 'IA nos Tribunais, Combate à Corrupção',
         meta: 'Documento Programático · Janeiro 2026',
         desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa. A corrupção custa a Portugal €18,2 mil milhões/ano.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Reforma_Justica_Transparencia.md',
         url_download: BASE + '/docs/whitepapers/UNIR_Reforma_Justica_Transparencia.docx',
         tipo: 'DOCX (22 KB)'
       },
@@ -280,7 +286,7 @@
         subtitle: 'Identidade Digital e Responsabilização de Plataformas',
         meta: 'Documento Programático · Janeiro 2026',
         desc: 'Sistema Nacional de Identidade Digital Verificada (SNIDV). Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global para plataformas que incumprirem.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Justica_Digital.md',
         url_download: BASE + '/docs/whitepapers/UNIR_Justica_Digital.docx',
         tipo: 'DOCX (17 KB)'
       }
@@ -361,7 +367,7 @@
       var tableHTML = '';
 
       function closeList() { if (inList) { html += '</ul>\n'; inList = false; } }
-      function closeTable() { if (inTable) { html += '</tbody></table>\n'; inTable = false; } }
+      function closeTable() { if (inTable) { html += tableHTML + '</tbody></table></div>\n'; inTable = false; } }
 
       lines.forEach(function(line) {
         var trimmed = line.trim();
@@ -370,7 +376,7 @@
         if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
           var cells = trimmed.split('|').slice(1, -1).map(function(c) { return c.trim(); });
           if (!inTable) {
-            tableHTML = '<table><thead><tr>';
+            tableHTML = '<div class="table-wrapper"><table><thead><tr>';
             cells.forEach(function(c) { tableHTML += '<th>' + escapeHtml(c) + '</th>'; });
             tableHTML += '</tr></thead><tbody>';
             inTable = true;
@@ -417,7 +423,7 @@
       if (inTable) closeTable();
 
       // Tables that were collected
-      if (tableHTML) html += tableHTML + '</tbody></table>\n';
+      if (tableHTML && inTable) html += tableHTML + '</tbody></table></div>\n';
 
       return html;
     }
