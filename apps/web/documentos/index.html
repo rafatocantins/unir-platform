@@ -393,7 +393,11 @@
           closeTable();
         }
 
-        closeList();
+        // Lista - verificar ANTES de fechar a lista anterior
+        var isListItem = trimmed.startsWith('- ') || trimmed.startsWith('* ');
+        if (!isListItem) {
+          closeList();
+        }
 
         // Headers
         if (trimmed.startsWith('# ')) { html += '<h1>' + escapeHtml(trimmed.slice(2)) + '</h1>\n'; return; }
@@ -405,7 +409,7 @@
         if (/^[-*]{3,}$/.test(trimmed)) { html += '<hr>\n'; return; }
 
         // Lista
-        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+        if (isListItem) {
           if (!inList) { html += '<ul>\n'; inList = true; }
           html += '<li>' + inlineMarkdown(trimmed.slice(2)) + '</li>\n';
           return;
