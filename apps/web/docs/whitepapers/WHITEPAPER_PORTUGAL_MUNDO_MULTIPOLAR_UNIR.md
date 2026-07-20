@@ -9,18 +9,18 @@
 
 ## Índice
 
-1. Resumo Executivo
-2. Contexto Geopolítico: O Fim do Unipolarismo
-3. Portugal na Encruzilhada: Dependências e Oportunidades
-4. Pilar I - Redução da Dependência Estratégica dos EUA
+### 1. Resumo Executivo
+### 2. Contexto Geopolítico: O Fim do Unipolarismo
+### 3. Portugal na Encruzilhada: Dependências e Oportunidades
+### 4. Pilar I - Redução da Dependência Estratégica dos EUA
 5. Pilar II - Parceria Estratégica com a China (com Salvaguardas)
-6. Pilar III - Brasil como Sócio Preferencial
-7. Pilar IV - PALOPs e a Lusofonia como Ativo Geopolítico
-8. Pilar V - África como Próximo Horizonte
-9. Eixo Transversal - Tecnologia e Estado Inteligente
+### 6. Pilar III - Brasil como Sócio Preferencial
+### 7. Pilar IV - PALOPs e a Lusofonia como Ativo Geopolítico
+### 8. Pilar V - África como Próximo Horizonte
+### 9. Eixo Transversal - Tecnologia e Estado Inteligente
 10. Plano de Implementação (2026-2035)
-11. Análise de Riscos e Mitigação
-12. Conclusão e Próximos Passos
+### 11. Análise de Riscos e Mitigação
+### 12. Conclusão e Próximos Passos
 
 ---
 
