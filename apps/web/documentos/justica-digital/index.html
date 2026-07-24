@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Justica Digital — UNIR</title>
+<meta name="description" content="Identidade Digital e Responsabilizacao de Plataformas">
+<meta property="og:title" content="Justica Digital — UNIR">
+<meta property="og:description" content="Identidade Digital e Responsabilizacao de Plataformas">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0D47A1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/reader.css">
+<style>
+  .article-hero__title { view-transition-name: doc-digital; }
+  ::view-transition-old(doc-digital) { animation: vt-out 0.2s ease-out forwards; }
+  ::view-transition-new(doc-digital) { animation: vt-in 0.3s ease-out forwards; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner container">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-icon">⚡</span>
+      <span class="nav__logo-text">UNIR</span>
+    </a>
+    <div class="nav__links" id="navLinks">
+      <a href="/" class="nav__link">Inicio</a>
+      <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
+      <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema" style="margin-left:8px;">
+        <span id="themeIcon">🌙</span> <span id="themeLabel">Modo Escuro</span>
+      </button>
+    </div>
+    <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="article-nav">
+  <div class="article-breadcrumb">
+    <a href="/">Inicio</a> / <a href="/documentos/">Documentos</a> / <strong>Justica Digital</strong>
+  </div>
+  <div class="article-actions">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema">
+      <span id="themeIcon2">🌙</span> <span id="themeLabel2">Modo Escuro</span>
+    </button>
+    <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar">🔗 Partilhar</button>
+  </div>
+</div>
+
+<div class="reader__progress" id="progressBar"><div class="reader__progress-fill" id="progressFill"></div></div>
+
+<article class="reader">
+
+<aside class="reader__sidebar">
+  <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Indice do Documento</button>
+  <nav class="reader__toc" id="tocNav">
+    <h4 class="reader__toc-title">Indice de Conteudos</h4>
+    <ol>
+<li class=""><a href="#indice" class="reader__toc-link">INDICE</a></li>
+<li class=""><a href="#1-sumario-executivo" class="reader__toc-link">1. Sumário Executivo</a></li>
+<li class=""><a href="#2-o-problema-criminalidade-digital-impune" class="reader__toc-link">2. O Problema: Criminalidade Digital Impune</a></li>
+<li class="reader__toc-link--sub"><a href="#21-explosao-das-burlas-online-em-portugal" class="reader__toc-link">2.1 Explosão das Burlas Online em Portugal</a></li>
+<li class="reader__toc-link--sub"><a href="#22-modos-de-operacao-dos-criminosos" class="reader__toc-link">2.2 Modos de Operação dos Criminosos</a></li>
+<li class="reader__toc-link--sub"><a href="#23-o-problema-da-impunidade-digital" class="reader__toc-link">2.3 O Problema da Impunidade Digital</a></li>
+<li class=""><a href="#3-enquadramento-regulatorio-atual" class="reader__toc-link">3. Enquadramento Regulatório Atual</a></li>
+<li class="reader__toc-link--sub"><a href="#31-digital-services-act-dsa-da-uniao-europeia" class="reader__toc-link">3.1 Digital Services Act (DSA) da União Europeia</a></li>
+<li class="reader__toc-link--sub"><a href="#32-o-que-falta-no-quadro-atual" class="reader__toc-link">3.2 O Que Falta no Quadro Atual</a></li>
+<li class="reader__toc-link--sub"><a href="#33-experiencias-internacionais" class="reader__toc-link">3.3 Experiências Internacionais</a></li>
+<li class=""><a href="#4-sistema-nacional-de-identidade-digital-verificada-snidv" class="reader__toc-link">4. Sistema Nacional de Identidade Digital Verificada (SNIDV)</a></li>
+<li class="reader__toc-link--sub"><a href="#41-visao-geral" class="reader__toc-link">4.1 Visão Geral</a></li>
+<li class="reader__toc-link--sub"><a href="#42-componentes-do-systema" class="reader__toc-link">4.2 Componentes do Systema</a></li>
+<li class=""><a href="#5-responsabilizacao-das-plataformas" class="reader__toc-link">5. Responsabilização das Plataformas</a></li>
+<li class="reader__toc-link--sub"><a href="#51-novo-regime-de-responsabilidade-civil" class="reader__toc-link">5.1 Novo Regime de Responsabilidade Civil</a></li>
+<li class="reader__toc-link--sub"><a href="#52-regime-sancionatorio-reforcado" class="reader__toc-link">5.2 Regime Sancionatório Reforçado</a></li>
+<li class=""><a href="#6-protecao-de-dados-e-salvaguardas-de-privacidade" class="reader__toc-link">6. Proteção de Dados e Salvaguardas de Privacidade</a></li>
+<li class="reader__toc-link--sub"><a href="#61-principios-de-protecao-de-dados" class="reader__toc-link">6.1 Princípios de Proteção de Dados</a></li>
+<li class="reader__toc-link--sub"><a href="#62-excecoes-e-direitos-dos-cidadaos" class="reader__toc-link">6.2 Exceções e Direitos dos Cidadãos</a></li>
+<li class=""><a href="#7-banimento-judicial-efetivo-como-pena-acessoria" class="reader__toc-link">7. Banimento Judicial Efetivo como Pena Acessória</a></li>
+<li class="reader__toc-link--sub"><a href="#71-crimes-elegiveis-para-banimento-digital" class="reader__toc-link">7.1 Crimes Elegíveis para Banimento Digital</a></li>
+<li class="reader__toc-link--sub"><a href="#72-duracao-e-proporcionalidade" class="reader__toc-link">7.2 Duração e Proporcionalidade</a></li>
+<li class=""><a href="#8-cronograma-de-implementacao" class="reader__toc-link">8. Cronograma de Implementação</a></li>
+<li class=""><a href="#9-metricas-de-sucesso" class="reader__toc-link">9. Métricas de Sucesso</a></li>
+<li class="reader__toc-link--sub"><a href="#prevencao-de-crimes" class="reader__toc-link">Prevenção de Crimes</a></li>
+<li class="reader__toc-link--sub"><a href="#eficacia-judicial" class="reader__toc-link">Eficácia Judicial</a></li>
+<li class=""><a href="#10-conclusao" class="reader__toc-link">10. Conclusão</a></li>
+
+    </ol>
+  </nav>
+</aside>
+
+<div class="reader__body">
+
+<a href="/documentos/" class="reader__back" onclick="event.preventDefault();navigateWithTransition('/documentos/');">&larr; Voltar aos Documentos</a>
+
+<header class="article-hero">
+  <span class="article-hero__badge">🛡️ Identidade Digital</span>
+  <h1 class="article-hero__title">Justica Digital</h1>
+  <p class="article-hero__subtitle">Identidade Digital e Responsabilizacao de Plataformas</p>
+  <div class="article-hero__meta">
+    <span class="article-hero__meta-item">⏱️ ~10 min de leitura</span>
+    <span class="article-hero__meta-dot"></span>
+    <span class="article-hero__meta-item">🏛️ Movimento UNIR</span>
+  </div>
+</header>
+
+<div class="reader__content">
+<details class="reader__section" open id="indice">
+<summary class="reader__section-title">
+INDICE
+<a href="#indice" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'indice')">#</a>
+</summary>
+<div class="reader__section-body">
+
+
+</div>
+</details>
+<details class="reader__section" open id="1-sumario-executivo">
+<summary class="reader__section-title">
+1. Sumário Executivo
+<a href="#1-sumario-executivo" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'1-sumario-executivo')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Portugal enfrenta uma explosão de criminalidade digital: mais de 21.500 casos de burla registados em 2023, com crescimento anual superior a 20%. Enquanto os burlões operam com impunidade nas redes sociais, as plataformas lucram sem responsabilização efetiva e os criminosos banidos regressam em minutos com novas contas.</p>
+<p>Este documento propõe uma abordagem inovadora: o Sistema Nacional de Identidade Digital Verificada (SNIDV), que torna as grandes plataformas co-responsáveis pela verificação de identidade dos utilizadores e pela eficácia real dos banimentos decretados por tribunais portugueses.</p>
+<p>Principais Medidas:</p>
+<p>Verificação de identidade obrigatória via Face ID ou documento oficial para criar contas em plataformas com mais de 1 milhão de utilizadores em Portugal</p>
+<p>Base de dados nacional de banimentos digitais integrada com tribunais e plataformas</p>
+<p>Multas até 6% da faturação global para plataformas que não cumpram ordens de banimento</p>
+<p>Responsabilização civil das plataformas por danos causados por utilizadores não verificados</p>
+<p>Canal prioritário Estado-Plataforma para remoção de conteúdos fraudulentos em 24 horas</p>
+
+</div>
+</details>
+<details class="reader__section" open id="2-o-problema-criminalidade-digital-impune">
+<summary class="reader__section-title">
+2. O Problema: Criminalidade Digital Impune
+<a href="#2-o-problema-criminalidade-digital-impune" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'2-o-problema-criminalidade-digital-impune')">#</a>
+</summary>
+<div class="reader__section-body">
+
+<h4 class="reader__subsection" id="21-explosao-das-burlas-online-em-portugal">2.1 Explosão das Burlas Online em Portugal</h4>
+<p>Os números são alarmantes e demonstram uma tendência de crescimento acelerado que as autoridades não conseguem acompanhar:</p>
+<h4 class="reader__subsection" id="22-modos-de-operacao-dos-criminosos">2.2 Modos de Operação dos Criminosos</h4>
+<p>A maioria das burlas online ocorre através de plataformas sociais e de comércio eletrónico, onde os criminosos exploram a falta de verificação de identidade. Os tipos mais comuns incluem:</p>
+<p>Compra e venda online fraudulenta: 3.127 casos (+18%)</p>
+<p>Publicações fraudulentas em redes sociais: 1.737 casos (+17%)</p>
+<p>Burlas MB Way: 1.337 casos</p>
+<p>Burlas românticas (romance scams): Maior aumento registado em 2023</p>
+<p>CEO Fraud / Business Email Compromise: 65 casos (alto valor)</p>
+<p>Fonte: GNR, Gabinete Cibercrime PGR, APAV, Centro Nacional de Cibersegurança (2023-2024)</p>
+<h4 class="reader__subsection" id="23-o-problema-da-impunidade-digital">2.3 O Problema da Impunidade Digital</h4>
+<p>Mesmo quando os tribunais conseguem identificar e condenar burlões, a execução de penas acessórias de banimento digital é praticamente impossível:</p>
+<p>Criminosos banidos criam novas contas em minutos com emails falsos</p>
+<p>Não existe verificação de identidade real na maioria das plataformas</p>
+<p>Plataformas não têm obrigação de verificar banimentos judiciais portugueses</p>
+<p>Vítimas não conseguem recuperar perdas das plataformas que facilitaram a burla</p>
+
+</div>
+</details>
+<details class="reader__section" open id="3-enquadramento-regulatorio-atual">
+<summary class="reader__section-title">
+3. Enquadramento Regulatório Atual
+<a href="#3-enquadramento-regulatorio-atual" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'3-enquadramento-regulatorio-atual')">#</a>
+</summary>
+<div class="reader__section-body">
+
+<h4 class="reader__subsection" id="31-digital-services-act-dsa-da-uniao-europeia">3.1 Digital Services Act (DSA) da União Europeia</h4>
+<p>O Regulamento dos Serviços Digitais (DSA), em vigor desde fevereiro de 2024, estabelece um novo quadro de responsabilização das plataformas digitais na UE. Portugal designou a ANACOM como Coordenador dos Serviços Digitais, com a ERC e o IGAC como autoridades competentes setoriais.</p>
+<p>Principais obrigações do DSA:</p>
+<p>Remoção rápida de conteúdos ilegais após notificação</p>
+<p>Transparência em moderação de conteúdos e algoritmos</p>
+<p>Avaliação de riscos sistémicos para plataformas muito grandes (VLOPs)</p>
+<p>Multas até 6% da faturação global por incumprimento</p>
+<p>Proibição de práticas enganosas de design (dark patterns)</p>
+<h4 class="reader__subsection" id="32-o-que-falta-no-quadro-atual">3.2 O Que Falta no Quadro Atual</h4>
+<p>Apesar dos avanços do DSA, persistem lacunas críticas que a proposta UNIR pretende colmatar:</p>
+<p>Não existe obrigação de verificação de identidade real para criar contas</p>
+<p>Banimentos judiciais não são tecnicamente executáveis</p>
+<p>Plataformas não são responsáveis por danos causados por contas anónimas</p>
+<p>Não há interoperabilidade entre sistemas judiciais e plataformas</p>
+<p>Tempos de resposta para remoção de conteúdos fraudulentos são demasiado longos</p>
+<h4 class="reader__subsection" id="33-experiencias-internacionais">3.3 Experiências Internacionais</h4>
+<p>A Austrália implementou em dezembro de 2025 um banimento de redes sociais para menores de 16 anos, exigindo verificação de idade por Face ID ou documento oficial. A Meta já utiliza tecnologia de reconhecimento facial para recuperação de contas comprometidas e deteção de anúncios fraudulentos. Estas experiências demonstram que a verificação biométrica em larga escala é tecnicamente viável.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="4-sistema-nacional-de-identidade-digital-verificada-snidv">
+<summary class="reader__section-title">
+4. Sistema Nacional de Identidade Digital Verificada (SNIDV)
+<a href="#4-sistema-nacional-de-identidade-digital-verificada-snidv" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'4-sistema-nacional-de-identidade-digital-verificada-snidv')">#</a>
+</summary>
+<div class="reader__section-body">
+
+<h4 class="reader__subsection" id="41-visao-geral">4.1 Visão Geral</h4>
+<p>O SNIDV é um sistema que liga a identidade civil portuguesa às contas em plataformas digitais, permitindo que banimentos judiciais sejam tecnicamente efetivos e que criminosos não possam simplesmente criar novas contas.</p>
+<h4 class="reader__subsection" id="42-componentes-do-systema">4.2 Componentes do Systema</h4>
+<p>4.2.1 Verificação de Identidade Obrigatória</p>
+<p>Plataformas com mais de 1 milhão de utilizadores ativos em Portugal devem implementar verificação de identidade para criação de novas contas através de:</p>
+<p>Video selfie com prova de vida (liveness detection) comparado com foto de documento oficial</p>
+<p>Chave Móvel Digital ou autenticacao.gov.pt</p>
+<p>Cartão de Cidadão com chip (NFC) lido por smartphone</p>
+<p>Integração futura com European Digital Identity Wallet</p>
+<p>4.2.2 Base de Dados Nacional de Banimentos Digitais</p>
+<p>Sistema centralizado, gerido pelo Ministério da Justiça em articulação com a ANACOM, que:</p>
+<p>Regista banimentos de plataformas decretados por tribunais como pena acessória</p>
+<p>Comunica automaticamente às plataformas relevantes via API segura</p>
+<p>Bloqueia criação de novas contas por pessoas banidas</p>
+<p>Permite verificação anónima (resposta sim/não sem revelar identidade à plataforma)</p>
+<p>4.2.3 API de Integração Plataformas-Estado</p>
+<p>Interface técnica que permite:</p>
+<p>Plataformas consultarem (sem identificar) se um utilizador está banido</p>
+<p>Autoridades emitirem ordens de remoção prioritárias (24h para conteúdos fraudulentos)</p>
+<p>Plataformas reportarem tentativas de criação de conta por banidos</p>
+<p>Cidadãos denunciarem burlas com canal direto para as autoridades</p>
+
+</div>
+</details>
+<details class="reader__section" open id="5-responsabilizacao-das-plataformas">
+<summary class="reader__section-title">
+5. Responsabilização das Plataformas
+<a href="#5-responsabilizacao-das-plataformas" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'5-responsabilizacao-das-plataformas')">#</a>
+</summary>
+<div class="reader__section-body">
+
+<h4 class="reader__subsection" id="51-novo-regime-de-responsabilidade-civil">5.1 Novo Regime de Responsabilidade Civil</h4>
+<p>Propõe-se a criação de um regime de responsabilidade civil solidária das plataformas por danos causados por utilizadores em determinadas circunstâncias:</p>
+<p>Conta criada sem verificação de identidade quando esta era obrigatória</p>
+<p>Conta criada por pessoa sujeita a banimento judicial (falha de verificação)</p>
+<p>Não remoção de conteúdo fraudulento em 24h após notificação prioritária</p>
+<p>Recusa de cooperação com autoridades para identificação de burlões</p>
+<p>A responsabilidade solidária significa que a vítima pode exigir reparação diretamente à plataforma, que depois terá direito de regresso contra o burlão.</p>
+<h4 class="reader__subsection" id="52-regime-sancionatorio-reforcado">5.2 Regime Sancionatório Reforçado</h4>
+<p>Coimas aplicáveis às plataformas:</p>
+<p>Não implementação de verificação de identidade: até 4% da faturação global</p>
+<p>Incumprimento de banimento judicial: até 6% da faturação global</p>
+<p>Não remoção de conteúdo fraudulento em 24h: €500.000 por caso</p>
+<p>Recusa de cooperação com autoridades: até 2% da faturação global</p>
+<p>Publicidade fraudulenta não removida: €1M por campanha</p>
+
+</div>
+</details>
+<details class="reader__section" open id="6-protecao-de-dados-e-salvaguardas-de-privacidade">
+<summary class="reader__section-title">
+6. Proteção de Dados e Salvaguardas de Privacidade
+<a href="#6-protecao-de-dados-e-salvaguardas-de-privacidade" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'6-protecao-de-dados-e-salvaguardas-de-privacidade')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>A proposta UNIR reconhece os riscos de privacidade associados à verificação biométrica e estabelece salvaguardas robustas:</p>
+<h4 class="reader__subsection" id="61-principios-de-protecao-de-dados">6.1 Princípios de Proteção de Dados</h4>
+<p>Minimização de dados: Plataformas apenas recebem confirmação sim/não de verificação</p>
+<p>Dados biométricos eliminados após verificação (não retidos)</p>
+<p>Base de banimentos contém apenas hash anónimo, não dados pessoais</p>
+<p>Estado não tem acesso a que plataformas cada cidadão usa</p>
+<p>Auditoria independente obrigatória ao sistema</p>
+<h4 class="reader__subsection" id="62-excecoes-e-direitos-dos-cidadaos">6.2 Exceções e Direitos dos Cidadãos</h4>
+<p>Direito a conta anónima para navegação e consumo de conteúdo (sem publicação)</p>
+<p>Verificação apenas exigida para publicar, comentar, enviar mensagens ou transacionar</p>
+<p>Proteção especial para denunciantes, jornalistas e vítimas de violência doméstica</p>
+<p>Direito de recurso contra banimentos erróneos</p>
+<p>Supervisão pela CNPD (Comissão Nacional de Proteção de Dados)</p>
+
+</div>
+</details>
+<details class="reader__section" open id="7-banimento-judicial-efetivo-como-pena-acessoria">
+<summary class="reader__section-title">
+7. Banimento Judicial Efetivo como Pena Acessória
+<a href="#7-banimento-judicial-efetivo-como-pena-acessoria" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'7-banimento-judicial-efetivo-como-pena-acessoria')">#</a>
+</summary>
+<div class="reader__section-body">
+
+<h4 class="reader__subsection" id="71-crimes-elegiveis-para-banimento-digital">7.1 Crimes Elegíveis para Banimento Digital</h4>
+<p>O banimento de plataformas digitais pode ser aplicado como pena acessória nos seguintes crimes quando cometidos através de meios digitais:</p>
+<p>Burla informática e nas comunicações (Art. 221º CP)</p>
+<p>Fraude bancária online e Phishing/roubo de identidade</p>
+<p>Crimes contra a honra através de redes sociais</p>
+<p>Cyberstalking, assédio online e partilha não consensual de imagens íntimas</p>
+<p>Crimes sexuais contra menores com uso de meios digitais</p>
+<p>Incitamento à violência ou discriminação online</p>
+<h4 class="reader__subsection" id="72-duracao-e-proporcionalidade">7.2 Duração e Proporcionalidade</h4>
+<p>Durações máximas de banimento propostas:</p>
+<p>Crimes com pena até 1 ano: 1 ano de banimento</p>
+<p>Crimes com pena de 1 a 5 anos: 3 anos de banimento</p>
+<p>Crimes com pena superior a 5 anos: 5 anos de banimento</p>
+<p>Reincidência em crimes digitais: 10 anos de banimento</p>
+<p>Crimes contra menores: Banimento perpétuo</p>
+
+</div>
+</details>
+<details class="reader__section" open id="8-cronograma-de-implementacao">
+<summary class="reader__section-title">
+8. Cronograma de Implementação
+<a href="#8-cronograma-de-implementacao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'8-cronograma-de-implementacao')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Fase 1: Preparação (Ano 1)</p>
+<p>Elaboração do quadro legislativo e regulamentar</p>
+<p>Consulta pública e parecer da CNPD</p>
+<p>Negociação com plataformas e Comissão Europeia</p>
+<p>Desenvolvimento técnico do SNIDV e APIs</p>
+<p>Fase 2: Piloto (Ano 2)</p>
+<p>Projeto-piloto com 2-3 plataformas voluntárias</p>
+<p>Primeiros banimentos judiciais registados no sistema</p>
+<p>Auditoria de segurança e privacidade</p>
+<p>Fase 3: Implementação Plena (Anos 3-4)</p>
+<p>Obrigatoriedade para todas as VLOPs e plataformas com &gt;1M utilizadores PT</p>
+<p>Canal prioritário Estado-Plataforma em pleno funcionamento</p>
+<p>Primeiras sanções por incumprimento</p>
+
+</div>
+</details>
+<details class="reader__section" open id="9-metricas-de-sucesso">
+<summary class="reader__section-title">
+9. Métricas de Sucesso
+<a href="#9-metricas-de-sucesso" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'9-metricas-de-sucesso')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>O sucesso do programa será medido através dos seguintes indicadores:</p>
+<h4 class="reader__subsection" id="prevencao-de-crimes">Prevenção de Crimes</h4>
+<p>Redução de 50% nas burlas informáticas em 5 anos</p>
+<p>Zero novas contas criadas por pessoas banidas</p>
+<p>Remoção de conteúdos fraudulentos em menos de 24h</p>
+<h4 class="reader__subsection" id="eficacia-judicial">Eficácia Judicial</h4>
+<p>100% dos banimentos judiciais efetivamente executados</p>
+<p>Aumento de 200% nas condenações por crimes digitais</p>
+<p>Aumento de 50% na recuperação de valores para vítimas</p>
+
+</div>
+</details>
+<details class="reader__section" open id="10-conclusao">
+<summary class="reader__section-title">
+10. Conclusão
+<a href="#10-conclusao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'10-conclusao')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>A criminalidade digital em Portugal atingiu proporções que exigem uma resposta à altura. Mais de 21.000 burlas por ano, crescimento contínuo, e impunidade quase total para os criminosos que simplesmente criam novas contas após serem apanhados.</p>
+<p>A proposta UNIR de Justiça Digital assenta em três pilares fundamentais:</p>
+<p>Identidade Verificada: Quem publica conteúdo ou transaciona online deve ser identificável, protegendo simultaneamente a privacidade através de tecnologia avançada.</p>
+<p>Banimento Efetivo: Decisões judiciais de banimento devem ser tecnicamente executáveis, não meras declarações sem efeito prático.</p>
+<p>Responsabilização das Plataformas: Quem lucra com a atividade dos utilizadores deve partilhar responsabilidade quando essa atividade causa danos.</p>
+<p>Esta proposta não é sobre vigilância ou fim da privacidade. É sobre responsabilidade. É sobre garantir que o espaço digital, onde cada vez mais portugueses vivem, trabalham e se relacionam, tenha as mesmas regras básicas de responsabilização que existem no mundo físico.</p>
+<p>Se um burlão for condenado e banido de uma praça pública, não pode simplesmente colocar uma máscara e voltar. O mesmo princípio deve aplicar-se ao espaço digital.</p>
+<p>UNIR - Unidos pela Nação, Inovação e Responsabilidade</p>
+<p>Documento Estratégico | Janeiro 2026</p>
+<p>Série: Justiça e Transparência</p>
+
+</div>
+</details>
+</div>
+
+<footer class="reader__footer">
+  <p>Documento Estrategico &middot; UNIR &mdash; Unidos pela Nacao, Inovacao e Responsabilidade</p>
+</footer>
+
+</div>
+</article>
+
+<div class="article-prevnext">
+  <a href="/documentos/reforma-justica/" onclick="event.preventDefault();navigateWithTransition('/documentos/reforma-justica/')">&larr; Reforma da Justica e Transparencia</a>
+  <a href="#" class="article-prevnext--disabled">Proximo &rarr;</a>
+</div>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="nav__logo-text">UNIR</span>
+      <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+    </div>
+    <div class="footer__links">
+      <a href="/" class="footer__link">Inicio</a>
+      <a href="/documentos/" class="footer__link">Documentos</a>
+      <a href="/candidatar/" class="footer__link">Integrar</a>
+    </div>
+    <p class="footer__copy">Feito em Portugal. Por cidadaos. Para cidadaos.</p>
+  </div>
+</footer>
+
+<div id="toast" class="toast-notification">Link copiado!</div>
+
+<script>
+(function(){
+  var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
+  document.querySelectorAll('a[href^="/"]').forEach(function(l){
+    var h=l.getAttribute('href');
+    if(h.startsWith('//')||h.startsWith('http')||h.startsWith('/#'))return;
+    if(h==='/'){l.setAttribute('href',b+'/');return}
+    if(h.startsWith('/documentos')){l.setAttribute('href',b+'/documentos/');return}
+    if(h.startsWith('/candidatar')){l.setAttribute('href',b+'/candidatar/');return}
+  });
+})();
+
+function initTheme(){
+  var t=localStorage.getItem('unir_theme');
+  var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  if(t==='dark'||(!t&&d)){document.documentElement.setAttribute('data-theme','dark');updateUI(true);}
+  else{document.documentElement.removeAttribute('data-theme');updateUI(false);}
+}
+function toggleTheme(){
+  var is=document.documentElement.getAttribute('data-theme')==='dark';
+  if(is){document.documentElement.removeAttribute('data-theme');localStorage.setItem('unir_theme','light');updateUI(false);}
+  else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('unir_theme','dark');updateUI(true);}
+}
+function updateUI(dark){
+  var icons=document.querySelectorAll('#themeIcon,#themeIcon2');
+  var labels=document.querySelectorAll('#themeLabel,#themeLabel2');
+  icons.forEach(function(i){i.textContent=dark?'☀️':'🌙';});
+  labels.forEach(function(l){l.textContent=dark?'Modo Claro':'Modo Escuro';});
+}
+initTheme();
+
+function copyAnchorLink(e,id){
+  e.preventDefault();e.stopPropagation();
+  var url=window.location.origin+window.location.pathname+'#'+id;
+  navigator.clipboard.writeText(url).then(function(){showToast('Link da seccao copiado!');history.pushState(null,null,'#'+id);})
+    .catch(function(){showToast('Erro ao copiar link');});
+}
+function shareArticle(){
+  if(navigator.share){navigator.share({title:document.title,url:window.location.href}).catch(function(){});}
+  else{navigator.clipboard.writeText(window.location.href).then(function(){showToast('Link copiado!');});}
+}
+function navigateWithTransition(url){
+  if(document.startViewTransition){document.startViewTransition(function(){window.location.href=url;});}
+  else{window.location.href=url;}
+}
+function showToast(msg){
+  var t=document.getElementById('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('toast-notification--show');
+  setTimeout(function(){t.classList.remove('toast-notification--show');},2600);
+}
+
+(function(){
+  var bar=document.getElementById('progressFill');
+  if(bar){window.addEventListener('scroll',function(){var h=document.documentElement;
+    var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+    bar.style.width=Math.min(100,Math.max(0,pct))+'%';});}
+  var tocLinks=document.querySelectorAll('.reader__toc-link');
+  var headings=document.querySelectorAll('.reader__section[id]');
+  if(headings.length){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+      if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('reader__toc-link--active');});
+      var link=document.querySelector('.reader__toc-link[href="#'+e.target.id+'"]');
+      if(link)link.classList.add('reader__toc-link--active');}
+    });},{rootMargin:'-10% 0px -70% 0px'});
+    headings.forEach(function(h){obs.observe(h);});
+  }
+  var tt=document.getElementById('tocToggle'),tn=document.getElementById('tocNav');
+  if(tt&&tn){tt.addEventListener('click',function(){
+    var o=!tn.classList.contains('reader__toc--open');
+    tn.classList.toggle('reader__toc--open',o);
+    tt.classList.toggle('reader__toc-toggle--open',o);
+    tt.setAttribute('aria-expanded',o?'true':'false');
+  });}
+  var nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  if(nt&&nl){nt.addEventListener('click',function(){nl.classList.toggle('nav__links--open');});}
+})();
+</script>
+
+</body>
+</html>

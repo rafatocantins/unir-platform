@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alternativas a Mineracao Marinha — UNIR</title>
+<meta name="description" content="Urban Mining, Biotecnologia e Deep-Sea Tech">
+<meta property="og:title" content="Alternativas a Mineracao Marinha — UNIR">
+<meta property="og:description" content="Urban Mining, Biotecnologia e Deep-Sea Tech">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0D47A1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/reader.css">
+<style>
+  .article-hero__title { view-transition-name: doc-alternativas; }
+  ::view-transition-old(doc-alternativas) { animation: vt-out 0.2s ease-out forwards; }
+  ::view-transition-new(doc-alternativas) { animation: vt-in 0.3s ease-out forwards; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner container">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-icon">⚡</span>
+      <span class="nav__logo-text">UNIR</span>
+    </a>
+    <div class="nav__links" id="navLinks">
+      <a href="/" class="nav__link">Inicio</a>
+      <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
+      <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema" style="margin-left:8px;">
+        <span id="themeIcon">🌙</span> <span id="themeLabel">Modo Escuro</span>
+      </button>
+    </div>
+    <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="article-nav">
+  <div class="article-breadcrumb">
+    <a href="/">Inicio</a> / <a href="/documentos/">Documentos</a> / <strong>Alternativas a Mineracao Marinha</strong>
+  </div>
+  <div class="article-actions">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema">
+      <span id="themeIcon2">🌙</span> <span id="themeLabel2">Modo Escuro</span>
+    </button>
+    <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar">🔗 Partilhar</button>
+  </div>
+</div>
+
+<div class="reader__progress" id="progressBar"><div class="reader__progress-fill" id="progressFill"></div></div>
+
+<article class="reader">
+
+<aside class="reader__sidebar">
+  <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Indice do Documento</button>
+  <nav class="reader__toc" id="tocNav">
+    <h4 class="reader__toc-title">Indice de Conteudos</h4>
+    <ol>
+<li class=""><a href="#indice" class="reader__toc-link">INDICE</a></li>
+<li class=""><a href="#resumo-executivo" class="reader__toc-link">Resumo executivo</a></li>
+<li class=""><a href="#1-contexto-onde-estamos-hoje" class="reader__toc-link">1. Contexto: onde estamos hoje</a></li>
+<li class="reader__toc-link--sub"><a href="#11-o-problema-real-diagnostico" class="reader__toc-link">1.1. O problema real (diagnóstico)</a></li>
+<li class="reader__toc-link--sub"><a href="#12-o-objetivo-estrategico-do-unir" class="reader__toc-link">1.2. O objetivo estratégico do UNIR</a></li>
+<li class=""><a href="#2-alternativa-a---urban-mining-mineracao-urbana" class="reader__toc-link">2. Alternativa A - Urban Mining (mineração urbana)</a></li>
+<li class="reader__toc-link--sub"><a href="#21-o-que-temos-hoje" class="reader__toc-link">2.1. O que temos hoje</a></li>
+<li class="reader__toc-link--sub"><a href="#22-o-que-podemos-ter" class="reader__toc-link">2.2. O que podemos ter</a></li>
+<li class="reader__toc-link--sub"><a href="#23-custos-vs-ganhos-ordens-de-grandeza" class="reader__toc-link">2.3. Custos vs ganhos (ordens de grandeza)</a></li>
+<li class="reader__toc-link--sub"><a href="#24-fatores-contra-e-respostas-unir" class="reader__toc-link">2.4. Fatores contra e respostas UNIR</a></li>
+<li class=""><a href="#3-alternativa-b---biotecnologia-marinha" class="reader__toc-link">3. Alternativa B - Biotecnologia marinha</a></li>
+<li class="reader__toc-link--sub"><a href="#31-o-que-temos-hoje" class="reader__toc-link">3.1. O que temos hoje</a></li>
+<li class="reader__toc-link--sub"><a href="#32-o-que-podemos-ter" class="reader__toc-link">3.2. O que podemos ter</a></li>
+<li class="reader__toc-link--sub"><a href="#33-riscos-e-mitigacao" class="reader__toc-link">3.3. Riscos e mitigação</a></li>
+<li class=""><a href="#4-alternativa-c---tecnologia-de-mar-profundo-deep-sea-tech" class="reader__toc-link">4. Alternativa C - Tecnologia de mar profundo (Deep-Sea Tech)</a></li>
+<li class="reader__toc-link--sub"><a href="#41-o-que-temos-hoje" class="reader__toc-link">4.1. O que temos hoje</a></li>
+<li class="reader__toc-link--sub"><a href="#42-o-que-podemos-ter" class="reader__toc-link">4.2. O que podemos ter</a></li>
+<li class=""><a href="#5-comparacao-estrategica" class="reader__toc-link">5. Comparação estratégica</a></li>
+<li class=""><a href="#6-roteiro-proposto-adaptado-ao-contexto-portugues" class="reader__toc-link">6. Roteiro proposto (adaptado ao contexto português)</a></li>
+<li class=""><a href="#7-conclusao" class="reader__toc-link">7. Conclusão</a></li>
+
+    </ol>
+  </nav>
+</aside>
+
+<div class="reader__body">
+
+<a href="/documentos/" class="reader__back" onclick="event.preventDefault();navigateWithTransition('/documentos/');">&larr; Voltar aos Documentos</a>
+
+<header class="article-hero">
+  <span class="article-hero__badge">🔄 Inovacao e Sustentabilidade</span>
+  <h1 class="article-hero__title">Alternativas a Mineracao Marinha</h1>
+  <p class="article-hero__subtitle">Urban Mining, Biotecnologia e Deep-Sea Tech</p>
+  <div class="article-hero__meta">
+    <span class="article-hero__meta-item">⏱️ ~15 min de leitura</span>
+    <span class="article-hero__meta-dot"></span>
+    <span class="article-hero__meta-item">🏛️ Movimento UNIR</span>
+  </div>
+</header>
+
+<div class="reader__content">
+<details class="reader__section" open id="indice">
+<summary class="reader__section-title">
+INDICE
+<a href="#indice" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'indice')">#</a>
+</summary>
+<div class="reader__section-body">
+
+
+</div>
+</details>
+<details class="reader__section" open id="resumo-executivo">
+<summary class="reader__section-title">
+Resumo executivo
+<a href="#resumo-executivo" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'resumo-executivo')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Este Anexo B detalha alternativas estrategicas a mineracao comercial em mar profundo, alinhadas com a posicao do UNIR: proteger o oceano, exercer soberania com tecnologia e gerar valor economico sem destruir o patrimonio natural.</p>
+<p>Conclusao central: Portugal pode capturar valor economico, seguranca de abastecimento e influencia geopolitica sem recorrer a extracao mineira em aguas profundas. As tecnologias analisadas - Urban Mining, Biotecnologia Marinha e Deep-Sea Tech - oferecem caminhos mais rapidos, mais seguros e com maior aceitacao publica.</p>
+<p>A moratoria nacional ate 2050 (Lei n. 36/2025) nao e um travao: e uma janela de oportunidade para Portugal se posicionar na vanguarda da economia azul sustentavel.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="1-contexto-onde-estamos-hoje">
+<summary class="reader__section-title">
+1. Contexto: onde estamos hoje
+<a href="#1-contexto-onde-estamos-hoje" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'1-contexto-onde-estamos-hoje')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Portugal apresenta um desfasamento relevante face à União Europeia na recolha de resíduos de equipamentos elétricos e eletrónicos (REEE). A recolha per capita nacional situa-se significativamente abaixo da média europeia, refletindo hábitos de retenção doméstica (equipamentos guardados) e fricção nos sistemas de entrega.</p>
+<p>Em paralelo, o país dispõe de ativos estratégicos: portos atlânticos, posição logística, capacidade científica no mar, e enquadramento político que privilegia precaução ambiental (moratória de mineração em mar profundo até 2050).</p>
+<h4 class="reader__subsection" id="11-o-problema-real-diagnostico">1.1. O problema real (diagnóstico)</h4>
+<p>Valor económico imobilizado em resíduos eletrónicos e baterias.</p>
+<p>Dependência externa de metais críticos e cadeias de refinação.</p>
+<p>Baixa conversão de ciência em indústria e exportação.</p>
+<p>Risco reputacional e ambiental associado à mineração oceânica precoce.</p>
+<h4 class="reader__subsection" id="12-o-objetivo-estrategico-do-unir">1.2. O objetivo estratégico do UNIR</h4>
+<p>Transformar resíduos, conhecimento e tecnologia em soberania económica e segurança, criando valor mensurável para as pessoas e para o país, sem comprometer ecossistemas marinhos nem gerar conflitos políticos desnecessários.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="2-alternativa-a---urban-mining-mineracao-urbana">
+<summary class="reader__section-title">
+2. Alternativa A - Urban Mining (mineração urbana)
+<a href="#2-alternativa-a---urban-mining-mineracao-urbana" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'2-alternativa-a---urban-mining-mineracao-urbana')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Urban Mining refere-se à recuperação avançada de metais críticos e estratégicos a partir de resíduos urbanos: baterias, equipamentos eletrónicos, veículos elétricos e infraestruturas industriais.</p>
+<h4 class="reader__subsection" id="21-o-que-temos-hoje">2.1. O que temos hoje</h4>
+<p>Recolha per capita de REEE inferior à média da UE.</p>
+<p>Infraestruturas de tratament uio existentes, mas subaproveitadas.</p>
+<p>Baixa atratividade para o cidadão entregar pequenos equipamentos.</p>
+<h4 class="reader__subsection" id="22-o-que-podemos-ter">2.2. O que podemos ter</h4>
+<p>Portugal como hub europeu de reciclagem e refinação limpa de metais críticos.</p>
+<p>Cadeias industriais de valor (separação, refinação, reutilização).</p>
+<p>Redução de dependência externa e emissões associadas à extração primária.</p>
+<h4 class="reader__subsection" id="23-custos-vs-ganhos-ordens-de-grandeza">2.3. Custos vs ganhos (ordens de grandeza)</h4>
+<p>Os custos de reciclagem avançada variam por tecnologia e química, mas são significativamente inferiores ao custo ambiental e geopolítico da extração primária. Os ganhos incluem matérias-primas secundárias, emprego industrial qualificado e benefícios climáticos.</p>
+<h4 class="reader__subsection" id="24-fatores-contra-e-respostas-unir">2.4. Fatores contra e respostas UNIR</h4>
+<p>Hábito de guardar equipamentos → Resposta: incentivos diretos (depósito-retorno) e conveniência.</p>
+<p>Risco de desvio para informal → Resposta: rastreio digital e fiscalização por dados.</p>
+<p>Volatilidade de preços → Resposta: foco em segurança de abastecimento e indústria, não especulação.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="3-alternativa-b---biotecnologia-marinha">
+<summary class="reader__section-title">
+3. Alternativa B - Biotecnologia marinha
+<a href="#3-alternativa-b---biotecnologia-marinha" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'3-alternativa-b---biotecnologia-marinha')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>A biotecnologia marinha explora organismos oceânicos para aplicações farmacêuticas, industriais e de defesa, com elevado valor acrescentado e impacto ambiental reduzido.</p>
+<h4 class="reader__subsection" id="31-o-que-temos-hoje">3.1. O que temos hoje</h4>
+<p>Capacidade científica relevante em universidades e centros de investigação.</p>
+<p>Baixa escala industrial e fraca ligação ao mercado.</p>
+<h4 class="reader__subsection" id="32-o-que-podemos-ter">3.2. O que podemos ter</h4>
+<p>Spin-offs e patentes em fármacos, enzimas e materiais.</p>
+<p>Integração com saúde, defesa e indústria farmacêutica europeia.</p>
+<h4 class="reader__subsection" id="33-riscos-e-mitigacao">3.3. Riscos e mitigação</h4>
+<p>Ciclos longos e risco tecnológico exigem governação rigorosa. O UNIR propõe financiamento faseado por marcos (stage-gate), com encerramento rápido de projetos sem tração.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="4-alternativa-c---tecnologia-de-mar-profundo-deep-sea-tech">
+<summary class="reader__section-title">
+4. Alternativa C - Tecnologia de mar profundo (Deep-Sea Tech)
+<a href="#4-alternativa-c---tecnologia-de-mar-profundo-deep-sea-tech" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'4-alternativa-c---tecnologia-de-mar-profundo-deep-sea-tech')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>A tecnologia de mar profundo inclui robótica submarina, mapeamento, sensores, comunicações e dados oceânicos. É um multiplicador de soberania: serve ciência, economia e defesa.</p>
+<h4 class="reader__subsection" id="41-o-que-temos-hoje">4.1. O que temos hoje</h4>
+<p>Competência científica dispersa.</p>
+<p>Dependência de tecnologia estrangeira para campanhas e operações.</p>
+<h4 class="reader__subsection" id="42-o-que-podemos-ter">4.2. O que podemos ter</h4>
+<p>Cluster nacional exportador de tecnologia e serviços.</p>
+<p>Integração com defesa e interceção (sensores, ISR, domínio de informação).</p>
+
+</div>
+</details>
+<details class="reader__section" open id="5-comparacao-estrategica">
+<summary class="reader__section-title">
+5. Comparação estratégica
+<a href="#5-comparacao-estrategica" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'5-comparacao-estrategica')">#</a>
+</summary>
+<div class="reader__section-body">
+
+
+</div>
+</details>
+<details class="reader__section" open id="6-roteiro-proposto-adaptado-ao-contexto-portugues">
+<summary class="reader__section-title">
+6. Roteiro proposto (adaptado ao contexto português)
+<a href="#6-roteiro-proposto-adaptado-ao-contexto-portugues" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'6-roteiro-proposto-adaptado-ao-contexto-portugues')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Fase 1 (0 - 4 anos): Urban Mining com incentivos diretos e fiscalização digital.</p>
+<p>Fase 2 (2 - 6 anos): Cluster de Deep-Sea Tech e integração com defesa.</p>
+<p>Fase 3 (5 - 10 anos): Biotecnologia marinha com governação por marcos.</p>
+<p>Mineração comercial: apenas reavaliada após 2050, com consenso científico e político.</p>
+
+</div>
+</details>
+<details class="reader__section" open id="7-conclusao">
+<summary class="reader__section-title">
+7. Conclusão
+<a href="#7-conclusao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'7-conclusao')">#</a>
+</summary>
+<div class="reader__section-body">
+<p>Portugal não precisa de destruir o mar para beneficiar dele. Ao priorizar alternativas tecnológicas e industriais, o UNIR propõe um caminho mais rápido, seguro e alinhado com os valores e hábitos do país. Este Anexo reforça o Eixo I como uma estratégia de soberania moderna, responsável e eficaz.</p>
+
+</div>
+</details>
+</div>
+
+<footer class="reader__footer">
+  <p>Documento Estrategico &middot; UNIR &mdash; Unidos pela Nacao, Inovacao e Responsabilidade</p>
+</footer>
+
+</div>
+</article>
+
+<div class="article-prevnext">
+  <a href="/documentos/portugal-90/" onclick="event.preventDefault();navigateWithTransition('/documentos/portugal-90/')">&larr; Portugal 90%</a>
+  <a href="/documentos/reforma-justica/" onclick="event.preventDefault();navigateWithTransition('/documentos/reforma-justica/')">Reforma da Justica e Transparencia &rarr;</a>
+</div>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="nav__logo-text">UNIR</span>
+      <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+    </div>
+    <div class="footer__links">
+      <a href="/" class="footer__link">Inicio</a>
+      <a href="/documentos/" class="footer__link">Documentos</a>
+      <a href="/candidatar/" class="footer__link">Integrar</a>
+    </div>
+    <p class="footer__copy">Feito em Portugal. Por cidadaos. Para cidadaos.</p>
+  </div>
+</footer>
+
+<div id="toast" class="toast-notification">Link copiado!</div>
+
+<script>
+(function(){
+  var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
+  document.querySelectorAll('a[href^="/"]').forEach(function(l){
+    var h=l.getAttribute('href');
+    if(h.startsWith('//')||h.startsWith('http')||h.startsWith('/#'))return;
+    if(h==='/'){l.setAttribute('href',b+'/');return}
+    if(h.startsWith('/documentos')){l.setAttribute('href',b+'/documentos/');return}
+    if(h.startsWith('/candidatar')){l.setAttribute('href',b+'/candidatar/');return}
+  });
+})();
+
+function initTheme(){
+  var t=localStorage.getItem('unir_theme');
+  var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  if(t==='dark'||(!t&&d)){document.documentElement.setAttribute('data-theme','dark');updateUI(true);}
+  else{document.documentElement.removeAttribute('data-theme');updateUI(false);}
+}
+function toggleTheme(){
+  var is=document.documentElement.getAttribute('data-theme')==='dark';
+  if(is){document.documentElement.removeAttribute('data-theme');localStorage.setItem('unir_theme','light');updateUI(false);}
+  else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('unir_theme','dark');updateUI(true);}
+}
+function updateUI(dark){
+  var icons=document.querySelectorAll('#themeIcon,#themeIcon2');
+  var labels=document.querySelectorAll('#themeLabel,#themeLabel2');
+  icons.forEach(function(i){i.textContent=dark?'☀️':'🌙';});
+  labels.forEach(function(l){l.textContent=dark?'Modo Claro':'Modo Escuro';});
+}
+initTheme();
+
+function copyAnchorLink(e,id){
+  e.preventDefault();e.stopPropagation();
+  var url=window.location.origin+window.location.pathname+'#'+id;
+  navigator.clipboard.writeText(url).then(function(){showToast('Link da seccao copiado!');history.pushState(null,null,'#'+id);})
+    .catch(function(){showToast('Erro ao copiar link');});
+}
+function shareArticle(){
+  if(navigator.share){navigator.share({title:document.title,url:window.location.href}).catch(function(){});}
+  else{navigator.clipboard.writeText(window.location.href).then(function(){showToast('Link copiado!');});}
+}
+function navigateWithTransition(url){
+  if(document.startViewTransition){document.startViewTransition(function(){window.location.href=url;});}
+  else{window.location.href=url;}
+}
+function showToast(msg){
+  var t=document.getElementById('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('toast-notification--show');
+  setTimeout(function(){t.classList.remove('toast-notification--show');},2600);
+}
+
+(function(){
+  var bar=document.getElementById('progressFill');
+  if(bar){window.addEventListener('scroll',function(){var h=document.documentElement;
+    var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+    bar.style.width=Math.min(100,Math.max(0,pct))+'%';});}
+  var tocLinks=document.querySelectorAll('.reader__toc-link');
+  var headings=document.querySelectorAll('.reader__section[id]');
+  if(headings.length){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+      if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('reader__toc-link--active');});
+      var link=document.querySelector('.reader__toc-link[href="#'+e.target.id+'"]');
+      if(link)link.classList.add('reader__toc-link--active');}
+    });},{rootMargin:'-10% 0px -70% 0px'});
+    headings.forEach(function(h){obs.observe(h);});
+  }
+  var tt=document.getElementById('tocToggle'),tn=document.getElementById('tocNav');
+  if(tt&&tn){tt.addEventListener('click',function(){
+    var o=!tn.classList.contains('reader__toc--open');
+    tn.classList.toggle('reader__toc--open',o);
+    tt.classList.toggle('reader__toc-toggle--open',o);
+    tt.setAttribute('aria-expanded',o?'true':'false');
+  });}
+  var nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  if(nt&&nl){nt.addEventListener('click',function(){nl.classList.toggle('nav__links--open');});}
+})();
+</script>
+
+</body>
+</html>
