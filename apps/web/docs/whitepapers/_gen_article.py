@@ -130,11 +130,28 @@ def render_table(rows):
         html_rows += f'<tr>{cells}</tr>\n'
     return f'<table class="reader__table">\n{html_rows}</table>'
 
+def is_topic(text):
+    """Detect short topic phrases that should be visually highlighted."""
+    t = text.strip()
+    if len(t) > 80:
+        return False
+    # Ends with colon — almost certainly a topic
+    if t.endswith(':'):
+        return True
+    # Short phrase without sentence-ending punctuation (not a full sentence)
+    if len(t) <= 50 and not re.search(r'[.!?]$', t):
+        return True
+    return False
+
 def render_content(items, section_anchor=''):
     lines = []
     for item in items:
         if item['type'] == 'p':
-            lines.append(f'<p>{html_mod.escape(item["text"])}</p>')
+            text = html_mod.escape(item['text'])
+            if is_topic(item['text']):
+                lines.append(f'<p class="reader__topic">{text}</p>')
+            else:
+                lines.append(f'<p>{text}</p>')
         elif item['type'] == 'ul':
             lis = '\n'.join(f'<li>{html_mod.escape(it)}</li>' for it in item['items'])
             lines.append(f'<ul>\n{lis}\n</ul>')

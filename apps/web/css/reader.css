@@ -2,7 +2,6 @@
    UNIR Reader CSS — Shared for all article/blog documents
    ══════════════════════════════════════════════════════ */
 
-/* ── Progress Bar ── */
 .reader__progress {
   position: fixed; top: 0; left: 0; right: 0; height: 4px;
   background: #E0E0E0; z-index: 2000;
@@ -13,30 +12,18 @@
   transition: width 0.15s linear;
 }
 
-/* ── Back button ── */
-.reader__back {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 16px; margin-bottom: 20px;
-  border-radius: 8px; background: #F5F7FA;
-  color: #0D47A1; font-weight: 600; font-size: 0.9rem;
-  text-decoration: none; transition: background 0.15s;
-}
-.reader__back:hover { background: #E3F2FD; }
-
-/* ── Article Layout ── */
 .reader {
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: 48px;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 32px 80px;
+  padding: 56px 32px 80px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: #212121;
   line-height: 1.75;
 }
 
-/* ── Sidebar TOC ── */
 .reader__sidebar {
   position: sticky; top: 80px; align-self: start;
   max-height: calc(100vh - 120px); overflow-y: auto;
@@ -73,32 +60,12 @@
   font-weight: 600;
 }
 
-/* ── Mobile TOC toggle ── */
-.reader__toc-toggle {
-  display: none;
-  align-items: center; gap: 8px;
-  padding: 10px 16px; margin-bottom: 16px;
-  border: 1px solid #E0E0E0; border-radius: 8px;
-  background: #fff; color: #0D47A1;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600; font-size: 0.9rem; cursor: pointer;
-}
-.reader__toc-toggle::after {
-  content: '▾'; margin-left: auto; font-size: 1.1rem;
-  transition: transform 0.2s;
-}
-.reader__toc-toggle--open::after {
-  transform: rotate(180deg);
-}
-
-/* ── Body ── */
 .reader__body {
   min-width: 0;
 }
 
-/* ── Header ── */
 .reader__header {
-  margin-bottom: 40px; padding-bottom: 28px;
+  margin-bottom: 44px; padding-bottom: 32px;
   border-bottom: 1px solid #E0E0E0;
 }
 .reader__org {
@@ -118,7 +85,6 @@
   font-size: 0.85rem; color: #757575; margin-bottom: 2px;
 }
 
-/* ── Sections (Accordions) ── */
 .reader__section {
   margin-bottom: 16px;
   border: 1px solid #E0E0E0;
@@ -148,64 +114,37 @@
   transition: transform 0.2s;
 }
 .reader__section[open] .reader__section-title::before {
-  content: '−'; background: #0D47A1; color: #fff;
+  content: '-'; background: #0D47A1; color: #fff;
 }
 .reader__section-title:hover {
   background: #E3F2FD;
 }
 .reader__section-body {
-  padding: 8px 22px 24px;
+  padding: 4px 22px 22px;
 }
 
-/* ── Subsections (H4, H5) ── */
 .reader__subsection {
-  font-size: 1.1rem; font-weight: 700; color: #0D47A1;
-  margin: 32px 0 10px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #E3F2FD;
+  font-size: 1.05rem; font-weight: 700; color: #1565C0;
+  margin: 28px 0 10px; padding-top: 8px;
 }
 .reader__subsubsection {
-  font-size: 0.95rem; font-weight: 700; color: #37474F;
-  margin: 22px 0 6px;
-  text-transform: uppercase; letter-spacing: 0.5px;
+  font-size: 0.95rem; font-weight: 600; color: #333;
+  margin: 20px 0 6px;
 }
 
-/* ── Paragraphs ── */
 .reader__body p {
   margin: 0 0 14px; font-size: 1rem;
 }
-
-/* ── Lists (bullets customizados) ── */
-.reader__body ul {
-  list-style: none; padding-left: 0; margin: 0 0 20px;
-}
-.reader__body ul li {
-  position: relative; padding-left: 20px; margin-bottom: 7px;
-}
-.reader__body ul li::before {
-  content: ''; position: absolute; left: 0; top: 10px;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #0D47A1; opacity: 0.5;
-}
-.reader__body ol {
+.reader__body ul, .reader__body ol {
   padding-left: 22px; margin: 0 0 18px;
 }
-.reader__body ol li {
-  margin-bottom: 7px;
+.reader__body li {
+  margin-bottom: 5px;
 }
-.reader__body li strong {
-  color: #212121; font-weight: 700;
-}
-
-/* ── Bold / emphasis ── */
 .reader__body strong {
-  color: #0D47A1; font-weight: 700;
-}
-.reader__body b {
-  font-weight: 700;
+  color: #0D47A1; font-weight: 600;
 }
 
-/* ── Metric Cards ── */
 .reader__metric-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 14px; margin: 22px 0;
@@ -226,7 +165,6 @@
   font-size: 0.85rem; color: #424242; line-height: 1.4;
 }
 
-/* ── Tables ── */
 .reader__table {
   width: 100%; border-collapse: collapse;
   margin: 22px 0; font-size: 0.88rem;
@@ -251,7 +189,6 @@
   background: #E3F2FD;
 }
 
-/* ── Side notes ── */
 .reader__sidenote {
   float: right; width: 180px; margin: 6px -24px 14px 20px;
   padding: 12px; background: #FFF8E1; border-radius: 8px;
@@ -262,7 +199,6 @@
   display: block; font-size: 1.3rem; color: #0D47A1; margin-bottom: 2px;
 }
 
-/* ── Footer ── */
 .reader__footer {
   margin-top: 56px; padding-top: 24px;
   border-top: 1px solid #E0E0E0;
@@ -272,66 +208,25 @@
   font-size: 0.82rem; color: #9E9E9E; margin-bottom: 4px;
 }
 
-/* ── Prev/Next nav ── */
-.article-prevnext {
-  display: flex; justify-content: space-between;
-  max-width: 1100px; margin: 60px auto 40px; padding: 0 32px; gap: 16px;
-}
-.article-prevnext a {
-  display: flex; align-items: center; gap: 8px;
-  padding: 14px 20px; border-radius: 10px;
-  background: #F5F7FA; color: #0D47A1;
-  text-decoration: none; font-weight: 600; font-size: 0.9rem;
-  transition: background 0.2s;
-}
-.article-prevnext a:hover { background: #E3F2FD; }
-.article-prevnext a.article-prevnext--disabled {
-  color: #BDBDBD; pointer-events: none;
-}
-
-/* ── Responsive ── */
 @media (max-width: 900px) {
   .reader {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 16px 60px;
+    gap: 24px;
+    padding: 32px 16px 60px;
   }
-
-  /* Mobile TOC — collapsed by default, toggle to expand */
   .reader__sidebar {
     position: static; max-height: none; order: -1;
   }
   .reader__toc {
-    display: none;
-    border: 1px solid #E0E0E0; margin-top: 8px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 12px 14px;
   }
-  .reader__toc--open {
-    display: block;
-  }
-  .reader__toc-toggle {
-    display: flex;
-  }
-  .reader__toc ol {
-    display: block;
-  }
-  .reader__toc li {
-    margin-bottom: 2px;
-  }
-  .reader__toc li.reader__toc-link--sub {
-    padding-left: 14px;
-  }
-  .reader__toc-link {
-    font-size: 0.85rem; padding: 6px 10px;
-  }
-
-  /* Typography adjustments */
+  .reader__toc-title { width: 100%; margin-bottom: 4px; }
+  .reader__toc ol { display: flex; flex-wrap: wrap; gap: 4px; }
+  .reader__toc li { margin: 0; }
+  .reader__toc li.reader__toc-link--sub { padding-left: 0; }
+  .reader__toc-link { font-size: 0.78rem; padding: 3px 8px; }
   .reader__title { font-size: 1.5rem; }
   .reader__section-title { font-size: 1rem; padding: 12px 16px; }
-  .reader__section-body { padding: 6px 16px 18px; }
-  .reader__subsection { font-size: 1rem; }
-  .reader__sidenote { float: none; width: auto; margin: 14px 0; }
-
-  .article-prevnext {
-    flex-direction: column; padding: 0 16px;
-  }
+  .reader__section-body { padding: 4px 16px 16px; }
 }
