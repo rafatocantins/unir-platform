@@ -13,11 +13,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css" id="mainStylesheet">
+  <link rel="stylesheet" href="../css/reader.css" id="readerStylesheet">
   <script>
     (function() {
       var base = window.location.pathname.replace(/\/[^/]*\/?$/, '');
-      var link = document.getElementById('mainStylesheet');
-      if (link) link.href = base + '/css/style.css';
+      var s = document.getElementById('mainStylesheet');
+      if (s) s.href = base + '/css/style.css';
+      var r = document.getElementById('readerStylesheet');
+      if (r) r.href = base + '/css/reader.css';
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
@@ -35,33 +38,22 @@
     .doc-card__actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .doc-card__actions .btn { font-size: 0.85rem; padding: 8px 20px; }
 
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; }
+    /* ── Fullscreen Reader Modal ── */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; overflow-y: auto; }
     .modal-overlay--open { display: block; }
-    .modal-content { max-width: 820px; margin: 50px auto; background: #fff; border-radius: 12px; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
-    .modal-close { position: sticky; top: 16px; float: right; margin: 16px 20px; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 36px; height: 36px; font-size: 1.2rem; cursor: pointer; color: #616161; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .modal-close:hover { background: #f5f5f5; }
-
-    /* ── Blog content inside modal ── */
-    .reader { padding: 56px 64px 64px; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.85; color: #2d2d2d; }
-    .reader h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #1a365d; margin: 40px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #e8edf3; }
-    .reader h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #333; margin: 28px 0 10px; }
-    .reader p { margin: 0 0 16px; }
-    .reader ul, .reader ol { padding-left: 24px; margin: 0 0 20px; }
-    .reader li { margin-bottom: 6px; }
-    .reader strong { color: #1a365d; }
-    .reader table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.88rem; }
-    .reader th, .reader td { border: 1px solid #c5cdd8; padding: 9px 14px; text-align: left; vertical-align: top; }
-    .reader th { background: #1a365d; color: #fff; font-weight: 600; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
-    .reader tr:nth-child(even) { background: #f4f6f9; }
-    .reader blockquote { border-left: 4px solid #1a365d; margin: 24px 0; padding: 14px 22px; background: #eef2f7; font-style: italic; color: #444; border-radius: 0 8px 8px 0; }
-    .reader hr { border: none; border-top: 1px solid #d5dbe3; margin: 36px 0; }
+    .modal-close {
+      position: fixed; top: 20px; right: 24px; z-index: 2001;
+      background: rgba(0,0,0,0.06); border: none; border-radius: 50%;
+      width: 40px; height: 40px; font-size: 1.3rem; cursor: pointer;
+      color: #616161; display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.12); }
 
     @media (max-width: 640px) {
       .doc-page { padding: 100px 0 60px; }
       .doc-page__title { font-size: 1.6rem; }
       .doc-grid { grid-template-columns: 1fr; }
-      .modal-content { margin: 20px; border-radius: 8px; }
-      .reader { padding: 32px 20px; font-size: 16px; }
     }
   </style>
 </head>
@@ -90,10 +82,8 @@
   </section>
 
   <div class="modal-overlay" id="readerModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeReader()">✕</button>
-      <div class="reader" id="readerContent"></div>
-    </div>
+    <button class="modal-close" onclick="closeReader()" aria-label="Fechar">&#10005;</button>
+    <div id="readerContent"></div>
   </div>
 
   <footer class="footer">
@@ -130,27 +120,28 @@
     var DOCS = BASE + '/docs/whitepapers';
 
     var documentos = [
-      { id: 'multipolar',    icon: '🌍', title: 'Portugal no Mundo Multipolar',      subtitle: 'Estratégia Lusófona e Tecnológica 2035',     meta: 'Documento Estratégico · Maio 2026',    desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', file: 'WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR' },
-      { id: 'manifesto',     icon: '⚡', title: 'Manifesto Fundador',                  subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade', meta: 'Documento Fundacional · Janeiro 2026',  desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças.', file: 'UNIR_Manifesto_Fundador' },
-      { id: 'soberania',     icon: '⚓', title: 'Portugal 90%',                       subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul', meta: 'Documento Programático · Janeiro 2026', desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech.', file: 'UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar' },
-      { id: 'alternativas',  icon: '🔄', title: 'Alternativas à Mineração Marinha',   subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech',  meta: 'Anexo ao Eixo I · Janeiro 2026',       desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining, Biotecnologia marinha e Deep-Sea Tech. Com roteiro faseado até 2050.', file: 'UNIR_Eixo_I_Anexo_B_Alternativas_Minerais' },
-      { id: 'justica',       icon: '⚖️', title: 'Reforma da Justiça e Transparência', subtitle: 'IA nos Tribunais, Combate à Corrupção',        meta: 'Documento Programático · Janeiro 2026', desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa.', file: 'UNIR_Reforma_Justica_Transparencia' },
-      { id: 'digital',       icon: '🛡️', title: 'Justiça Digital',                    subtitle: 'Identidade Digital e Responsabilização de Plataformas', meta: 'Documento Programático · Janeiro 2026', desc: 'Sistema Nacional de Identidade Digital Verificada. Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global.', file: 'UNIR_Justica_Digital' }
+      { id: 'multipolar',    icon: '🌍', title: 'Portugal no Mundo Multipolar',      subtitle: 'Estratégia Lusófona e Tecnológica 2035',     meta: 'Documento Estratégico · Maio 2026',    desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', file: 'WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR', slug: 'portugal-mundo-multipolar' },
+      { id: 'manifesto',     icon: '⚡', title: 'Manifesto Fundador',                  subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade', meta: 'Documento Fundacional · Janeiro 2026',  desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças.', file: 'UNIR_Manifesto_Fundador', slug: 'manifesto-fundador' },
+      { id: 'soberania',     icon: '⚓', title: 'Portugal 90%',                       subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul', meta: 'Documento Programático · Janeiro 2026', desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech.', file: 'UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar', slug: 'portugal-90' },
+      { id: 'alternativas',  icon: '🔄', title: 'Alternativas à Mineração Marinha',   subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech',  meta: 'Anexo ao Eixo I · Janeiro 2026',       desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining, Biotecnologia marinha e Deep-Sea Tech. Com roteiro faseado até 2050.', file: 'UNIR_Eixo_I_Anexo_B_Alternativas_Minerais', slug: 'alternativas-mineracao-marinha' },
+      { id: 'justica',       icon: '⚖️', title: 'Reforma da Justiça e Transparência', subtitle: 'IA nos Tribunais, Combate à Corrupção',        meta: 'Documento Programático · Janeiro 2026', desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa.', file: 'UNIR_Reforma_Justica_Transparencia', slug: 'reforma-justica' },
+      { id: 'digital',       icon: '🛡️', title: 'Justiça Digital',                    subtitle: 'Identidade Digital e Responsabilização de Plataformas', meta: 'Documento Programático · Janeiro 2026', desc: 'Sistema Nacional de Identidade Digital Verificada. Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global.', file: 'UNIR_Justica_Digital', slug: 'justica-digital' }
     ];
 
     function renderCards() {
       var grid = document.getElementById('docGrid');
       grid.innerHTML = '';
       documentos.forEach(function(doc) {
+        var vtName = 'doc-' + doc.id;
         var card = document.createElement('div');
         card.className = 'doc-card';
         card.innerHTML =
           '<div class="doc-card__icon">' + doc.icon + '</div>' +
-          '<div class="doc-card__title">' + doc.title + '</div>' +
+          '<div class="doc-card__title" style="view-transition-name:' + vtName + '">' + doc.title + '</div>' +
           '<div class="doc-card__meta">' + doc.meta + '</div>' +
           '<div class="doc-card__desc">' + doc.desc + '</div>' +
           '<div class="doc-card__actions">' +
-            '<button class="btn btn--primary" onclick="openReader(\'' + doc.id + '\')">Ler Online</button>' +
+            '<a href="' + BASE + '/documentos/' + doc.slug + '/" class="btn btn--primary">Ler Online</a>' +
             '<a href="' + DOCS + '/' + doc.file + '.docx" class="btn btn--outline" download>Download</a>' +
           '</div>';
         grid.appendChild(card);
@@ -173,9 +164,18 @@
         .then(function(html) {
           var parser = new DOMParser();
           var d = parser.parseFromString(html, 'text/html');
-          // Remove style tags to avoid conflicts, keep everything else
-          d.querySelectorAll('style').forEach(function(s) { s.remove(); });
           content.innerHTML = d.body.innerHTML;
+
+          // Progress bar tracks modal scroll, not document
+          var bar = document.getElementById('progressFill');
+          if (bar) {
+            modal._progressActive = true;
+            modal.addEventListener('scroll', function() {
+              if (!modal._progressActive) return;
+              var pct = (modal.scrollTop / (modal.scrollHeight - modal.clientHeight)) * 100;
+              bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+            });
+          }
         })
         .catch(function() {
           content.innerHTML = '<p style="color:#e53935;text-align:center;padding:40px;">Erro ao carregar.</p>';
@@ -183,8 +183,11 @@
     }
 
     function closeReader() {
-      document.getElementById('readerModal').classList.remove('modal-overlay--open');
+      var modal = document.getElementById('readerModal');
+      modal._progressActive = false;
+      modal.classList.remove('modal-overlay--open');
       document.body.style.overflow = '';
+      document.getElementById('readerContent').innerHTML = '';
     }
 
     document.getElementById('readerModal').addEventListener('click', function(e) {

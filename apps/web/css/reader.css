@@ -1,0 +1,232 @@
+/* ══════════════════════════════════════════════════════
+   UNIR Reader CSS — Shared for all article/blog documents
+   ══════════════════════════════════════════════════════ */
+
+.reader__progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px;
+  background: #E0E0E0; z-index: 2000;
+}
+.reader__progress-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, #0D47A1, #1565C0);
+  transition: width 0.15s linear;
+}
+
+.reader {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #212121;
+  line-height: 1.75;
+}
+
+.reader__sidebar {
+  position: sticky; top: 80px; align-self: start;
+  max-height: calc(100vh - 120px); overflow-y: auto;
+}
+.reader__toc {
+  background: #F5F7FA;
+  border-radius: 12px;
+  padding: 20px 18px;
+}
+.reader__toc-title {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: #9E9E9E;
+  margin-bottom: 12px;
+}
+.reader__toc ol {
+  list-style: none; padding: 0; margin: 0;
+}
+.reader__toc li {
+  margin-bottom: 2px;
+}
+.reader__toc li.reader__toc-link--sub {
+  padding-left: 14px;
+}
+.reader__toc-link {
+  display: block; padding: 4px 8px; border-radius: 6px;
+  font-size: 0.85rem; color: #616161; text-decoration: none;
+  transition: all 0.15s;
+}
+.reader__toc-link:hover {
+  background: #E3F2FD; color: #0D47A1;
+}
+.reader__toc-link--active {
+  background: #0D47A1; color: #fff !important;
+  font-weight: 600;
+}
+
+.reader__body {
+  min-width: 0;
+}
+
+.reader__header {
+  margin-bottom: 44px; padding-bottom: 32px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.reader__org {
+  text-transform: uppercase; letter-spacing: 3px;
+  font-size: 0.8rem; font-weight: 700; color: #9E9E9E;
+  margin-bottom: 8px;
+}
+.reader__title {
+  font-size: 2.2rem; font-weight: 900; color: #0D47A1;
+  line-height: 1.2; margin: 0 0 8px;
+}
+.reader__subtitle {
+  font-size: 1.15rem; color: #1565C0; font-weight: 500;
+  margin-bottom: 4px;
+}
+.reader__meta {
+  font-size: 0.85rem; color: #757575; margin-bottom: 2px;
+}
+
+.reader__section {
+  margin-bottom: 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.reader__section[open] {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.reader__section-title {
+  display: flex; align-items: center; gap: 10px;
+  padding: 16px 22px;
+  font-size: 1.15rem; font-weight: 700; color: #0D47A1;
+  cursor: pointer; user-select: none;
+  background: linear-gradient(135deg, #F5F7FA, #fff);
+  list-style: none;
+  transition: background 0.15s;
+}
+.reader__section-title::-webkit-details-marker { display: none; }
+.reader__section-title::before {
+  content: '+'; display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #E3F2FD; color: #0D47A1;
+  font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.reader__section[open] .reader__section-title::before {
+  content: '-'; background: #0D47A1; color: #fff;
+}
+.reader__section-title:hover {
+  background: #E3F2FD;
+}
+.reader__section-body {
+  padding: 4px 22px 22px;
+}
+
+.reader__subsection {
+  font-size: 1.05rem; font-weight: 700; color: #1565C0;
+  margin: 28px 0 10px; padding-top: 8px;
+}
+.reader__subsubsection {
+  font-size: 0.95rem; font-weight: 600; color: #333;
+  margin: 20px 0 6px;
+}
+
+.reader__body p {
+  margin: 0 0 14px; font-size: 1rem;
+}
+.reader__body ul, .reader__body ol {
+  padding-left: 22px; margin: 0 0 18px;
+}
+.reader__body li {
+  margin-bottom: 5px;
+}
+.reader__body strong {
+  color: #0D47A1; font-weight: 600;
+}
+
+.reader__metric-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px; margin: 22px 0;
+}
+.reader__metric-card {
+  background: linear-gradient(135deg, #E3F2FD, #F5F7FA);
+  border-radius: 10px; padding: 18px;
+  border-left: 4px solid #0D47A1;
+}
+.reader__metric-card-icon {
+  font-size: 1.5rem; margin-bottom: 6px;
+}
+.reader__metric-card-title {
+  font-size: 0.85rem; font-weight: 700; color: #0D47A1;
+  margin-bottom: 4px;
+}
+.reader__metric-card-text {
+  font-size: 0.85rem; color: #424242; line-height: 1.4;
+}
+
+.reader__table {
+  width: 100%; border-collapse: collapse;
+  margin: 22px 0; font-size: 0.88rem;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.reader__table th {
+  background: #0D47A1; color: #fff; font-weight: 600;
+  padding: 10px 14px; text-align: left; font-size: 0.82rem;
+}
+.reader__table td {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 10px 14px; text-align: left; vertical-align: top;
+}
+.reader__table tr:hover td {
+  background: #E3F2FD;
+}
+.reader__table tr:nth-child(even) td {
+  background: #FAFAFA;
+}
+.reader__table tr:nth-child(even):hover td {
+  background: #E3F2FD;
+}
+
+.reader__sidenote {
+  float: right; width: 180px; margin: 6px -24px 14px 20px;
+  padding: 12px; background: #FFF8E1; border-radius: 8px;
+  font-size: 0.8rem; color: #5D4037; line-height: 1.4;
+  border-left: 3px solid #FF8F00;
+}
+.reader__sidenote strong {
+  display: block; font-size: 1.3rem; color: #0D47A1; margin-bottom: 2px;
+}
+
+.reader__footer {
+  margin-top: 56px; padding-top: 24px;
+  border-top: 1px solid #E0E0E0;
+  text-align: center;
+}
+.reader__footer p {
+  font-size: 0.82rem; color: #9E9E9E; margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .reader {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 16px 60px;
+  }
+  .reader__sidebar {
+    position: static; max-height: none; order: -1;
+  }
+  .reader__toc {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 12px 14px;
+  }
+  .reader__toc-title { width: 100%; margin-bottom: 4px; }
+  .reader__toc ol { display: flex; flex-wrap: wrap; gap: 4px; }
+  .reader__toc li { margin: 0; }
+  .reader__toc li.reader__toc-link--sub { padding-left: 0; }
+  .reader__toc-link { font-size: 0.78rem; padding: 3px 8px; }
+  .reader__title { font-size: 1.5rem; }
+  .reader__section-title { font-size: 1rem; padding: 12px 16px; }
+  .reader__section-body { padding: 4px 16px 16px; }
+}

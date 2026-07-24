@@ -1,6 +1,8 @@
 /* === RESET & BASE === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
+/* View transitions between pages */
+@view-transition { navigation: auto; }
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: #212121;
