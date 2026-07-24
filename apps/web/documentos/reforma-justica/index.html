@@ -1,440 +1,513 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Reforma da Justica e Transparencia — UNIR</title>
-<meta name="description" content="IA nos Tribunais, Combate a Corrupcao">
-<meta property="og:title" content="Reforma da Justica e Transparencia — UNIR">
-<meta property="og:description" content="IA nos Tribunais, Combate a Corrupcao">
-<meta property="og:type" content="article">
-<meta name="theme-color" content="#0D47A1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../css/reader.css">
-<style>
-  .article-hero__title { view-transition-name: doc-justica; }
-  ::view-transition-old(doc-justica) { animation: vt-out 0.2s ease-out forwards; }
-  ::view-transition-new(doc-justica) { animation: vt-in 0.3s ease-out forwards; }
-  @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
-  @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reforma da Justiça e Transparência - UNIR</title>
+  <meta name="description"
+    content="Reforma Estrutural da Justiça: Automatização com IA nos Tribunais, Rastreio Anticorrupção e Transparência Digital nos Contratos Públicos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" id="mainStylesheet">
+  <link rel="stylesheet" href="../../css/reader.css" id="readerStylesheet">
+
+  <style>
+    .article-hero__title {
+      view-transition-name: doc-justica;
+    }
+
+    ::view-transition-old(doc-justica) {
+      animation: vt-out 0.2s ease-out forwards;
+    }
+
+    ::view-transition-new(doc-justica) {
+      animation: vt-in 0.3s ease-out forwards;
+    }
+
+    @keyframes vt-out {
+      to {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes vt-in {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <div class="nav__inner container">
-    <a href="/" class="nav__logo">
-      <span class="nav__logo-icon">⚡</span>
-      <span class="nav__logo-text">UNIR</span>
-    </a>
-    <div class="nav__links" id="navLinks">
-      <a href="/" class="nav__link">Inicio</a>
-      <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
-      <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema" style="margin-left:8px;">
+  <nav class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-icon">⚡</span>
+        <span class="nav__logo-text">UNIR</span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/" class="nav__link">Início</a>
+        <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
+        <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro" style="margin-left: 8px;">
+          <span>🌙</span> <span>Modo Escuro</span>
+        </button>
+      </div>
+      <button class="nav__hamburger" id="navToggle" aria-label="Menu de Navegação">☰</button>
+    </div>
+  </nav>
+
+  <div class="article-nav">
+    <div class="article-breadcrumb">
+      <a href="/">Início</a> / <a href="/documentos/">Documentos</a> / <strong>Reforma da Justiça</strong>
+    </div>
+    <div class="article-actions">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Modo Escuro</span>
       </button>
+      <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar este artigo">
+        🔗 Partilhar
+      </button>
     </div>
-    <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
   </div>
-</nav>
 
-<div class="article-nav">
-  <div class="article-breadcrumb">
-    <a href="/">Inicio</a> / <a href="/documentos/">Documentos</a> / <strong>Reforma da Justica e Transparencia</strong>
+  <div class="reader__progress" id="progressBar">
+    <div class="reader__progress-fill" id="progressFill"></div>
   </div>
-  <div class="article-actions">
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema">
-      <span id="themeIcon2">🌙</span> <span id="themeLabel2">Modo Escuro</span>
-    </button>
-    <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar">🔗 Partilhar</button>
-  </div>
-</div>
 
-<div class="reader__progress" id="progressBar"><div class="reader__progress-fill" id="progressFill"></div></div>
+  <article class="reader">
 
-<article class="reader">
+    <aside class="reader__sidebar">
+      <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Índice do Documento</button>
+      <nav class="reader__toc" id="tocNav">
+        <h4 class="reader__toc-title">Índice de Conteúdos</h4>
+        <ol>
+          <li><a href="#1-sumario-executivo" class="reader__toc-link">1. Sumário Executivo</a></li>
+          <li><a href="#2-diagnostico" class="reader__toc-link">2. Diagnóstico da Justiça</a></li>
+          <li class="reader__toc-link--sub"><a href="#tempos-processuais" class="reader__toc-link">Tempos Processuais</a></li>
+          <li class="reader__toc-link--sub"><a href="#percecao-de-corrupcao" class="reader__toc-link">Perceção de Corrupção</a></li>
+          <li><a href="#3-o-custo-da-ineficiencia" class="reader__toc-link">3. O Custo da Ineficiência (18.2B€)</a></li>
+          <li><a href="#4-eixo-i-justica-de-performance" class="reader__toc-link">4. Eixo I: Performance &amp; IA</a></li>
+          <li class="reader__toc-link--sub"><a href="#41-automatizacao-processual-com-inteligencia-artificial" class="reader__toc-link">4.1. IA nos Tribunais</a></li>
+          <li class="reader__toc-link--sub"><a href="#42-justica-em-tempo-real" class="reader__toc-link">4.2. Processo 100% Digital</a></li>
+          <li class="reader__toc-link--sub"><a href="#43-tribunais-especializados-em-tecnologia" class="reader__toc-link">4.3. Ciber-Tribunais</a></li>
+          <li><a href="#5-eixo-ii-combate-implacavel-a-corrupcao" class="reader__toc-link">5. Eixo II: Combate à Corrupção</a></li>
+          <li class="reader__toc-link--sub"><a href="#51-rastreio-automatico-de-dados" class="reader__toc-link">5.1. Cruzamento Patrimonial</a></li>
+          <li class="reader__toc-link--sub"><a href="#52-transparencia-total-nos-contratos-publicos" class="reader__toc-link">5.2. Contratos em Tempo Real</a></li>
+          <li class="reader__toc-link--sub"><a href="#53-penalizacoes-exemplares" class="reader__toc-link">5.3. Devolução em Dobro</a></li>
+          <li><a href="#6-eixo-iii-seguranca-juridica" class="reader__toc-link">6. Eixo III: Segurança Jurídica</a></li>
+          <li><a href="#7-casos-de-sucesso-internacional" class="reader__toc-link">7. Casos de Sucesso Global</a></li>
+          <li><a href="#8-implementacao-e-cronograma" class="reader__toc-link">8. Cronograma de Implementação</a></li>
+          <li><a href="#9-metricas-de-sucesso" class="reader__toc-link">9. Métricas de Sucesso</a></li>
+          <li><a href="#10-conclusao" class="reader__toc-link">10. Conclusão</a></li>
+        </ol>
+      </nav>
+    </aside>
 
-<aside class="reader__sidebar">
-  <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Indice do Documento</button>
-  <nav class="reader__toc" id="tocNav">
-    <h4 class="reader__toc-title">Indice de Conteudos</h4>
-    <ol>
-<li class=""><a href="#1-sumario-executivo" class="reader__toc-link">1. SUMÁRIO EXECUTIVO</a></li>
-<li class=""><a href="#2-diagnostico" class="reader__toc-link">2. DIAGNÓSTICO</a></li>
-<li class=""><a href="#3-o-custo-da-ineficiencia" class="reader__toc-link">3. O CUSTO DA INEFICIÊNCIA</a></li>
-<li class=""><a href="#4-eixo-i-justica-de-performance" class="reader__toc-link">4. EIXO I: JUSTIÇA DE PERFORMANCE</a></li>
-<li class="reader__toc-link--sub"><a href="#41-automatizacao-processual-com-inteligencia-artificial" class="reader__toc-link">4.1. Automatização Processual com Inteligência Artificial</a></li>
-<li class="reader__toc-link--sub"><a href="#42-justica-em-tempo-real" class="reader__toc-link">4.2. Justiça em Tempo Real</a></li>
-<li class="reader__toc-link--sub"><a href="#43-tribunais-especializados-em-tecnologia" class="reader__toc-link">4.3. Tribunais Especializados em Tecnologia</a></li>
-<li class=""><a href="#5-eixo-ii-combate-implacavel-a-corrupcao" class="reader__toc-link">5. EIXO II: COMBATE IMPLACÁVEL À CORRUPÇÃO</a></li>
-<li class="reader__toc-link--sub"><a href="#51-rastreio-automatico-de-dados" class="reader__toc-link">5.1. Rastreio Automático de Dados</a></li>
-<li class="reader__toc-link--sub"><a href="#52-transparencia-total-nos-contratos-publicos" class="reader__toc-link">5.2. Transparência Total nos Contratos Públicos</a></li>
-<li class="reader__toc-link--sub"><a href="#53-penalizacoes-exemplares" class="reader__toc-link">5.3. Penalizações Exemplares</a></li>
-<li class=""><a href="#6-eixo-iii-seguranca-juridica" class="reader__toc-link">6. EIXO III: SEGURANÇA JURÍDICA</a></li>
-<li class="reader__toc-link--sub"><a href="#61-o-problema-da-dispersao-legislativa" class="reader__toc-link">6.1. O Problema da Dispersão Legislativa</a></li>
-<li class="reader__toc-link--sub"><a href="#62-medidas-de-simplificacao" class="reader__toc-link">6.2. Medidas de Simplificação</a></li>
-<li class="reader__toc-link--sub"><a href="#63-garantias-para-cidadaos-e-investidores" class="reader__toc-link">6.3. Garantias para Cidadãos e Investidores</a></li>
-<li class=""><a href="#7-casos-de-sucesso-internacional" class="reader__toc-link">7. CASOS DE SUCESSO INTERNACIONAL</a></li>
-<li class=""><a href="#8-implementacao-e-cronograma" class="reader__toc-link">8. IMPLEMENTAÇÃO E CRONOGRAMA</a></li>
-<li class=""><a href="#9-metricas-de-sucesso" class="reader__toc-link">9. MÉTRICAS DE SUCESSO</a></li>
-<li class=""><a href="#10-conclusao" class="reader__toc-link">10. CONCLUSÃO</a></li>
+    <div class="reader__body">
 
-    </ol>
-  </nav>
-</aside>
+      <a href="/documentos/" class="reader__back"
+        onclick="event.preventDefault(); navigateWithTransition('/documentos/');">← Voltar aos Documentos</a>
 
-<div class="reader__body">
+      <header class="article-hero">
+        <span class="article-hero__badge">⚖️ Justiça &amp; Transparência</span>
+        <h1 class="article-hero__title">Reforma da Justiça e Transparência</h1>
+        <p class="article-hero__subtitle">Inteligência Artificial nos Tribunais, Rastreio Anticorrupção e Transparência Radical nos Contratos Públicos</p>
+        <div class="article-hero__meta">
+          <span class="article-hero__meta-item">⏱️ ~14 min de leitura</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">📅 Janeiro 2026</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">🏛️ UNIR - Comissão Estratégica da Justiça</span>
+        </div>
+      </header>
 
-<a href="/documentos/" class="reader__back" onclick="event.preventDefault();navigateWithTransition('/documentos/');">&larr; Voltar aos Documentos</a>
+      <!-- Key Takeaways Component -->
+      <div class="article-takeaways">
+        <div class="article-takeaways__title">
+          💡 Pontos-Chave &amp; Princípios Fundamentais
+        </div>
+        <ul class="article-takeaways__list">
+          <li class="article-takeaways__item"><strong>O Custo da Ineficiência:</strong> A corrupção e a lentidão judicial custam anualmente a Portugal cerca de 18,2 mil milhões de euros (7,9% do PIB) — mais do que todo o orçamento anual do SNS.</li>
+          <li class="article-takeaways__item"><strong>Automatização por IA nos Tribunais:</strong> Triagem inteligente, auxílio na minuta de despachos e análise preditiva de jurisprudência para reduzir prazos em 50%.</li>
+          <li class="article-takeaways__item"><strong>Rastreio Patrimonial Automático:</strong> Cruzamento algorítmico de dados fiscais, imobiliários e bancários de todos os titulares de cargos públicos para deteção imediata de enriquecimento ilícito.</li>
+          <li class="article-takeaways__item"><strong>Devolução em Dobro:</strong> Condenações por desvio de subsídios públicos exigem restituição duplicada e interdição de cargos públicos por 10 anos.</li>
+          <li class="article-takeaways__item"><strong>Transparência Blockchain nos Contratos:</strong> Portal de adjudicações públicas com registo imutável e auditável em tempo real por qualquer cidadão.</li>
+        </ul>
+      </div>
 
-<header class="article-hero">
-  <span class="article-hero__badge">⚖️ Justica e Transparencia</span>
-  <h1 class="article-hero__title">Reforma da Justica e Transparencia</h1>
-  <p class="article-hero__subtitle">IA nos Tribunais, Combate a Corrupcao</p>
-  <div class="article-hero__meta">
-    <span class="article-hero__meta-item">⏱️ ~14 min de leitura</span>
-    <span class="article-hero__meta-dot"></span>
-    <span class="article-hero__meta-item">🏛️ Movimento UNIR</span>
-  </div>
-</header>
+      <!-- Section 1 -->
+      <details class="reader__section" open id="1-sumario-executivo">
+        <summary class="reader__section-title">
+          1. Sumário Executivo
+          <a href="#1-sumario-executivo" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '1-sumario-executivo')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">💬 Princípio Fundamental</div>
+            <p style="font-size: 1.1rem; font-weight: 600; margin: 0;">"Uma justiça que tarda é uma justiça que falha. A opacidade é o terreno fértil da corrupção; a transparência é o seu antídoto."</p>
+          </div>
 
-<div class="reader__content">
-<details class="reader__section" open id="1-sumario-executivo">
-<summary class="reader__section-title">
-1. SUMÁRIO EXECUTIVO
-<a href="#1-sumario-executivo" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'1-sumario-executivo')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>&quot;Uma justiça lenta não é justiça. A corrupção impune corrói a confiança nas instituições.&quot;</p>
-<p>Este documento apresenta a estratégia do UNIR para a reforma estrutural do sistema de justiça português. A nossa abordagem baseia-se em três pilares fundamentais: automatização tecnológica, transparência total e simplificação legislativa.</p>
-<p>Portugal enfrenta um problema sistémico: processos que se arrastam durante anos, taxas de condenação por corrupção residuais e um quadro legislativo fragmentado que prejudica cidadãos e investidores. O custo estimado da corrupção em Portugal atinge anualmente cerca de 18,2 mil milhões de euros, o equivalente a 7,9% do PIB nacional, um valor superior a todo o orçamento anual da Saúde.</p>
-<p>A nossa proposta não é incremental. É uma reforma de fundo que utiliza a tecnologia como alavanca de transformação, seguindo os modelos de sucesso implementados em países como a Estónia, Singapura e a China, adaptados à realidade portuguesa e aos princípios do Estado de Direito.</p>
-<h5 class="reader__subsubsection" id="principais-medidas">Principais Medidas</h5>
-<p>Automatização Processual: Implementação de IA para triagem, classificação e apoio à elaboração de minutas, reduzindo os tempos processuais em até 60%.</p>
-<p>Rastreio Anticorrupção: Cruzamento automático de dados bancários, fiscais e patrimoniais de todos os titulares de cargos públicos.</p>
-<p>Transparência Digital: Publicação em tempo real de todos os contratos públicos num formato auditável por qualquer cidadão.</p>
-<p>Simplificação Legislativa: Revogação de leis contraditórias e consolidação do quadro legal para garantir segurança jurídica.</p>
+          <p>O UNIR apresenta uma reforma profunda e não incremental do sistema judicial português. Inspirada nos modelos de maior sucesso do mundo (Estónia, Singapura, Brasil), a proposta utiliza a tecnologia e a Inteligência Artificial como alavancas para libertar juízes de tarefas burocráticas e instaurar tolerância zero à fraude pública.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="2-diagnostico">
-<summary class="reader__section-title">
-2. DIAGNÓSTICO
-<a href="#2-diagnostico" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'2-diagnostico')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>O Estado da Justiça em Portugal</p>
-<p>A justiça portuguesa enfrenta desafios estruturais que comprometem a sua eficácia e a confiança dos cidadãos. Os dados são inequívocos:</p>
-<h5 class="reader__subsubsection" id="tempos-processuais">Tempos Processuais</h5>
-<p>De acordo com estudos recentes, os megaprocessos em Portugal duram em média 8 anos e 1 mês até uma decisão definitiva. Quase um terço destes processos (31%) arrasta-se durante mais de 10 anos. A fase de inquérito tem uma duração média de 3 anos e 8 meses. Nos tribunais administrativos e fiscais, existem casos que se arrastam há mais de 20 anos.</p>
-<p>As execuções cíveis têm uma duração média de 60 meses (5 anos), chegando aos 77 meses em algumas comarcas. As execuções laborais demoram em média 53 meses (mais de 4 anos).</p>
-<h5 class="reader__subsubsection" id="recursos-humanos">Recursos Humanos</h5>
-<p>A falta de funcionários judiciais e a sobrecarga de trabalho dos magistrados são apontadas como causas principais da lentidão. Os juízes gastam tempo excessivo em tarefas administrativas e burocráticas que poderiam ser automatizadas.</p>
-<h5 class="reader__subsubsection" id="infraestrutura-tecnologica">Infraestrutura Tecnológica</h5>
-<p>O sistema Citius, apesar de alguns avanços, continua a apresentar limitações significativas na submissão de documentos e no acompanhamento processual. A digitalização de apensos e a desmaterialização efetiva dos processos ainda não é uma realidade plena.</p>
-<h5 class="reader__subsubsection" id="percecao-de-corrupcao">Perceção de Corrupção</h5>
-<p>No Índice de Perceção da Corrupção 2024 da Transparência Internacional, Portugal obteve 57 pontos (numa escala de 0 a 100), caindo para a 43.ª posição entre 180 países analisados, o pior resultado de sempre. O país tem estado em declínio contínuo desde 2015.</p>
+      <!-- Section 2 -->
+      <details class="reader__section" open id="2-diagnostico">
+        <summary class="reader__section-title">
+          2. Diagnóstico: O Estado da Justiça em Portugal
+          <a href="#2-diagnostico" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '2-diagnostico')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h3 class="reader__subsection" id="tempos-processuais">Tempos Processuais Dramáticos</h3>
+          <p>Os megaprocessos judiciais em Portugal duram em média <strong>8 anos e 1 mês</strong> até à decisão transitada em julgado. Quase 31% dos processos complexos arrastam-se por mais de uma década, enquanto as execuções cíveis demoram em média 60 meses.</p>
 
-</div>
-</details>
-<details class="reader__section" open id="3-o-custo-da-ineficiencia">
-<summary class="reader__section-title">
-3. O CUSTO DA INEFICIÊNCIA
-<a href="#3-o-custo-da-ineficiencia" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'3-o-custo-da-ineficiencia')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>O Impacto Económico e Social</p>
-<p>A corrupção e a ineficiência da justiça têm custos mensuráveis que afetam diretamente a vida de todos os portugueses.</p>
-<h5 class="reader__subsubsection" id="31-impacto-financeiro">3.1 Impacto Financeiro</h5>
-<p>De acordo com o estudo &quot;The Costs of Corruption Across the EU&quot;, realizado pelo Parlamento Europeu, o custo estimado da corrupção em Portugal atinge anualmente cerca de 18,2 mil milhões de euros, o equivalente a 7,9% do PIB. Estudos mais recentes da Fundação Francisco Manuel dos Santos estimam que este valor pode atingir 8-10% do PIB, aproximadamente 20 mil milhões de euros.</p>
-<h5 class="reader__subsubsection" id="32-comparacoes-reveladoras">3.2 Comparações Reveladoras</h5>
-<p>Os 18,2 mil milhões de euros perdidos anualmente para a corrupção representam:</p>
-<p>Mais do que o orçamento anual da Saúde: O valor supera os 16,1 mil milhões de euros gastos anualmente no SNS.</p>
-<p>10 vezes o orçamento do desemprego: Seria suficiente para dar o salário médio anual português a 1,5 milhões de pessoas.</p>
-<p>72 vezes o orçamento do combate aos incêndios: Os 251 milhões de euros são uma fração do que se perde.</p>
-<p>Equivalente a todo o IRS: Se eliminássemos a corrupção, os portugueses poderiam não pagar IRS.</p>
-<h5 class="reader__subsubsection" id="impacto-no-investimento">Impacto no Investimento</h5>
-<p>A lentidão da justiça e a perceção de corrupção afastam investidores estrangeiros. Empresas que consideram investir em Portugal são confrontadas com um sistema judicial onde a resolução de litígios comerciais pode demorar anos, criando um ambiente de incerteza que prejudica a competitividade do país.</p>
+          <h3 class="reader__subsection" id="percecao-de-corrupcao">Perceção de Corrupção em Mínimos Históricos</h3>
+          <p>No Índice de Perceção da Corrupção da Transparência Internacional (2024), Portugal caiu para o 43.º lugar mundial — a pior pontuação de sempre, refletindo o declínio contínuo da confiança nas instituições.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="4-eixo-i-justica-de-performance">
-<summary class="reader__section-title">
-4. EIXO I: JUSTIÇA DE PERFORMANCE
-<a href="#4-eixo-i-justica-de-performance" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'4-eixo-i-justica-de-performance')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>&quot;A tecnologia não substitui o juiz; liberta-o para julgar.&quot;</p>
-<h4 class="reader__subsection" id="41-automatizacao-processual-com-inteligencia-artificial">4.1. Automatização Processual com Inteligência Artificial</h4>
-<p>A implementação de sistemas de IA nos tribunais não é ficção científica. É uma realidade em dezenas de países, incluindo no Brasil, onde 53 tribunais já desenvolvem soluções com uso desta tecnologia, com 111 projetos identificados pelo Conselho Nacional de Justiça.</p>
-<p>Propomos:</p>
-<p>Triagem Automática de Processos: Sistemas de IA para classificar processos por complexidade, urgência e tipologia, permitindo uma distribuição mais eficiente do trabalho.</p>
-<p>Apoio à Redação de Minutas: Ferramentas que auxiliam na elaboração de despachos e sentenças para casos padronizados, libertando os magistrados para questões de maior complexidade jurídica.</p>
-<p>Análise Preditiva: Identificação de processos similares e jurisprudência relevante em segundos, em vez de horas de pesquisa manual.</p>
-<p>Transcrição Automática: Conversão em tempo real de audiências para texto, com tradução se necessário, garantindo acessibilidade e eficiência.</p>
-<h4 class="reader__subsection" id="42-justica-em-tempo-real">4.2. Justiça em Tempo Real</h4>
-<p>A digitalização completa do sistema judicial é um imperativo:</p>
-<p>Processo 100% Digital: Eliminação total do papel nos tribunais. Todo o processo acessível instantaneamente a magistrados, advogados e partes.</p>
-<p>Audiências Remotas: Infraestrutura robusta para audiências por videoconferência, reduzindo custos e tempos de deslocação.</p>
-<p>Notificações Eletrónicas: Sistema de notificações automáticas que elimina atrasos postais e garante rastreabilidade.</p>
-<p>Interoperabilidade Total: Integração entre todos os sistemas: tribunais, registos, finanças, Segurança Social.</p>
-<h4 class="reader__subsection" id="43-tribunais-especializados-em-tecnologia">4.3. Tribunais Especializados em Tecnologia</h4>
-<p>O crime evoluiu; a justiça tem de acompanhar. Propomos a criação de:</p>
-<p>Tribunal de Crimes Cibernéticos: Jurisdição especializada para crimes informáticos, fraudes online, violação de dados e ciberterrorismo.</p>
-<p>Magistrados com Formação Tecnológica: Programa de formação obrigatória em competências digitais para todos os magistrados.</p>
-<p>Peritos Forenses Integrados: Equipas de peritos em informática forense permanentemente afetas aos tribunais especializados.</p>
+      <!-- Section 3 -->
+      <details class="reader__section" open id="3-o-custo-da-ineficiencia">
+        <summary class="reader__section-title">
+          3. O Custo da Ineficiência (18,2 Mil Milhões de Euros)
+          <a href="#3-o-custo-da-ineficiencia" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '3-o-custo-da-ineficiencia')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>De acordo com estudos do Parlamento Europeu e da Fundação Francisco Manuel dos Santos, o impacto financeiro da corrupção e da morosidade judicial em Portugal atinge <strong>7,9% a 10% do PIB nacional</strong>.</p>
 
-</div>
-</details>
-<details class="reader__section" open id="5-eixo-ii-combate-implacavel-a-corrupcao">
-<summary class="reader__section-title">
-5. EIXO II: COMBATE IMPLACÁVEL À CORRUPÇÃO
-<a href="#5-eixo-ii-combate-implacavel-a-corrupcao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'5-eixo-ii-combate-implacavel-a-corrupcao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>&quot;A opacidade é o terreno fértil da corrupção; a transparência é o seu antídoto.&quot;</p>
-<h4 class="reader__subsection" id="51-rastreio-automatico-de-dados">5.1. Rastreio Automático de Dados</h4>
-<p>O combate eficaz à corrupção exige ferramentas tecnológicas de monitorização contínua:</p>
-<p>Cruzamento Automático de Dados: Sistema que cruza automaticamente declarações de rendimentos, património, movimentos bancários e transações imobiliárias de todos os titulares de cargos públicos.</p>
-<p>Alertas de Incongruência: Algoritmos que detetam automaticamente variações patrimoniais incompatíveis com os rendimentos declarados, gerando alertas para investigação.</p>
-<p>Monitorização de Relações: Identificação automática de conflitos de interesse através do mapeamento de relações familiares, societárias e profissionais.</p>
-<p>Integração com a Plataforma UNIR: Todos os dados agregados e visualizáveis numa plataforma centralizada, com diferentes níveis de acesso conforme a natureza da informação.</p>
-<h4 class="reader__subsection" id="52-transparencia-total-nos-contratos-publicos">5.2. Transparência Total nos Contratos Públicos</h4>
-<p>Cada euro público deve ser rastreável:</p>
-<p>Portal de Contratos em Tempo Real: Publicação automática e imediata de todos os contratos públicos, incluindo ajustes diretos, com documentação completa.</p>
-<p>Formato Aberto e Auditável: Dados em formatos que permitam análise automatizada por cidadãos, jornalistas e organizações de fiscalização.</p>
-<p>Histórico de Alterações: Registo imutável (blockchain) de todas as alterações a contratos, impedindo adulterações retroativas.</p>
-<p>Denúncia Anónima: Canal seguro para denúncias de irregularidades, com proteção legal reforçada para denunciantes.</p>
-<h4 class="reader__subsection" id="53-penalizacoes-exemplares">5.3. Penalizações Exemplares</h4>
-<p>A impunidade alimenta a corrupção. Propomos:</p>
-<p>Devolução em Dobro: Quem for condenado por fraude em subsídios públicos devolve o dobro do valor desviado.</p>
-<p>Interdição Alargada: Proibição de acesso a cargos públicos e a qualquer apoio estatal por 10 anos.</p>
-<p>Responsabilização Pessoal: Os gestores públicos respondem pessoalmente por decisões manifestamente ilegais que causem prejuízo ao Estado.</p>
-<p>Confisco Alargado: Mecanismos de confisco de património de origem não explicada, invertendo o ónus da prova em casos de enriquecimento ilícito manifesto.</p>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem;">
+              <thead>
+                <tr style="background: var(--color-bg-alt); border-bottom: 2px solid var(--color-border);">
+                  <th style="padding: 12px; text-align: left;">Comparativo de Valores</th>
+                  <th style="padding: 12px; text-align: left;">Montante Anual</th>
+                  <th style="padding: 12px; text-align: left;">Equivalência no Orçamento do Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 12px; font-weight: 600; color: #d32f2f;">Custo Estimado da Corrupção em PT</td>
+                  <td style="padding: 12px; font-weight: 700; color: #d32f2f;">18,2 Mil Milhões €</td>
+                  <td style="padding: 12px; font-weight: 600;">7,9% do PIB Nacional</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 12px; font-weight: 600;">Orçamento Anual da Saúde (SNS)</td>
+                  <td style="padding: 12px;">16,1 Mil Milhões €</td>
+                  <td style="padding: 12px;">Menor do que o valor perdido para a corrupção</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 12px; font-weight: 600;">Orçamento de Apoio ao Desemprego</td>
+                  <td style="padding: 12px;">1,8 Mil Milhões €</td>
+                  <td style="padding: 12px;">A corrupção custa 10x mais</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 12px; font-weight: 600;">Combate a Incêndios Florestais</td>
+                  <td style="padding: 12px;">251 Milhões €</td>
+                  <td style="padding: 12px;">A corrupção custa 72x mais</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="6-eixo-iii-seguranca-juridica">
-<summary class="reader__section-title">
-6. EIXO III: SEGURANÇA JURÍDICA
-<a href="#6-eixo-iii-seguranca-juridica" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'6-eixo-iii-seguranca-juridica')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Simplificação Legislativa</p>
-<p>&quot;Onde há dúvida na lei, o sistema trava. Queremos leis claras para cidadãos e investidores.&quot;</p>
-<h4 class="reader__subsection" id="61-o-problema-da-dispersao-legislativa">6.1. O Problema da Dispersão Legislativa</h4>
-<p>Portugal sofre de um excesso de legislação dispersa, frequentemente contraditória e de difícil interpretação. Esta situação cria incerteza jurídica que prejudica cidadãos no seu dia a dia e afasta investidores que procuram ambientes regulatórios estáveis e previsíveis.</p>
-<p>A multiplicação de diplomas avulsos, as constantes alterações legislativas e a falta de consolidação normativa tornam o sistema legal opaco e inacessível ao cidadão comum.</p>
-<h4 class="reader__subsection" id="62-medidas-de-simplificacao">6.2. Medidas de Simplificação</h4>
-<p>Auditoria Legislativa Completa: Revisão sistemática de todo o ordenamento jurídico para identificar contradições, redundâncias e normas obsoletas.</p>
-<p>Revogação de Leis Contraditórias: Eliminação de normas que criem conflitos interpretativos, aplicando o princípio de que a lei mais recente ou mais específica prevalece.</p>
-<p>Códigos Consolidados: Agrupamento temático da legislação em códigos únicos, facilitando a consulta e a aplicação do direito.</p>
-<p>Linguagem Clara: Redação de leis em linguagem acessível, evitando o juridiquês que afasta o cidadão da compreensão dos seus direitos.</p>
-<h4 class="reader__subsection" id="63-garantias-para-cidadaos-e-investidores">6.3. Garantias para Cidadãos e Investidores</h4>
-<p>Estabilidade Normativa: Compromisso de não alterar legislação fiscal e regulatória sem período de transição adequado.</p>
-<p>Interpretação Única: Criação de mecanismos de uniformização de jurisprudência para garantir que a mesma lei é aplicada da mesma forma em todo o país.</p>
-<p>Portal Legislativo Inteligente: Ferramenta digital que permite a qualquer cidadão encontrar rapidamente a legislação aplicável à sua situação, com linguagem simplificada.</p>
-<p>Princípio da Confiança: Reforço da proteção das expectativas legítimas dos cidadãos face a alterações legislativas retroativas.</p>
+      <!-- Section 4 -->
+      <details class="reader__section" open id="4-eixo-i-justica-de-performance">
+        <summary class="reader__section-title">
+          4. Eixo I: Justiça de Performance (IA nos Tribunais)
+          <a href="#4-eixo-i-justica-de-performance" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '4-eixo-i-justica-de-performance')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-callout article-callout--info">
+            <p style="margin:0;">"A tecnologia não substitui o juiz; liberta-o da burocracia para julgar com humanidade e rigor."</p>
+          </div>
 
-</div>
-</details>
-<details class="reader__section" open id="7-casos-de-sucesso-internacional">
-<summary class="reader__section-title">
-7. CASOS DE SUCESSO INTERNACIONAL
-<a href="#7-casos-de-sucesso-internacional" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'7-casos-de-sucesso-internacional')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>A modernização da justiça através da tecnologia não é uma experiência pioneira. Vários países já demonstraram que é possível transformar radicalmente a eficiência judicial mantendo as garantias do Estado de Direito.</p>
-<p>7.1. Estónia: O Modelo de Referência</p>
-<p>A Estónia é frequentemente citada como referência mundial em governo digital. No setor da justiça, o país implementou sistemas que permitem aos cidadãos questionar pequenas causas contratuais de forma totalmente digital. A interoperabilidade entre sistemas governamentais elimina a duplicação de informação e acelera drasticamente os processos.</p>
-<p>O Ministério da Justiça da Estónia tem explorado ativamente oportunidades de otimização e automatização das etapas processuais, incluindo decisões processuais quando possível.</p>
-<p>7.2. China: Tribunais Inteligentes</p>
-<p>Desde 2016, a China desenvolveu o sistema de &quot;tribunais inteligentes&quot; que conecta ferramentas de IA à mesa de cada juiz. Os resultados são impressionantes: a carga média de trabalho de um juiz foi reduzida em mais de um terço, poupando 1,7 mil milhões de horas de trabalho e economizando mais de 300 mil milhões de yuans entre 2019 e 2021.</p>
-<p>O sistema obriga os juízes a consultarem a IA em cada caso, exigindo uma explicação escrita em caso de discordância com as recomendações algorítmicas.</p>
-<p>7.3. Brasil: Expansão Acelerada</p>
-<p>O Brasil registou um aumento de 171% no número de projetos de IA nos tribunais em apenas um ano, passando de 41 para 111 iniciativas. Sistemas como o Athos (STJ) e o Julia (TRF 3.ª Região) auxiliam na identificação de temas repetitivos e na localização de processos suspensos.</p>
-<p>Como afirmou o ministro Luiz Fux: &quot;Os fóruns deixam de ser espaços físicos para se tornarem serviços prestados online, de modo a construir uma nova realidade em que os tribunais utilizam todo o potencial tecnológico para buscar a redução significativa de custos, a eficiência, a celeridade e a transparência.&quot;</p>
-<p>7.4. Lições para Portugal</p>
-<p>A experiência internacional demonstra que: a IA pode reduzir drasticamente os tempos processuais; a transparência tecnológica aumenta a confiança dos cidadãos; a especialização tecnológica dos magistrados é essencial; a supervisão humana deve ser mantida em todas as decisões finais.</p>
+          <h3 class="reader__subsection" id="41-automatizacao-processual-com-inteligencia-artificial">4.1. Automatização Processual com IA</h3>
+          <ul class="article-takeaways__list">
+            <li class="article-takeaways__item"><strong>Triagem Automática:</strong> Classificação instantânea de peças processuais por urgência e tipologia jurídica.</li>
+            <li class="article-takeaways__item"><strong>Minutas Inteligentes:</strong> Geração assistida de despachos para casos padronizados sob validação do magistrado.</li>
+            <li class="article-takeaways__item"><strong>Pesquisa Preditiva de Jurisprudência:</strong> Cruzamento de precedentes dos Tribunais Superiores em segundos.</li>
+          </ul>
 
-</div>
-</details>
-<details class="reader__section" open id="8-implementacao-e-cronograma">
-<summary class="reader__section-title">
-8. IMPLEMENTAÇÃO E CRONOGRAMA
-<a href="#8-implementacao-e-cronograma" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'8-implementacao-e-cronograma')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Fase 1: Fundações (Ano 1)</p>
-<p>Diagnóstico Técnico: Auditoria completa aos sistemas informáticos existentes e identificação de necessidades.</p>
-<p>Quadro Legal: Preparação da legislação necessária para permitir a utilização de IA nos tribunais.</p>
-<p>Projeto-Piloto: Implementação de sistema de IA num tribunal de primeira instância selecionado.</p>
-<p>Formação Inicial: Início do programa de capacitação tecnológica para magistrados.</p>
-<p>Fase 2: Expansão (Anos 2-3)</p>
-<p>Rollout Nacional: Extensão das soluções testadas a todos os tribunais de primeira instância.</p>
-<p>Plataforma de Transparência: Lançamento do portal de contratos públicos em tempo real.</p>
-<p>Sistema Anticorrupção: Implementação do sistema de cruzamento automático de dados.</p>
-<p>Tribunais Especializados: Criação dos primeiros tribunais de crimes cibernéticos.</p>
-<p>Fase 3: Consolidação (Anos 4-5)</p>
-<p>Integração Total: Interoperabilidade completa entre todos os sistemas da administração pública.</p>
-<p>Simplificação Legislativa: Conclusão da auditoria e revogação de leis contraditórias.</p>
-<p>Avaliação de Impacto: Medição rigorosa dos resultados e ajustes necessários.</p>
-<p>Exportação do Modelo: Partilha da experiência portuguesa com outros países.</p>
+          <h3 class="reader__subsection" id="42-justica-em-tempo-real">4.2. Processo 100% Digital</h3>
+          <p>Eliminação integral do suporte em papel, notificações eletrónicas automáticas em 24h e audiências por videoconferência com transcrição em tempo real.</p>
 
-</div>
-</details>
-<details class="reader__section" open id="9-metricas-de-sucesso">
-<summary class="reader__section-title">
-9. MÉTRICAS DE SUCESSO
-<a href="#9-metricas-de-sucesso" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'9-metricas-de-sucesso')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>O UNIR compromete-se com metas mensuráveis e auditáveis. A reforma será avaliada pelos seguintes indicadores:</p>
-<p>Eficiência Processual</p>
-<p>Redução de 50% nos tempos médios processuais: Meta: processos cíveis concluídos em menos de 12 meses.</p>
-<p>Eliminação de processos pendentes há mais de 5 anos: Programa de choque para resolver o backlog acumulado.</p>
-<p>100% dos processos digitalizados: Fim do papel nos tribunais até ao final do mandato.</p>
-<p>Combate à Corrupção</p>
-<p>Aumento de 200% nas condenações por corrupção: Resultado do sistema de rastreio automático.</p>
-<p>100% dos contratos públicos auditáveis online: Transparência total em 24 meses.</p>
-<p>Melhoria de 10 posições no Índice de Perceção da Corrupção: Objetivo: regressar ao top 35 mundial.</p>
-<p>Confiança dos Cidadãos</p>
-<p>Aumento da satisfação com o sistema judicial: Medição através de inquéritos anuais independentes.</p>
-<p>Redução de 30% nas queixas formais contra a justiça: Indicador de melhoria na qualidade do serviço.</p>
-<p>Aumento do investimento estrangeiro: Correlação com a melhoria da segurança jurídica.</p>
+          <h3 class="reader__subsection" id="43-tribunais-especializados-em-tecnologia">4.3. Ciber-Tribunais Especializados</h3>
+          <p>Criação de tribunais com competência exclusiva para ilícitos cibernéticos, fraudes em criptoativos e violação de dados com peritos forenses informáticos dedicados.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="10-conclusao">
-<summary class="reader__section-title">
-10. CONCLUSÃO
-<a href="#10-conclusao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'10-conclusao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>A reforma da justiça e o combate à corrupção não são opções políticas. São imperativos de sobrevivência para Portugal enquanto Estado de Direito competitivo e respeitado.</p>
-<p>Os números são claros: perdemos anualmente o equivalente ao orçamento da Saúde em corrupção; os nossos processos arrastam-se durante décadas; a perceção internacional do nosso sistema piora ano após ano. Esta situação é insustentável.</p>
-<p>O UNIR propõe uma abordagem baseada em Soluções Reais: tecnologia de ponta ao serviço da eficiência, transparência radical ao serviço da integridade, simplificação ao serviço da segurança jurídica. Não são promessas vagas, mas medidas concretas com metas mensuráveis.</p>
-<p>A experiência internacional demonstra que esta transformação é possível. Países com menos recursos e tradição jurídica do que Portugal conseguiram revolucionar os seus sistemas judiciais em poucos anos. A diferença está na vontade política de agir.</p>
-<p>&quot;A justiça que tarda é a justiça que falha. O UNIR não aceita o falhanço.&quot;</p>
-<p>UNIR para uma Justiça que Funciona.</p>
-<p>UNIR para um Portugal sem Corrupção.</p>
-<p>Comissão Estratégica do UNIR</p>
-<p>Janeiro de 2026</p>
+      <!-- Section 5 -->
+      <details class="reader__section" open id="5-eixo-ii-combate-implacavel-a-corrupcao">
+        <summary class="reader__section-title">
+          5. Eixo II: Combate Implacável à Corrupção
+          <a href="#5-eixo-ii-combate-implacavel-a-corrupcao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '5-eixo-ii-combate-implacavel-a-corrupcao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h3 class="reader__subsection" id="51-rastreio-automatico-de-dados">5.1. Cruzamento Patrimonial Automático</h3>
+          <p>Algoritmos de análise contínua cruzam as declarações de IRS, registos de imóveis, participações sociais e contas bancárias de todos os titulares de cargos políticos e altos dirigentes do Estado. Qualquer variação patrimonial não explicada despoleta alerta imediato de investigação.</p>
 
-</div>
-</details>
-</div>
+          <h3 class="reader__subsection" id="52-transparencia-total-nos-contratos-publicos">5.2. Portal de Contratos em Tempo Real</h3>
+          <p>Publicação instantânea de todos os ajustes diretos e concursos públicos num formato auditável com histórico imutável via blockchain.</p>
 
-<footer class="reader__footer">
-  <p>Documento Estrategico &middot; UNIR &mdash; Unidos pela Nacao, Inovacao e Responsabilidade</p>
-</footer>
+          <h3 class="reader__subsection" id="53-penalizacoes-exemplares">5.3. Devolução em Dobro &amp; Inversão do Ónus da Prova</h3>
+          <div class="article-callout article-callout--warning">
+            <div class="article-callout__title">⚠️ Sanções Rigorosas</div>
+            <p style="margin:0;">Devolução em dobro do montante desviado em fundos públicos, confisco de património sem origem comprovada e perda de direitos políticos/cargos públicos por 10 anos.</p>
+          </div>
+        </div>
+      </details>
 
-</div>
-</article>
+      <!-- Section 6 -->
+      <details class="reader__section" open id="6-eixo-iii-seguranca-juridica">
+        <summary class="reader__section-title">
+          6. Eixo III: Segurança Jurídica &amp; Simplificação
+          <a href="#6-eixo-iii-seguranca-juridica" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '6-eixo-iii-seguranca-juridica')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>Revisão e revogação sistemática do emaranhado legislativo contraditório. Introdução de Códigos Consolidados por setor em linguagem clara para atrair investimento estrangeiro de longo prazo.</p>
+        </div>
+      </details>
 
-<div class="article-prevnext">
-  <a href="/documentos/alternativas-mineracao-marinha/" onclick="event.preventDefault();navigateWithTransition('/documentos/alternativas-mineracao-marinha/')">&larr; Alternativas a Mineracao Marinha</a>
-  <a href="/documentos/justica-digital/" onclick="event.preventDefault();navigateWithTransition('/documentos/justica-digital/')">Justica Digital &rarr;</a>
-</div>
+      <!-- Section 7 -->
+      <details class="reader__section" open id="7-casos-de-sucesso-internacional">
+        <summary class="reader__section-title">
+          7. Casos de Sucesso Global (Estónia, China, Brasil)
+          <a href="#7-casos-de-sucesso-internacional" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '7-casos-de-sucesso-internacional')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p><strong>Estónia:</strong> 99% dos serviços públicos digitais e resolução de pequenas causas online em dias.</p>
+          <p><strong>China:</strong> Sistema de Tribunais Inteligentes economizou 1,7 mil milhões de horas de trabalho judicial.</p>
+          <p><strong>Brasil:</strong> Mais de 111 projetos de IA ativos nos tribunais para redução de processos parados.</p>
+        </div>
+      </details>
 
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="nav__logo-text">UNIR</span>
-      <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+      <!-- Section 8 -->
+      <details class="reader__section" open id="8-implementacao-e-cronograma">
+        <summary class="reader__section-title">
+          8. Cronograma de Implementação
+          <a href="#8-implementacao-e-cronograma" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '8-implementacao-e-cronograma')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p><strong>Ano 1:</strong> Alterações legislativas e projeto-piloto de IA em 3 comarcas.</p>
+          <p><strong>Anos 2-3:</strong> Lançamento do Portal de Contratos em Tempo Real e Rastreio Patrimonial.</p>
+          <p><strong>Anos 4-5:</strong> Digitalização 100% concluída e consolidação legislativa.</p>
+        </div>
+      </details>
+
+      <!-- Section 9 -->
+      <details class="reader__section" open id="9-metricas-de-sucesso">
+        <summary class="reader__section-title">
+          9. Métricas de Sucesso
+          <a href="#9-metricas-de-sucesso" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '9-metricas-de-sucesso')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <ul class="article-takeaways__list">
+            <li class="article-takeaways__item">Redução de 50% nos tempos médios dos processos cíveis e penais.</li>
+            <li class="article-takeaways__item">Eliminação total do backlog de processos com mais de 5 anos.</li>
+            <li class="article-takeaways__item">Subida de 10 posições no Índice Global de Perceção da Corrupção.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Section 10 -->
+      <details class="reader__section" open id="10-conclusao">
+        <summary class="reader__section-title">
+          10. Conclusão
+          <a href="#10-conclusao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '10-conclusao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>A reforma da justiça é a pré-condição para o desenvolvimento económico e social de Portugal. Com tecnologia, transparência e coragem política, o UNIR devolverá a justiça aos cidadãos.</p>
+        </div>
+      </details>
+
+      <footer class="reader__footer">
+        <p>Documento Estratégico &middot; UNIR &mdash; Unidos pela Nação, Inovação e Responsabilidade</p>
+      </footer>
+
     </div>
-    <div class="footer__links">
-      <a href="/" class="footer__link">Inicio</a>
-      <a href="/documentos/" class="footer__link">Documentos</a>
-      <a href="/candidatar/" class="footer__link">Integrar</a>
-    </div>
-    <p class="footer__copy">Feito em Portugal. Por cidadaos. Para cidadaos.</p>
+  </article>
+
+  <div class="article-prevnext">
+    <a href="/documentos/alternativas-mineracao-marinha/" onclick="event.preventDefault(); navigateWithTransition('/documentos/alternativas-mineracao-marinha/');">← Alternativas à Mineração Marinha</a>
+    <a href="/documentos/justica-digital/" onclick="event.preventDefault(); navigateWithTransition('/documentos/justica-digital/');">Justiça Digital →</a>
   </div>
-</footer>
 
-<div id="toast" class="toast-notification">Link copiado!</div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-text">UNIR</span>
+        <p class="footer__tagline">Um movimento feito por pessoas. Para pessoas.</p>
+      </div>
+      <div class="footer__links">
+        <a href="/" class="footer__link">Início</a>
+        <a href="/documentos/" class="footer__link">Documentos</a>
+        <a href="/candidatar/" class="footer__link">Integrar</a>
+      </div>
+      <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>
+    </div>
+  </footer>
 
-<script>
-(function(){
-  var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
-  document.querySelectorAll('a[href^="/"]').forEach(function(l){
-    var h=l.getAttribute('href');
-    if(h.startsWith('//')||h.startsWith('http')||h.startsWith('/#'))return;
-    if(h==='/'){l.setAttribute('href',b+'/');return}
-    if(h.startsWith('/documentos')){l.setAttribute('href',b+'/documentos/');return}
-    if(h.startsWith('/candidatar')){l.setAttribute('href',b+'/candidatar/');return}
-  });
-})();
+  <div id="toast" class="toast-notification">Link copiado!</div>
 
-function initTheme(){
-  var t=localStorage.getItem('unir_theme');
-  var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  if(t==='dark'||(!t&&d)){document.documentElement.setAttribute('data-theme','dark');updateUI(true);}
-  else{document.documentElement.removeAttribute('data-theme');updateUI(false);}
-}
-function toggleTheme(){
-  var is=document.documentElement.getAttribute('data-theme')==='dark';
-  if(is){document.documentElement.removeAttribute('data-theme');localStorage.setItem('unir_theme','light');updateUI(false);}
-  else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('unir_theme','dark');updateUI(true);}
-}
-function updateUI(dark){
-  var icons=document.querySelectorAll('#themeIcon,#themeIcon2');
-  var labels=document.querySelectorAll('#themeLabel,#themeLabel2');
-  icons.forEach(function(i){i.textContent=dark?'☀️':'🌙';});
-  labels.forEach(function(l){l.textContent=dark?'Modo Claro':'Modo Escuro';});
-}
-initTheme();
+  <script>
+    (function () {
+      var b = window.location.pathname.replace(/\/[^/]*\/?$/, '').replace(/\/[^/]*\/?$/, '');
+      document.querySelectorAll('a[href^="/"]').forEach(function (l) {
+        var h = l.getAttribute('href');
+        if (h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (h === '/') { l.setAttribute('href', b + '/'); return; }
+        if (h.startsWith('/documentos')) { l.setAttribute('href', b + '/documentos/'); return; }
+        if (h.startsWith('/candidatar')) { l.setAttribute('href', b + '/candidatar/'); return; }
+      });
+    })();
 
-function copyAnchorLink(e,id){
-  e.preventDefault();e.stopPropagation();
-  var url=window.location.origin+window.location.pathname+'#'+id;
-  navigator.clipboard.writeText(url).then(function(){showToast('Link da seccao copiado!');history.pushState(null,null,'#'+id);})
-    .catch(function(){showToast('Erro ao copiar link');});
-}
-function shareArticle(){
-  if(navigator.share){navigator.share({title:document.title,url:window.location.href}).catch(function(){});}
-  else{navigator.clipboard.writeText(window.location.href).then(function(){showToast('Link copiado!');});}
-}
-function navigateWithTransition(url){
-  if(document.startViewTransition){document.startViewTransition(function(){window.location.href=url;});}
-  else{window.location.href=url;}
-}
-function showToast(msg){
-  var t=document.getElementById('toast');if(!t)return;
-  t.textContent=msg;t.classList.add('toast-notification--show');
-  setTimeout(function(){t.classList.remove('toast-notification--show');},2600);
-}
+    function initTheme() {
+      var savedTheme = localStorage.getItem('unir_theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        updateThemeUI(false);
+      }
+    }
 
-(function(){
-  var bar=document.getElementById('progressFill');
-  if(bar){window.addEventListener('scroll',function(){var h=document.documentElement;
-    var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-    bar.style.width=Math.min(100,Math.max(0,pct))+'%';});}
-  var tocLinks=document.querySelectorAll('.reader__toc-link');
-  var headings=document.querySelectorAll('.reader__section[id]');
-  if(headings.length){
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){
-      if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('reader__toc-link--active');});
-      var link=document.querySelector('.reader__toc-link[href="#'+e.target.id+'"]');
-      if(link)link.classList.add('reader__toc-link--active');}
-    });},{rootMargin:'-10% 0px -70% 0px'});
-    headings.forEach(function(h){obs.observe(h);});
-  }
-  var tt=document.getElementById('tocToggle'),tn=document.getElementById('tocNav');
-  if(tt&&tn){tt.addEventListener('click',function(){
-    var o=!tn.classList.contains('reader__toc--open');
-    tn.classList.toggle('reader__toc--open',o);
-    tt.classList.toggle('reader__toc-toggle--open',o);
-    tt.setAttribute('aria-expanded',o?'true':'false');
-  });}
-  var nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
-  if(nt&&nl){nt.addEventListener('click',function(){nl.classList.toggle('nav__links--open');});}
-})();
-</script>
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('unir_theme', 'light');
+        updateThemeUI(false);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('unir_theme', 'dark');
+        updateThemeUI(true);
+      }
+    }
+
+    function updateThemeUI(isDark) {
+      document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+        btn.innerHTML = (isDark ? '☀️' : '🌙') + ' <span>' + (isDark ? 'Modo Claro' : 'Modo Escuro') + '</span>';
+      });
+    }
+    initTheme();
+    document.addEventListener('DOMContentLoaded', initTheme);
+
+    function copyAnchorLink(event, id) {
+      event.preventDefault();
+      event.stopPropagation();
+      var url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url).then(function () {
+        showToast('Link da secção copiado!');
+        history.pushState(null, null, '#' + id);
+      }).catch(function () {
+        showToast('Erro ao copiar link');
+      });
+    }
+
+    function shareArticle() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        }).catch(function () { });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          showToast('Link do artigo copiado!');
+        });
+      }
+    }
+
+    function navigateWithTransition(url) {
+      if (document.startViewTransition) {
+        document.startViewTransition(function () {
+          window.location.href = url;
+        });
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('toast-notification--show');
+      setTimeout(function () {
+        toast.classList.remove('toast-notification--show');
+      }, 2600);
+    }
+
+    (function () {
+      var bar = document.getElementById('progressFill');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var h = document.documentElement;
+          var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+          bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        });
+      }
+
+      var tocLinks = document.querySelectorAll('.reader__toc-link');
+      var headings = document.querySelectorAll('.reader__section[id]');
+      if (headings.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              tocLinks.forEach(function (l) { l.classList.remove('reader__toc-link--active'); });
+              var link = document.querySelector('.reader__toc-link[href="#' + e.target.id + '"]');
+              if (link) link.classList.add('reader__toc-link--active');
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        headings.forEach(function (h) { observer.observe(h); });
+      }
+
+      var tocToggle = document.getElementById('tocToggle');
+      var tocNav = document.getElementById('tocNav');
+      if (tocToggle && tocNav) {
+        tocToggle.addEventListener('click', function () {
+          var open = !tocNav.classList.contains('reader__toc--open');
+          tocNav.classList.toggle('reader__toc--open', open);
+          tocToggle.classList.toggle('reader__toc-toggle--open', open);
+          tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          navLinks.classList.toggle('nav__links--open');
+        });
+      }
+    })();
+  </script>
 
 </body>
+
 </html>

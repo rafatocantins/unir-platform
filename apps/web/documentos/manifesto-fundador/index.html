@@ -1,409 +1,497 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Manifesto Fundador — UNIR</title>
-<meta name="description" content="UNIR — Unidos pela Nacao, Inovacao e Responsabilidade">
-<meta property="og:title" content="Manifesto Fundador — UNIR">
-<meta property="og:description" content="UNIR — Unidos pela Nacao, Inovacao e Responsabilidade">
-<meta property="og:type" content="article">
-<meta name="theme-color" content="#0D47A1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../css/reader.css">
-<style>
-  .article-hero__title { view-transition-name: doc-manifesto; }
-  ::view-transition-old(doc-manifesto) { animation: vt-out 0.2s ease-out forwards; }
-  ::view-transition-new(doc-manifesto) { animation: vt-in 0.3s ease-out forwards; }
-  @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
-  @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifesto Fundador - UNIR</title>
+  <meta name="description"
+    content="Manifesto Fundador do UNIR: Unidos pela Nação, Inovação e Responsabilidade. O fim das ideologias vazias e a aposta na eficácia, ciência e tecnologia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" id="mainStylesheet">
+  <link rel="stylesheet" href="../../css/reader.css" id="readerStylesheet">
+
+  <style>
+    .article-hero__title {
+      view-transition-name: doc-manifesto;
+    }
+
+    ::view-transition-old(doc-manifesto) {
+      animation: vt-out 0.2s ease-out forwards;
+    }
+
+    ::view-transition-new(doc-manifesto) {
+      animation: vt-in 0.3s ease-out forwards;
+    }
+
+    @keyframes vt-out {
+      to {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes vt-in {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <div class="nav__inner container">
-    <a href="/" class="nav__logo">
-      <span class="nav__logo-icon">⚡</span>
-      <span class="nav__logo-text">UNIR</span>
-    </a>
-    <div class="nav__links" id="navLinks">
-      <a href="/" class="nav__link">Inicio</a>
-      <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
-      <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema" style="margin-left:8px;">
+  <nav class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-icon">⚡</span>
+        <span class="nav__logo-text">UNIR</span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/" class="nav__link">Início</a>
+        <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
+        <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro"
+          style="margin-left: 8px;">
+          <span>🌙</span> <span>Modo Escuro</span>
+        </button>
+      </div>
+      <button class="nav__hamburger" id="navToggle" aria-label="Menu de Navegação">☰</button>
+    </div>
+  </nav>
+
+  <div class="article-nav">
+    <div class="article-breadcrumb">
+      <a href="/">Início</a> / <a href="/documentos/">Documentos</a> / <strong>Manifesto Fundador</strong>
+    </div>
+    <div class="article-actions">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Modo Escuro</span>
       </button>
+      <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar este artigo">
+        🔗 Partilhar
+      </button>
     </div>
-    <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
   </div>
-</nav>
 
-<div class="article-nav">
-  <div class="article-breadcrumb">
-    <a href="/">Inicio</a> / <a href="/documentos/">Documentos</a> / <strong>Manifesto Fundador</strong>
+  <div class="reader__progress" id="progressBar">
+    <div class="reader__progress-fill" id="progressFill"></div>
   </div>
-  <div class="article-actions">
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema">
-      <span id="themeIcon2">🌙</span> <span id="themeLabel2">Modo Escuro</span>
-    </button>
-    <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar">🔗 Partilhar</button>
-  </div>
-</div>
 
-<div class="reader__progress" id="progressBar"><div class="reader__progress-fill" id="progressFill"></div></div>
+  <article class="reader">
 
-<article class="reader">
+    <aside class="reader__sidebar">
+      <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Índice do Documento</button>
+      <nav class="reader__toc" id="tocNav">
+        <h4 class="reader__toc-title">Índice de Conteúdos</h4>
+        <ol>
+          <li><a href="#1-nota-de-abertura" class="reader__toc-link">1. Nota de Abertura</a></li>
+          <li><a href="#2-identidade-e-missao" class="reader__toc-link">2. Identidade e Missão</a></li>
+          <li class="reader__toc-link--sub"><a href="#a-nossa-visao" class="reader__toc-link">Visão &amp; Valores</a>
+          </li>
+          <li><a href="#3-eixo-i-soberania-defesa-e-o-mar" class="reader__toc-link">3. Eixo I: Soberania &amp; Mar</a>
+          </li>
+          <li><a href="#4-eixo-ii-saude" class="reader__toc-link">4. Eixo II: Saúde</a></li>
+          <li><a href="#5-eixo-iii-educacao" class="reader__toc-link">5. Eixo III: Educação</a></li>
+          <li><a href="#6-eixo-iv-imigracao" class="reader__toc-link">6. Eixo IV: Imigração</a></li>
+          <li><a href="#7-eixo-v-justica-e-transparencia" class="reader__toc-link">7. Eixo V: Justiça</a></li>
+          <li><a href="#8-eixo-vi-gestao-e-financas-robustas" class="reader__toc-link">8. Eixo VI: Finanças &amp;
+              Estado</a></li>
+          <li><a href="#9-a-plataforma-unir" class="reader__toc-link">9. A Plataforma UNIR</a></li>
+          <li><a href="#10-conclusao" class="reader__toc-link">10. Conclusão</a></li>
+        </ol>
+      </nav>
+    </aside>
 
-<aside class="reader__sidebar">
-  <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Indice do Documento</button>
-  <nav class="reader__toc" id="tocNav">
-    <h4 class="reader__toc-title">Indice de Conteudos</h4>
-    <ol>
-<li class=""><a href="#indice" class="reader__toc-link">ÍNDICE</a></li>
-<li class=""><a href="#1-nota-de-abertura" class="reader__toc-link">1. NOTA DE ABERTURA</a></li>
-<li class=""><a href="#2-identidade-e-missao" class="reader__toc-link">2. IDENTIDADE E MISSÃO</a></li>
-<li class="reader__toc-link--sub"><a href="#a-nossa-visao" class="reader__toc-link">A Nossa Visão</a></li>
-<li class="reader__toc-link--sub"><a href="#os-nossos-valores" class="reader__toc-link">Os Nossos Valores</a></li>
-<li class=""><a href="#3-eixo-i-soberania-defesa-e-o-mar" class="reader__toc-link">3. EIXO I: SOBERANIA, DEFESA E O MAR</a></li>
-<li class="reader__toc-link--sub"><a href="#defesa-robusta" class="reader__toc-link">Defesa Robusta</a></li>
-<li class="reader__toc-link--sub"><a href="#soberania-ativa" class="reader__toc-link">Soberania Ativa</a></li>
-<li class="reader__toc-link--sub"><a href="#o-plano-portugal-90" class="reader__toc-link">O Plano Portugal 90%</a></li>
-<li class="reader__toc-link--sub"><a href="#hub-aeroespacial-no-sul" class="reader__toc-link">Hub Aeroespacial no Sul</a></li>
-<li class=""><a href="#4-eixo-ii-saude" class="reader__toc-link">4. EIXO II: SAÚDE</a></li>
-<li class="reader__toc-link--sub"><a href="#modernizacao-e-performance" class="reader__toc-link">Modernização e Performance</a></li>
-<li class="reader__toc-link--sub"><a href="#valorizacao-real" class="reader__toc-link">Valorização Real</a></li>
-<li class="reader__toc-link--sub"><a href="#interoperabilidade-de-dados" class="reader__toc-link">Interoperabilidade de Dados</a></li>
-<li class=""><a href="#5-eixo-iii-educacao" class="reader__toc-link">5. EIXO III: EDUCAÇÃO</a></li>
-<li class="reader__toc-link--sub"><a href="#ia-como-vantagem-nao-como-ameaca" class="reader__toc-link">IA como Vantagem, Não como Ameaça</a></li>
-<li class="reader__toc-link--sub"><a href="#literacia-global" class="reader__toc-link">Literacia Global</a></li>
-<li class="reader__toc-link--sub"><a href="#ensino-adaptativo" class="reader__toc-link">Ensino Adaptativo</a></li>
-<li class=""><a href="#6-eixo-iv-imigracao" class="reader__toc-link">6. EIXO IV: IMIGRAÇÃO</a></li>
-<li class="reader__toc-link--sub"><a href="#controlo-e-equilibrio" class="reader__toc-link">Controlo e Equilíbrio</a></li>
-<li class="reader__toc-link--sub"><a href="#integracao-funcional" class="reader__toc-link">Integração Funcional</a></li>
-<li class=""><a href="#7-eixo-v-justica-e-transparencia" class="reader__toc-link">7. EIXO V: JUSTIÇA E TRANSPARÊNCIA</a></li>
-<li class="reader__toc-link--sub"><a href="#automatizacao-processual" class="reader__toc-link">Automatização Processual</a></li>
-<li class="reader__toc-link--sub"><a href="#rastreio-de-dados-contra-a-corrupcao" class="reader__toc-link">Rastreio de Dados Contra a Corrupção</a></li>
-<li class="reader__toc-link--sub"><a href="#penalizacoes-exemplares" class="reader__toc-link">Penalizações Exemplares</a></li>
-<li class=""><a href="#8-eixo-vi-gestao-e-financas-robustas" class="reader__toc-link">8. EIXO VI: GESTÃO E FINANÇAS ROBUSTAS</a></li>
-<li class="reader__toc-link--sub"><a href="#estado-plataforma" class="reader__toc-link">Estado Plataforma</a></li>
-<li class="reader__toc-link--sub"><a href="#fiscalidade-competitiva" class="reader__toc-link">Fiscalidade Competitiva</a></li>
-<li class="reader__toc-link--sub"><a href="#economia-do-mar" class="reader__toc-link">Economia do Mar</a></li>
-<li class=""><a href="#9-a-plataforma-unir" class="reader__toc-link">9. A PLATAFORMA UNIR</a></li>
-<li class="reader__toc-link--sub"><a href="#dados-concretos" class="reader__toc-link">Dados Concretos</a></li>
-<li class="reader__toc-link--sub"><a href="#comunidade-de-acao" class="reader__toc-link">Comunidade de Ação</a></li>
-<li class="reader__toc-link--sub"><a href="#transparencia-total" class="reader__toc-link">Transparência Total</a></li>
-<li class=""><a href="#10-conclusao" class="reader__toc-link">10. CONCLUSÃO</a></li>
+    <div class="reader__body">
 
-    </ol>
-  </nav>
-</aside>
+      <a href="/documentos/" class="reader__back"
+        onclick="event.preventDefault(); navigateWithTransition('/documentos/');">← Voltar aos Documentos</a>
 
-<div class="reader__body">
+      <header class="article-hero">
+        <span class="article-hero__badge">⚡ Documento Fundacional</span>
+        <h1 class="article-hero__title">Manifesto Fundador</h1>
+        <p class="article-hero__subtitle">UNIR - Unidos pela Nação, Inovação e Responsabilidade</p>
+        <div class="article-hero__meta">
+          <span class="article-hero__meta-item">⏱️ ~12 min de leitura</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">📅 Janeiro 2026</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">🏛️ Movimento UNIR - Comissão Fundadora</span>
+        </div>
+      </header>
 
-<a href="/documentos/" class="reader__back" onclick="event.preventDefault();navigateWithTransition('/documentos/');">&larr; Voltar aos Documentos</a>
+      <!-- Key Takeaways Component -->
+      <div class="article-takeaways">
+        <div class="article-takeaways__title">
+          💡 Pontos-Chave &amp; Princípios Fundamentais
+        </div>
+        <ul class="article-takeaways__list">
+          <li class="article-takeaways__item"><strong>Fim da Retórica Ideológica:</strong> Substituição das guerras
+            partidárias tradicionais pelo bom senso aplicado, decisões baseadas em dados e eficácia mensurável.</li>
+          <li class="article-takeaways__item"><strong>Soberania Atlântica &amp; Plano Portugal 90%:</strong> Liderança
+            na economia azul e tecnologia submarina no mar português (4M km² ZEE) com hub aeroespacial Beja-Algarve.
+          </li>
+          <li class="article-takeaways__item"><strong>Humanismo Tecnológico na Saúde &amp; Educação:</strong> IA para
+            automatizar 50% dos papéis nos hospitais e ensino adaptativo para personalizar a aprendizagem nas escolas.
+          </li>
+          <li class="article-takeaways__item"><strong>Imigração Regulada &amp; Funcional:</strong> Regras claras e
+            integração digna, vinculando os fluxos migratórios às necessidades do mercado e capacidade dos serviços
+            públicos.</li>
+          <li class="article-takeaways__item"><strong>Estado Plataforma &amp; Transparência Total:</strong> Governação
+            digital com fiscalidade competitiva e auditoria em tempo real de todos os subsídios e contratos públicos.
+          </li>
+        </ul>
+      </div>
 
-<header class="article-hero">
-  <span class="article-hero__badge">⚡ Documento Fundacional</span>
-  <h1 class="article-hero__title">Manifesto Fundador</h1>
-  <p class="article-hero__subtitle">UNIR — Unidos pela Nacao, Inovacao e Responsabilidade</p>
-  <div class="article-hero__meta">
-    <span class="article-hero__meta-item">⏱️ ~12 min de leitura</span>
-    <span class="article-hero__meta-dot"></span>
-    <span class="article-hero__meta-item">🏛️ Movimento UNIR</span>
-  </div>
-</header>
+      <!-- Section 1 -->
+      <details class="reader__section" open id="1-nota-de-abertura">
+        <summary class="reader__section-title">
+          1. Nota de Abertura: A Urgência da Mudança
+          <a href="#1-nota-de-abertura" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '1-nota-de-abertura')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">💬 Declaração Fundacional</div>
+            <p style="font-size: 1.1rem; font-weight: 600; margin: 0;">"Portugal não pode continuar a ser um espetador
+              do seu próprio destino. O UNIR nasce da necessidade urgente de substituir a retórica pela ação e a
+              ideologia pela evidência."</p>
+          </div>
 
-<div class="reader__content">
-<details class="reader__section" open id="indice">
-<summary class="reader__section-title">
-ÍNDICE
-<a href="#indice" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'indice')">#</a>
-</summary>
-<div class="reader__section-body">
+          <p>Não procuramos ocupar um lugar no espectro político ultrapassado de esquerda versus direita. Procuramos a
+            <strong>eficácia</strong>. Procuramos resultados mensuráveis. Procuramos devolver aos portugueses a
+            confiança de que o seu país pode estar na vanguarda da Europa e do mundo.
+          </p>
 
+          <p>Este manifesto não é uma lista de promessas eleitorais genéricas: é uma declaração de intenções concretas,
+            assente em dados científicos, tecnologia moderna e na convicção de que os cidadãos exigem soluções reais.
+          </p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="1-nota-de-abertura">
-<summary class="reader__section-title">
-1. NOTA DE ABERTURA
-<a href="#1-nota-de-abertura" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'1-nota-de-abertura')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>A Urgência da Mudança</p>
-<p>&quot;Portugal não pode continuar a ser um espetador do seu próprio destino.&quot;</p>
-<p>O UNIR nasce da necessidade de substituir a retórica pela ação e a ideologia pela evidência. Não procuramos ocupar um lugar no espectro político tradicional. Procuramos a eficácia. Procuramos resultados. Procuramos devolver aos portugueses a confiança de que o seu país pode estar entre os melhores do mundo.</p>
-<p>Este manifesto não é uma lista de promessas. É uma declaração de intenções concretas, baseadas em dados, tecnologia e na convicção de que somos todos, antes de qualquer bandeira partidária, seres humanos que querem o melhor para si, para as suas famílias e para Portugal.</p>
-<p>Vivemos numa era de transformação acelerada. A inteligência artificial, a automação, as alterações demográficas e os desafios geopolíticos exigem uma resposta à altura. Portugal tem todas as condições para liderar esta transformação, se tivermos a coragem de abandonar velhos hábitos e abraçar uma nova forma de governar.</p>
+      <!-- Section 2 -->
+      <details class="reader__section" open id="2-identidade-e-missao">
+        <summary class="reader__section-title">
+          2. Identidade e Missão: O Fim das Ideologias Vazias
+          <a href="#2-identidade-e-missao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '2-identidade-e-missao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>O UNIR é o movimento das <strong>Soluções Reais</strong>. Acreditamos que os problemas estruturais do país
+            não precisam de mais disputas partidárias, mas sim de inteligência de gestão e ação direta.</p>
 
-</div>
-</details>
-<details class="reader__section" open id="2-identidade-e-missao">
-<summary class="reader__section-title">
-2. IDENTIDADE E MISSÃO
-<a href="#2-identidade-e-missao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'2-identidade-e-missao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>O Fim das Ideologias Vazias</p>
-<p>O UNIR não se perde em discussões de esquerda ou direita. Somos o movimento das Soluções Reais. A nossa filosofia é o bom senso aplicado e o nosso compromisso é com o que funciona. Acreditamos que os problemas de Portugal não precisam de mais retórica, mas de ação direta e inteligência para melhorar a vida de todos os portugueses.</p>
-<h4 class="reader__subsection" id="a-nossa-visao">A Nossa Visão</h4>
-<p>Um Portugal soberano, tecnologicamente avançado e socialmente coeso, onde cada cidadão tem acesso a serviços públicos de excelência e onde o mérito e o trabalho são recompensados. Um país que não apenas acompanha o progresso mundial, mas que o lidera em áreas estratégicas.</p>
-<h4 class="reader__subsection" id="os-nossos-valores">Os Nossos Valores</h4>
-<p>Transparência Total: Todas as decisões são justificadas com dados e abertas ao escrutínio público.</p>
-<p>Pragmatismo: Focamo-nos no que funciona, independentemente de onde vem a ideia.</p>
-<p>Humanismo Tecnológico: A tecnologia serve as pessoas, nunca o contrário.</p>
-<p>Responsabilidade: Quem governa presta contas. Quem falha, assume as consequências.</p>
+          <h3 class="reader__subsection" id="a-nossa-visao">A Nossa Visão &amp; Valores</h3>
+          <ul class="article-takeaways__list">
+            <li class="article-takeaways__item"><strong>Transparência Total:</strong> Todas as decisões públicas
+              justificadas com dados abertos ao escrutínio em tempo real.</li>
+            <li class="article-takeaways__item"><strong>Pragmatismo:</strong> Adopção daquilo que comprovadamente
+              funciona, independentemente da sua origem política.</li>
+            <li class="article-takeaways__item"><strong>Humanismo Tecnológico:</strong> A tecnologia e a automação como
+              servas da dignidade humana.</li>
+            <li class="article-takeaways__item"><strong>Responsabilidade:</strong> Quem governa presta contas com
+              métricas de desempenho claras.</li>
+          </ul>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="3-eixo-i-soberania-defesa-e-o-mar">
-<summary class="reader__section-title">
-3. EIXO I: SOBERANIA, DEFESA E O MAR
-<a href="#3-eixo-i-soberania-defesa-e-o-mar" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'3-eixo-i-soberania-defesa-e-o-mar')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Portugal com Voz no Mundo</p>
-<p>&quot;A paz e a liberdade exigem uma postura de força. Um país que não se faz valer, não é respeitado.&quot;</p>
-<h4 class="reader__subsection" id="defesa-robusta">Defesa Robusta</h4>
-<p>Defendemos um exército maior, mais forte e tecnologicamente avançado. Investiremos em sistemas de vanguarda e ciberdefesa para que Portugal seja um pilar de segurança no Atlântico. A nossa defesa não é uma ameaça a ninguém; é a garantia da nossa liberdade e a proteção dos nossos interesses.</p>
-<h4 class="reader__subsection" id="soberania-ativa">Soberania Ativa</h4>
-<p>Portugal detém uma das maiores Zonas Económicas Exclusivas do mundo, abrangendo cerca de 4 milhões de km². Este vasto território marítimo é uma oportunidade estratégica única. Defendemos o controlo total das nossas fronteiras e do nosso mar, posicionando Portugal como líder de segurança no Atlântico através da sua importância estratégica e capacidade tecnológica.</p>
-<h4 class="reader__subsection" id="o-plano-portugal-90">O Plano Portugal 90%</h4>
-<p>O mar português contém recursos minerais críticos essenciais para a transição energética europeia: cobalto, níquel, terras raras e sulfetos maciços. O UNIR propõe que Portugal não seja apenas um exportador de concessões, mas o detentor da tecnologia de exploração sustentável destes recursos. Isto significa investir em robótica submarina nacional, criar o maior centro europeu de investigação do fundo do mar e transformar o Atlântico no motor financeiro do país.</p>
-<h4 class="reader__subsection" id="hub-aeroespacial-no-sul">Hub Aeroespacial no Sul</h4>
-<p>O Alentejo e o Algarve serão transformados em polos estratégicos de defesa e desenvolvimento. A Base Aérea de Beja será elevada a centro de excelência tecnológica, atraindo investimento, criando empregos qualificados e combatendo a desertificação do interior. O Algarve funcionará como sentinela avançada para a monitorização das rotas comerciais e combate ao tráfico ilícito.</p>
+      <!-- Section 3 -->
+      <details class="reader__section" open id="3-eixo-i-soberania-defesa-e-o-mar">
+        <summary class="reader__section-title">
+          3. Eixo I: Soberania, Defesa e o Mar
+          <a href="#3-eixo-i-soberania-defesa-e-o-mar" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '3-eixo-i-soberania-defesa-e-o-mar')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-callout article-callout--info">
+            <p style="margin:0;"><strong>Defesa Robusta &amp; Soberania Ativa:</strong> Portugal detém uma Zona
+              Económica Exclusiva de cerca de 4 milhões de km². Defendemos o reforço das Forças Armadas com tecnologia
+              dual-use, ciberdefesa e capacidade de interceção para sermos o pilar de segurança do Atlântico.</p>
+          </div>
 
-</div>
-</details>
-<details class="reader__section" open id="4-eixo-ii-saude">
-<summary class="reader__section-title">
-4. EIXO II: SAÚDE
-<a href="#4-eixo-ii-saude" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'4-eixo-ii-saude')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Tecnologia para Cuidar das Pessoas</p>
-<p>A saúde deve ser sinónimo de eficiência e humanidade, não de listas de espera e burocracia. O sistema de saúde português tem profissionais extraordinários, mas está sobrecarregado de processos administrativos que os afastam do que realmente importa: o cuidado ao paciente.</p>
-<h4 class="reader__subsection" id="modernizacao-e-performance">Modernização e Performance</h4>
-<p>Propomos a automatização massiva do trabalho administrativo nos hospitais e centros de saúde. Sistemas de inteligência artificial para gestão de agendamentos, triagem inicial e previsão de necessidades de recursos. O objetivo é libertar médicos e enfermeiros para fazerem aquilo para que foram formados: tratar de pessoas, não de papéis.</p>
-<h4 class="reader__subsection" id="valorizacao-real">Valorização Real</h4>
-<p>Para exigir performance, o Estado tem de garantir dignidade a quem salva vidas. Defendemos salários competitivos que evitem a fuga de talentos para outros países, melhores condições de trabalho e um plano de carreira que premie a excelência. A poupança gerada pela automatização será canalizada para valorizar os profissionais.</p>
-<h4 class="reader__subsection" id="interoperabilidade-de-dados">Interoperabilidade de Dados</h4>
-<p>O historial clínico de cada português deve acompanhá-lo em qualquer hospital ou centro de saúde do país, de forma segura e instantânea. Isto permite medicina preventiva, diagnósticos mais rápidos e tratamentos mais eficazes. A tecnologia já existe; falta vontade política para a implementar.</p>
+          <h3 class="reader__subsection" id="o-plano-portugal-90">O Plano Portugal 90% &amp; Hub Sul</h3>
+          <p>Transformar a nossa dimensão marítima num motor industrial de robótica submarina e dados oceânicos. Beja e
+            o Algarve serão os polos estratégicos da aviação, monitorização e cibersegurança do Atlântico Sul.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="5-eixo-iii-educacao">
-<summary class="reader__section-title">
-5. EIXO III: EDUCAÇÃO
-<a href="#5-eixo-iii-educacao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'5-eixo-iii-educacao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Preparar o Futuro com Consciência</p>
-<p>&quot;Cada novo salto tecnológico levou-nos a um novo pensamento. Temos que nos adaptar e perceber o futuro.&quot;</p>
-<h4 class="reader__subsection" id="ia-como-vantagem-nao-como-ameaca">IA como Vantagem, Não como Ameaça</h4>
-<p>A inteligência artificial não é um problema a combater nas escolas; é uma ferramenta a dominar. Propomos integrar a IA nos currículos para tornar os alunos mais alertas, críticos e capazes. A tecnologia deve expandir o pensamento humano, não substituí-lo. Os jovens portugueses devem sair da escola sabendo usar estas ferramentas de forma ética e produtiva.</p>
-<h4 class="reader__subsection" id="literacia-global">Literacia Global</h4>
-<p>Uma educação focada na realidade global, preparando cidadãos conscientes e prontos para os desafios técnicos do futuro. Isto inclui literacia de dados, pensamento computacional, resolução de problemas complexos e competências socioemocionais. O mundo mudou; o ensino tem de acompanhar.</p>
-<h4 class="reader__subsection" id="ensino-adaptativo">Ensino Adaptativo</h4>
-<p>Utilização de plataformas que percebam o ritmo de cada aluno, garantindo que ninguém fica para trás e que o talento de cada um é maximizado. A tecnologia permite personalizar a aprendizagem de forma nunca antes possível. Portugal deve liderar esta transformação pedagógica.</p>
+      <!-- Section 4 -->
+      <details class="reader__section" open id="4-eixo-ii-saude">
+        <summary class="reader__section-title">
+          4. Eixo II: Saúde - Tecnologia para Cuidar das Pessoas
+          <a href="#4-eixo-ii-saude" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '4-eixo-ii-saude')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>O SNS conta com profissionais de saúde de excelência, contudo sufocados pela burocracia. O UNIR propõe:</p>
+          <ul class="article-takeaways__list">
+            <li class="article-takeaways__item"><strong>Automação por IA:</strong> Libertar médicos e enfermeiros do
+              trabalho administrativo para se focarem 100% nos doentes.</li>
+            <li class="article-takeaways__item"><strong>Valorização Carreiras:</strong> Salários competitivos para
+              travar a fuga de talentos para o privado e para o estrangeiro.</li>
+            <li class="article-takeaways__item"><strong>Historial Clínico Único:</strong> Interoperabilidade instantânea
+              dos dados do paciente em qualquer unidade de saúde do país.</li>
+          </ul>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="6-eixo-iv-imigracao">
-<summary class="reader__section-title">
-6. EIXO IV: IMIGRAÇÃO
-<a href="#6-eixo-iv-imigracao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'6-eixo-iv-imigracao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Regulação para o Bem de Todos</p>
-<p>Acreditamos num Portugal dinâmico, aberto ao mundo, mas com regras claras. A imigração é vital para a demografia e economia do país, mas deve ser gerida de forma inteligente para beneficiar tanto quem chega como quem cá está.</p>
-<h4 class="reader__subsection" id="controlo-e-equilibrio">Controlo e Equilíbrio</h4>
-<p>A imigração deve ser regulada e planeada de acordo com as necessidades reais do mercado de trabalho e a capacidade de integração do país. Defendemos um modelo de Controlo Ativo que cruza as necessidades económicas com a entrada de pessoas, garantindo que quem chega tem condições dignas e acesso imediato a serviços públicos.</p>
-<h4 class="reader__subsection" id="integracao-funcional">Integração Funcional</h4>
-<p>Só com ordem garantimos a segurança e a integração digna de quem chega e de quem cá está. A regulação é a única forma de evitar a exploração laboral, a criação de guetos e a pressão insustentável sobre os serviços públicos. Quem contribui para Portugal deve ser acolhido com dignidade; quem não respeita as regras deve enfrentar consequências.</p>
+      <!-- Section 5 -->
+      <details class="reader__section" open id="5-eixo-iii-educacao">
+        <summary class="reader__section-title">
+          5. Eixo III: Educação - Preparar o Futuro com Consciência
+          <a href="#5-eixo-iii-educacao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '5-eixo-iii-educacao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>A Inteligência Artificial deve ser encarada nas escolas como uma alavanca de aprendizagem e não como um
+            inimigo. O modelo pedagógico do UNIR baseia-se em <strong>ensino adaptativo</strong> personalizado ao ritmo
+            de cada aluno e na literacia digital e crítica de nível global.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="7-eixo-v-justica-e-transparencia">
-<summary class="reader__section-title">
-7. EIXO V: JUSTIÇA E TRANSPARÊNCIA
-<a href="#7-eixo-v-justica-e-transparencia" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'7-eixo-v-justica-e-transparencia')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Combate à Corrupção sem Tréguas</p>
-<p>A justiça lenta não é justiça. A corrupção impune corrói a confiança nas instituições e afasta o investimento. O UNIR propõe uma reforma profunda do sistema judicial, focada na eficiência e na tolerância zero para quem abusa do poder.</p>
-<h4 class="reader__subsection" id="automatizacao-processual">Automatização Processual</h4>
-<p>Utilização de inteligência artificial para eliminar a burocracia judicial e acelerar processos. Sistemas de gestão de casos que identifiquem automaticamente duplicações, priorizem urgências e reduzam os tempos de espera. O objetivo: resolver processos em meses, não em anos.</p>
-<h4 class="reader__subsection" id="rastreio-de-dados-contra-a-corrupcao">Rastreio de Dados Contra a Corrupção</h4>
-<p>Implementação de sistemas de cruzamento automático de dados fiscais e patrimoniais para todos os cargos públicos. Quem não consegue explicar a origem do seu património enfrenta investigação imediata. A tecnologia permite detetar padrões de enriquecimento ilícito que escapam à fiscalização tradicional.</p>
-<h4 class="reader__subsection" id="penalizacoes-exemplares">Penalizações Exemplares</h4>
-<p>A fraude em subsídios públicos será punida com a devolução em dobro do valor e a interdição imediata de acesso a qualquer cargo público ou apoio estatal por dez anos. A impunidade termina aqui.</p>
+      <!-- Section 6 -->
+      <details class="reader__section" open id="6-eixo-iv-imigracao">
+        <summary class="reader__section-title">
+          6. Eixo IV: Imigração - Regulação para o Bem de Todos
+          <a href="#6-eixo-iv-imigracao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '6-eixo-iv-imigracao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>Acreditamos num Portugal dinâmico e acolhedor, dotado de <strong>regras claras de regulação ativa</strong>.
+            Apenas com planeamento rigoroso e cruzamento com as necessidades da economia é possível erradicar a
+            exploração laboral e garantir integração digna em termos de habitação, saúde e educação.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="8-eixo-vi-gestao-e-financas-robustas">
-<summary class="reader__section-title">
-8. EIXO VI: GESTÃO E FINANÇAS ROBUSTAS
-<a href="#8-eixo-vi-gestao-e-financas-robustas" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'8-eixo-vi-gestao-e-financas-robustas')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Sustentabilidade para as Gerações Futuras</p>
-<p>Um projeto ambicioso exige finanças sólidas. Não podemos prometer modernização, defesa robusta e serviços públicos de excelência sem explicar como os vamos financiar. O UNIR propõe uma estratégia de geração de riqueza, não apenas de redistribuição.</p>
-<h4 class="reader__subsection" id="estado-plataforma">Estado Plataforma</h4>
-<p>Antes de pedir dinheiro aos contribuintes, o Estado tem de parar de desperdiçar. A digitalização total da administração pública, a eliminação de organismos redundantes e a automatização de processos libertam centenas de milhões de euros por ano que podem ser reinvestidos em serviços de qualidade.</p>
-<h4 class="reader__subsection" id="fiscalidade-competitiva">Fiscalidade Competitiva</h4>
-<p>Criação de zonas económicas especiais para empresas de alta tecnologia, semicondutores e indústria de defesa, com taxas de IRC reduzidas condicionadas a investimento em I&amp;D e criação de emprego qualificado em Portugal. Queremos ser um Hub de Valor, não um paraíso fiscal.</p>
-<h4 class="reader__subsection" id="economia-do-mar">Economia do Mar</h4>
-<p>O maior ativo de Portugal é o Atlântico. Investiremos na exploração sustentável de recursos marinhos, na indústria naval de alta tecnologia e na exportação de soluções de defesa. Portugal passará de comprador de tecnologia a vendedor de soberania.</p>
+      <!-- Section 7 -->
+      <details class="reader__section" open id="7-eixo-v-justica-e-transparencia">
+        <summary class="reader__section-title">
+          7. Eixo V: Justiça e Transparência
+          <a href="#7-eixo-v-justica-e-transparencia" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '7-eixo-v-justica-e-transparencia')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-callout article-callout--warning">
+            <div class="article-callout__title">⚠️ Tolerância Zero à Corrupção</div>
+            <p style="margin:0;">Implementação de automatização processual por IA nos tribunais e cruzamento patrimonial
+              em tempo real de todos os titulares de cargos públicos. Fraude em dinheiros públicos será punida com
+              devolução em dobro e interdição por 10 anos.</p>
+          </div>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="9-a-plataforma-unir">
-<summary class="reader__section-title">
-9. A PLATAFORMA UNIR
-<a href="#9-a-plataforma-unir" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'9-a-plataforma-unir')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>Onde a Solução Acontece</p>
-<p>O UNIR não é apenas um partido; é uma nova forma de fazer política. Propomos a criação de uma plataforma digital independente onde os problemas do país são analisados com dados concretos e resolvidos em conjunto com a comunidade.</p>
-<h4 class="reader__subsection" id="dados-concretos">Dados Concretos</h4>
-<p>Antes de qualquer debate, a plataforma apresenta os factos: estatísticas reais sobre saúde, educação, economia, segurança. Ninguém opina sem informação. As decisões são baseadas em evidências, não em retórica ou ideologia.</p>
-<h4 class="reader__subsection" id="comunidade-de-acao">Comunidade de Ação</h4>
-<p>Um espaço onde especialistas e cidadãos colaboram para encontrar o caminho mais rápido para a solução. Propostas são avaliadas com base em métricas de impacto, não em afiliações políticas. Quem tem boas ideias, independentemente da sua origem, é ouvido.</p>
-<h4 class="reader__subsection" id="transparencia-total">Transparência Total</h4>
-<p>Todos os contratos públicos, subsídios e decisões governamentais serão auditáveis em tempo real através da plataforma. O cidadão pode ver: Quem recebeu dinheiro público? Para quê? Qual foi o resultado? A opacidade é o terreno fértil da corrupção; a transparência é o seu antídoto.</p>
+      <!-- Section 8 -->
+      <details class="reader__section" open id="8-eixo-vi-gestao-e-financas-robustas">
+        <summary class="reader__section-title">
+          8. Eixo VI: Gestão e Finanças Robustas
+          <a href="#8-eixo-vi-gestao-e-financas-robustas" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '8-eixo-vi-gestao-e-financas-robustas')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>Substituir o desperdício estatal pelo modelo de <strong>Estado Plataforma</strong>. Transição para uma
+            fiscalidade altamente competitiva em polos tecnológicos e valorização do Atlântico como a maior fonte de
+            receita sustentável do país.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-<details class="reader__section" open id="10-conclusao">
-<summary class="reader__section-title">
-10. CONCLUSÃO
-<a href="#10-conclusao" class="anchor-link" title="Copiar link da seccao" onclick="copyAnchorLink(event,'10-conclusao')">#</a>
-</summary>
-<div class="reader__section-body">
-<p>O Compromisso com os Portugueses</p>
-<p>Somos seres humanos que querem o melhor para Portugal e para os portugueses. Não nos interessa ganhar debates televisivos ou alimentar guerras de trincheiras ideológicas. Interessa-nos resolver problemas. Interessa-nos resultados. Interessa-nos que cada português possa ter orgulho do seu país.</p>
-<p>O UNIR é a estrutura de confiança, poder e segurança que Portugal precisa para deixar de apenas sobreviver e passar a liderar. Temos o mar, temos a posição estratégica, temos os recursos humanos. Falta-nos apenas a vontade coletiva de sermos melhores.</p>
-<p>Este manifesto é o primeiro passo. A partir daqui, construiremos juntos as soluções que o país precisa. Sem filtros ideológicos, apenas com a determinação de resolver.</p>
-<p>&quot;UNIR para Resolver. UNIR para Liderar.&quot;</p>
-<p>Pelo futuro de Portugal,</p>
-<p>Comissão Fundadora do UNIR</p>
-<p>Janeiro de 2026</p>
+      <!-- Section 9 -->
+      <details class="reader__section" open id="9-a-plataforma-unir">
+        <summary class="reader__section-title">
+          9. A Plataforma UNIR: Onde a Solução Acontece
+          <a href="#9-a-plataforma-unir" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '9-a-plataforma-unir')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>O UNIR disponibiliza uma plataforma participativa transparente onde cidadãos e especialistas analisam dados
+            abertos e colaboram em propostas legislativas sem intermediários ideológicos.</p>
+        </div>
+      </details>
 
-</div>
-</details>
-</div>
+      <!-- Section 10 -->
+      <details class="reader__section" open id="10-conclusao">
+        <summary class="reader__section-title">
+          10. Conclusão: UNIR para Resolver, UNIR para Liderar
+          <a href="#10-conclusao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '10-conclusao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>Este manifesto é o nosso compromisso com o futuro. Temos o território, a localização e o talento. Falta-nos
+            apenas a coragem coletiva de unir o país em torno do que realmente funciona.</p>
+        </div>
+      </details>
 
-<footer class="reader__footer">
-  <p>Documento Estrategico &middot; UNIR &mdash; Unidos pela Nacao, Inovacao e Responsabilidade</p>
-</footer>
-
-</div>
-</article>
-
-<div class="article-prevnext">
-  <a href="/documentos/portugal-mundo-multipolar/" onclick="event.preventDefault();navigateWithTransition('/documentos/portugal-mundo-multipolar/')">&larr; Portugal no Mundo Multipolar</a>
-  <a href="/documentos/portugal-90/" onclick="event.preventDefault();navigateWithTransition('/documentos/portugal-90/')">Portugal 90% &rarr;</a>
-</div>
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="nav__logo-text">UNIR</span>
-      <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
     </div>
-    <div class="footer__links">
-      <a href="/" class="footer__link">Inicio</a>
-      <a href="/documentos/" class="footer__link">Documentos</a>
-      <a href="/candidatar/" class="footer__link">Integrar</a>
-    </div>
-    <p class="footer__copy">Feito em Portugal. Por cidadaos. Para cidadaos.</p>
+  </article>
+
+  <div class="article-prevnext">
+    <a href="/documentos/justica-digital/"
+      onclick="event.preventDefault(); navigateWithTransition('/documentos/justica-digital/');">← Justiça Digital</a>
+    <a href="/documentos/portugal-90/"
+      onclick="event.preventDefault(); navigateWithTransition('/documentos/portugal-90/');">Portugal 90% →</a>
   </div>
-</footer>
 
-<div id="toast" class="toast-notification">Link copiado!</div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-text">UNIR</span>
+        <p class="footer__tagline">Um movimento feito por pessoas. Para pessoas.</p>
+      </div>
+      <div class="footer__links">
+        <a href="/" class="footer__link">Início</a>
+        <a href="/documentos/" class="footer__link">Documentos</a>
+        <a href="/candidatar/" class="footer__link">Integrar</a>
+      </div>
+      <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>
+    </div>
+  </footer>
 
-<script>
-(function(){
-  var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
-  document.querySelectorAll('a[href^="/"]').forEach(function(l){
-    var h=l.getAttribute('href');
-    if(h.startsWith('//')||h.startsWith('http')||h.startsWith('/#'))return;
-    if(h==='/'){l.setAttribute('href',b+'/');return}
-    if(h.startsWith('/documentos')){l.setAttribute('href',b+'/documentos/');return}
-    if(h.startsWith('/candidatar')){l.setAttribute('href',b+'/candidatar/');return}
-  });
-})();
+  <div id="toast" class="toast-notification">Link copiado!</div>
 
-function initTheme(){
-  var t=localStorage.getItem('unir_theme');
-  var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  if(t==='dark'||(!t&&d)){document.documentElement.setAttribute('data-theme','dark');updateUI(true);}
-  else{document.documentElement.removeAttribute('data-theme');updateUI(false);}
-}
-function toggleTheme(){
-  var is=document.documentElement.getAttribute('data-theme')==='dark';
-  if(is){document.documentElement.removeAttribute('data-theme');localStorage.setItem('unir_theme','light');updateUI(false);}
-  else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('unir_theme','dark');updateUI(true);}
-}
-function updateUI(dark){
-  var icons=document.querySelectorAll('#themeIcon,#themeIcon2');
-  var labels=document.querySelectorAll('#themeLabel,#themeLabel2');
-  icons.forEach(function(i){i.textContent=dark?'☀️':'🌙';});
-  labels.forEach(function(l){l.textContent=dark?'Modo Claro':'Modo Escuro';});
-}
-initTheme();
+  <script>
+    (function () {
+      var b = window.location.pathname.replace(/\/[^/]*\/?$/, '').replace(/\/[^/]*\/?$/, '');
+      document.querySelectorAll('a[href^="/"]').forEach(function (l) {
+        var h = l.getAttribute('href');
+        if (h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (h === '/') { l.setAttribute('href', b + '/'); return; }
+        if (h.startsWith('/documentos')) { l.setAttribute('href', b + '/documentos/'); return; }
+        if (h.startsWith('/candidatar')) { l.setAttribute('href', b + '/candidatar/'); return; }
+      });
+    })();
 
-function copyAnchorLink(e,id){
-  e.preventDefault();e.stopPropagation();
-  var url=window.location.origin+window.location.pathname+'#'+id;
-  navigator.clipboard.writeText(url).then(function(){showToast('Link da seccao copiado!');history.pushState(null,null,'#'+id);})
-    .catch(function(){showToast('Erro ao copiar link');});
-}
-function shareArticle(){
-  if(navigator.share){navigator.share({title:document.title,url:window.location.href}).catch(function(){});}
-  else{navigator.clipboard.writeText(window.location.href).then(function(){showToast('Link copiado!');});}
-}
-function navigateWithTransition(url){
-  if(document.startViewTransition){document.startViewTransition(function(){window.location.href=url;});}
-  else{window.location.href=url;}
-}
-function showToast(msg){
-  var t=document.getElementById('toast');if(!t)return;
-  t.textContent=msg;t.classList.add('toast-notification--show');
-  setTimeout(function(){t.classList.remove('toast-notification--show');},2600);
-}
+    function initTheme() {
+      var savedTheme = localStorage.getItem('unir_theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        updateThemeUI(false);
+      }
+    }
 
-(function(){
-  var bar=document.getElementById('progressFill');
-  if(bar){window.addEventListener('scroll',function(){var h=document.documentElement;
-    var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-    bar.style.width=Math.min(100,Math.max(0,pct))+'%';});}
-  var tocLinks=document.querySelectorAll('.reader__toc-link');
-  var headings=document.querySelectorAll('.reader__section[id]');
-  if(headings.length){
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){
-      if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('reader__toc-link--active');});
-      var link=document.querySelector('.reader__toc-link[href="#'+e.target.id+'"]');
-      if(link)link.classList.add('reader__toc-link--active');}
-    });},{rootMargin:'-10% 0px -70% 0px'});
-    headings.forEach(function(h){obs.observe(h);});
-  }
-  var tt=document.getElementById('tocToggle'),tn=document.getElementById('tocNav');
-  if(tt&&tn){tt.addEventListener('click',function(){
-    var o=!tn.classList.contains('reader__toc--open');
-    tn.classList.toggle('reader__toc--open',o);
-    tt.classList.toggle('reader__toc-toggle--open',o);
-    tt.setAttribute('aria-expanded',o?'true':'false');
-  });}
-  var nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
-  if(nt&&nl){nt.addEventListener('click',function(){nl.classList.toggle('nav__links--open');});}
-})();
-</script>
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('unir_theme', 'light');
+        updateThemeUI(false);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('unir_theme', 'dark');
+        updateThemeUI(true);
+      }
+    }
+
+    function updateThemeUI(isDark) {
+      document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+        btn.innerHTML = (isDark ? '☀️' : '🌙') + ' <span>' + (isDark ? 'Modo Claro' : 'Modo Escuro') + '</span>';
+      });
+    }
+    initTheme();
+    document.addEventListener('DOMContentLoaded', initTheme);
+
+    function copyAnchorLink(event, id) {
+      event.preventDefault();
+      event.stopPropagation();
+      var url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url).then(function () {
+        showToast('Link da secção copiado!');
+        history.pushState(null, null, '#' + id);
+      }).catch(function () {
+        showToast('Erro ao copiar link');
+      });
+    }
+
+    function shareArticle() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        }).catch(function () { });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          showToast('Link do artigo copiado!');
+        });
+      }
+    }
+
+    function navigateWithTransition(url) {
+      if (document.startViewTransition) {
+        document.startViewTransition(function () {
+          window.location.href = url;
+        });
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('toast-notification--show');
+      setTimeout(function () {
+        toast.classList.remove('toast-notification--show');
+      }, 2600);
+    }
+
+    (function () {
+      var bar = document.getElementById('progressFill');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var h = document.documentElement;
+          var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+          bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        });
+      }
+
+      var tocLinks = document.querySelectorAll('.reader__toc-link');
+      var headings = document.querySelectorAll('.reader__section[id]');
+      if (headings.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              tocLinks.forEach(function (l) { l.classList.remove('reader__toc-link--active'); });
+              var link = document.querySelector('.reader__toc-link[href="#' + e.target.id + '"]');
+              if (link) link.classList.add('reader__toc-link--active');
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        headings.forEach(function (h) { observer.observe(h); });
+      }
+
+      var tocToggle = document.getElementById('tocToggle');
+      var tocNav = document.getElementById('tocNav');
+      if (tocToggle && tocNav) {
+        tocToggle.addEventListener('click', function () {
+          var open = !tocNav.classList.contains('reader__toc--open');
+          tocNav.classList.toggle('reader__toc--open', open);
+          tocToggle.classList.toggle('reader__toc-toggle--open', open);
+          tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          navLinks.classList.toggle('nav__links--open');
+        });
+      }
+    })();
+  </script>
 
 </body>
+
 </html>
