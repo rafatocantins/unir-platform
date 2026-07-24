@@ -13,3 +13,4 @@ __pycache__/
 *.pyo
 *.db
 *.sqlite3
+whitepapers_backup/

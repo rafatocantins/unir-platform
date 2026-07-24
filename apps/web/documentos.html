@@ -225,9 +225,9 @@
         subtitle: 'Estratégia Lusófona e Tecnológica 2035',
         meta: 'Documento Estratégico · Maio 2026',
         desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.',
-        url_leitura: BASE + '/docs/whitepapers/WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR.md',
-        url_download: BASE + '/docs/whitepapers/WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR.md',
-        tipo: 'Markdown'
+        url_leitura: BASE + '/docs/whitepapers/WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR.html',
+        url_download: BASE + '/docs/whitepapers/WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR.docx',
+        tipo: 'DOCX (208 KB)'
       },
       {
         id: 'manifesto',
@@ -236,9 +236,9 @@
         subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade',
         meta: 'Documento Fundacional · Janeiro 2026',
         desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças. Assenta em Soluções Reais, rejeitando o espectro esquerda-direita tradicional.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Manifesto_Fundador.html',
         url_download: BASE + '/docs/whitepapers/UNIR_Manifesto_Fundador.docx',
-        tipo: 'DOCX (16 KB)'
+        tipo: 'DOCX (18 KB)'
       },
       {
         id: 'eixo-soberania',
@@ -247,9 +247,9 @@
         subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul',
         meta: 'Documento Programático · Janeiro 2026',
         desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech. Assume a moratória nacional de mineração em mar profundo até 2050.',
-        url_leitura: BASE + '/docs/whitepapers/UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar.md',
-        url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar.md',
-        tipo: 'Markdown'
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar.html',
+        url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar.docx',
+        tipo: 'DOCX (202 KB)'
       },
       {
         id: 'alternativas-mar',
@@ -258,9 +258,9 @@
         subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech',
         meta: 'Anexo ao Eixo I · Janeiro 2026',
         desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining (reciclagem de metais críticos), Biotecnologia marinha (fármacos e materiais) e Deep-Sea Tech (robótica e dados oceânicos). Com roteiro faseado até 2050.',
-        url_leitura: BASE + '/docs/whitepapers/UNIR_Eixo_I_Anexo_B_Alternativas_Minerais.md',
-        url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Anexo_B_Alternativas_Minerais.md',
-        tipo: 'Markdown'
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Eixo_I_Anexo_B_Alternativas_Minerais.html',
+        url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Anexo_B_Alternativas_Minerais.docx',
+        tipo: 'DOCX (198 KB)'
       },
       {
         id: 'justica-transparencia',
@@ -269,9 +269,9 @@
         subtitle: 'IA nos Tribunais, Combate à Corrupção',
         meta: 'Documento Programático · Janeiro 2026',
         desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa. A corrupção custa a Portugal €18,2 mil milhões/ano.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Reforma_Justica_Transparencia.html',
         url_download: BASE + '/docs/whitepapers/UNIR_Reforma_Justica_Transparencia.docx',
-        tipo: 'DOCX (22 KB)'
+        tipo: 'DOCX (21 KB)'
       },
       {
         id: 'justica-digital',
@@ -280,9 +280,9 @@
         subtitle: 'Identidade Digital e Responsabilização de Plataformas',
         meta: 'Documento Programático · Janeiro 2026',
         desc: 'Sistema Nacional de Identidade Digital Verificada (SNIDV). Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global para plataformas que incumprirem.',
-        url_leitura: null,
+        url_leitura: BASE + '/docs/whitepapers/UNIR_Justica_Digital.html',
         url_download: BASE + '/docs/whitepapers/UNIR_Justica_Digital.docx',
-        tipo: 'DOCX (17 KB)'
+        tipo: 'DOCX (21 KB)'
       }
     ];
 
@@ -320,7 +320,7 @@
       });
     }
 
-    // ===== LEITOR MODAL (Markdown -> HTML) =====
+    // ===== LEITOR MODAL (HTML direto) =====
     function openReader(docId) {
       var doc = documentos.find(function(d) { return d.id === docId; });
       if (!doc || !doc.url_leitura) return;
@@ -333,8 +333,12 @@
 
       fetch(doc.url_leitura)
         .then(function(r) { return r.text(); })
-        .then(function(md) {
-          body.innerHTML = renderMarkdown(md);
+        .then(function(html) {
+          // Extract body content from full HTML
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(html, 'text/html');
+          var content = doc.body.innerHTML;
+          body.innerHTML = content;
         })
         .catch(function() {
           body.innerHTML = '<p style="color:#e53935;">Erro ao carregar o documento.</p>';
@@ -351,93 +355,6 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeReader();
     });
-
-    // ===== MARKDOWN SIMPLES -> HTML =====
-    function renderMarkdown(text) {
-      var lines = text.split('\n');
-      var html = '';
-      var inList = false;
-      var inTable = false;
-      var tableHTML = '';
-
-      function closeList() { if (inList) { html += '</ul>\n'; inList = false; } }
-      function closeTable() { if (inTable) { html += '</tbody></table>\n'; inTable = false; } }
-
-      lines.forEach(function(line) {
-        var trimmed = line.trim();
-
-        // Tabela
-        if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
-          var cells = trimmed.split('|').slice(1, -1).map(function(c) { return c.trim(); });
-          if (!inTable) {
-            tableHTML = '<table><thead><tr>';
-            cells.forEach(function(c) { tableHTML += '<th>' + escapeHtml(c) + '</th>'; });
-            tableHTML += '</tr></thead><tbody>';
-            inTable = true;
-          } else if (cells.every(function(c) { return /^[-:\s]+$/.test(c); })) {
-            // Linha separadora, ignorar
-          } else {
-            tableHTML += '<tr>';
-            cells.forEach(function(c) { tableHTML += '<td>' + escapeHtml(c) + '</td>'; });
-            tableHTML += '</tr>';
-          }
-          return;
-        }
-        if (inTable) {
-          closeTable();
-        }
-
-        closeList();
-
-        // Headers
-        if (trimmed.startsWith('# ')) { html += '<h1>' + escapeHtml(trimmed.slice(2)) + '</h1>\n'; return; }
-        if (trimmed.startsWith('## ')) { html += '<h2>' + escapeHtml(trimmed.slice(3)) + '</h2>\n'; return; }
-        if (trimmed.startsWith('### ')) { html += '<h3>' + escapeHtml(trimmed.slice(4)) + '</h3>\n'; return; }
-        if (trimmed.startsWith('#### ')) { html += '<h3>' + escapeHtml(trimmed.slice(5)) + '</h3>\n'; return; }
-
-        // HR
-        if (/^[-*]{3,}$/.test(trimmed)) { html += '<hr>\n'; return; }
-
-        // Lista
-        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-          if (!inList) { html += '<ul>\n'; inList = true; }
-          html += '<li>' + inlineMarkdown(trimmed.slice(2)) + '</li>\n';
-          return;
-        }
-
-        // Parágrafo
-        if (trimmed === '') {
-          html += '\n';
-        } else {
-          html += '<p>' + inlineMarkdown(trimmed) + '</p>\n';
-        }
-      });
-
-      closeList();
-      if (inTable) closeTable();
-
-      // Tables that were collected
-      if (tableHTML) html += tableHTML + '</tbody></table>\n';
-
-      return html;
-    }
-
-    function inlineMarkdown(text) {
-      var t = escapeHtml(text);
-      // Bold ** **
-      t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      // Italic * *
-      t = t.replace(/\*(.+?)\*/g, '<em>$1</em>');
-      // Code ` `
-      t = t.replace(/`(.+?)`/g, '<code>$1</code>');
-      return t;
-    }
-
-    function escapeHtml(text) {
-      var div = document.createElement('div');
-      div.appendChild(document.createTextNode(text));
-      return div.innerHTML;
-    }
 
     // ===== INICIAR =====
     renderCards();
