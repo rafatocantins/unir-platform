@@ -25,43 +25,55 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
   <style>
-    /* View transition — morph card title into article title */
-    ::view-transition-old(doc-multipolar) { animation: vt-out 0.2s ease-out forwards; }
-    ::view-transition-new(doc-multipolar) { animation: vt-in 0.3s ease-out forwards; }
-    @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
-    @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-    ::view-transition-old(root) { animation: vt-page-out 0.15s ease-out forwards; }
-    ::view-transition-new(root) { animation: vt-page-in 0.25s ease-out forwards; }
-    @keyframes vt-page-out { to { opacity: 0.4; } }
-    @keyframes vt-page-in { from { opacity: 0.6; } to { opacity: 1; } }
+    /* View transition morphing rules */
+    @view-transition { navigation: auto; }
+    
+    ::view-transition-old(root) { animation: vt-fade-out 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    ::view-transition-new(root) { animation: vt-fade-in 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
-    .doc-page { padding: 120px 0 80px; background: #f5f5f5; min-height: 100vh; }
-    .doc-page__title { font-size: 2.2rem; font-weight: 800; color: #212121; text-align: center; margin-bottom: 8px; }
-    .doc-page__subtitle { font-size: 1.05rem; color: #616161; text-align: center; max-width: 600px; margin: 0 auto 48px; line-height: 1.6; }
-    .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
-    .doc-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
-    .doc-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-    .doc-card__icon { font-size: 2rem; margin-bottom: 12px; }
-    .doc-card__title { font-size: 1.1rem; font-weight: 700; color: #212121; margin-bottom: 4px; line-height: 1.3; }
-    .doc-card__meta { font-size: 0.8rem; color: #9e9e9e; margin-bottom: 12px; }
-    .doc-card__desc { font-size: 0.9rem; color: #616161; line-height: 1.6; flex-grow: 1; margin-bottom: 16px; }
-    .doc-card__actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .doc-card__actions .btn { font-size: 0.85rem; padding: 8px 20px; }
-
-    /* ── Fullscreen Reader Modal ── */
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; overflow-y: auto; }
-    .modal-overlay--open { display: block; }
-    .modal-close {
-      position: fixed; top: 20px; right: 24px; z-index: 2001;
-      background: rgba(0,0,0,0.06); border: none; border-radius: 50%;
-      width: 40px; height: 40px; font-size: 1.3rem; cursor: pointer;
-      color: #616161; display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
+    @keyframes vt-fade-out {
+      from { opacity: 1; transform: scale(1) translateY(0); }
+      to { opacity: 0; transform: scale(0.99) translateY(-6px); }
     }
-    .modal-close:hover { background: rgba(0,0,0,0.12); }
+    @keyframes vt-fade-in {
+      from { opacity: 0; transform: scale(1.01) translateY(6px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .doc-page { padding: 120px 0 80px; background: var(--bg-secondary, #f5f5f5); min-height: 100vh; transition: opacity 0.2s ease; }
+    .doc-page__title { font-size: 2.2rem; font-weight: 800; color: var(--text-primary, #212121); text-align: center; margin-bottom: 8px; }
+    .doc-page__subtitle { font-size: 1.05rem; color: var(--text-muted, #616161); text-align: center; max-width: 600px; margin: 0 auto 48px; line-height: 1.6; }
+    .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+    
+    .doc-card {
+      background: var(--bg-card, #fff);
+      border-radius: 14px;
+      padding: 28px;
+      border: 1px solid var(--border-color, #E2E8F0);
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.06));
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .doc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md, 0 8px 24px rgba(13,71,161,0.12));
+      border-color: var(--brand-primary, #0D47A1);
+    }
+    .doc-card__icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .doc-card__title { font-size: 1.15rem; font-weight: 700; color: var(--brand-primary, #0D47A1); margin-bottom: 6px; line-height: 1.3; }
+    .doc-card__meta { font-size: 0.82rem; color: var(--text-muted, #9e9e9e); margin-bottom: 12px; }
+    .doc-card__desc { font-size: 0.92rem; color: var(--text-secondary, #616161); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
+    .doc-card__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+    .doc-card__actions .btn { font-size: 0.85rem; padding: 8px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+
+    /* Inline Seamless Article Container */
+    #articleView { min-height: 100vh; padding-top: 0; }
 
     @media (max-width: 640px) {
-      .doc-page { padding: 100px 0 60px; }
+      .doc-page { padding: 90px 0 60px; }
       .doc-page__title { font-size: 1.6rem; }
       .doc-grid { grid-template-columns: 1fr; }
     }
@@ -78,12 +90,16 @@
         <a href="/" class="nav__link">Início</a>
         <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
         <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+        <button class="theme-toggle" id="themeToggleNav" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro" style="margin-left: 8px;">
+          <span id="themeIconNav">🌙</span> <span id="themeLabelNav">Modo Escuro</span>
+        </button>
       </div>
       <button class="nav__hamburger" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </nav>
 
-  <section class="doc-page">
+  <!-- Grid View Section -->
+  <section class="doc-page" id="docPage">
     <div class="container">
       <h1 class="doc-page__title">Documentos e Programa</h1>
       <p class="doc-page__subtitle">Conhece as propostas, os whitepapers e os documentos estratégicos do UNIR. Cada documento explica uma área do nosso programa.</p>
@@ -91,12 +107,10 @@
     </div>
   </section>
 
-  <div class="modal-overlay" id="readerModal">
-    <button class="modal-close" onclick="closeReader()" aria-label="Fechar">&#10005;</button>
-    <div id="readerContent"></div>
-  </div>
+  <!-- Seamless Inline Article View (ZERO FLASH) -->
+  <main id="articleView" style="display: none;"></main>
 
-  <footer class="footer">
+  <footer class="footer" id="siteFooter">
     <div class="container footer__inner">
       <div class="footer__brand">
         <span class="nav__logo-text">UNIR</span>
@@ -111,7 +125,10 @@
     </div>
   </footer>
 
+  <div id="toast" class="toast-notification">Link copiado para a área de transferência!</div>
+
   <script>
+    // ── Relative Path Normalizer ──
     (function(){
       var base = window.location.pathname.replace(/\/[^/]*\/?$/, '');
       document.querySelectorAll('a[href^="/"]').forEach(function(l){
@@ -125,12 +142,11 @@
   </script>
 
   <script>
-    // ── JSON "base de dados" ──
     var BASE = window.location.pathname.replace(/\/[^/]*\/?$/, '');
     var DOCS = BASE + '/docs/whitepapers';
 
     var documentos = [
-      { id: 'multipolar',    icon: '🌍', title: 'Portugal no Mundo Multipolar',      subtitle: 'Estratégia Lusófona e Tecnológica 2035',     meta: 'Documento Estratégico · Maio 2026',    desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', file: 'WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR', slug: 'portugal-mundo-multipolar' },
+      { id: 'multipolar',    icon: '🌐', title: 'Portugal no Mundo Multipolar',      subtitle: 'Estratégia Lusófona e Tecnológica 2035',     meta: 'Documento Estratégico · Maio 2026',    desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', file: 'WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR', slug: 'portugal-mundo-multipolar' },
       { id: 'manifesto',     icon: '⚡', title: 'Manifesto Fundador',                  subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade', meta: 'Documento Fundacional · Janeiro 2026',  desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças.', file: 'UNIR_Manifesto_Fundador', slug: 'manifesto-fundador' },
       { id: 'soberania',     icon: '⚓', title: 'Portugal 90%',                       subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul', meta: 'Documento Programático · Janeiro 2026', desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech.', file: 'UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar', slug: 'portugal-90' },
       { id: 'alternativas',  icon: '🔄', title: 'Alternativas à Mineração Marinha',   subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech',  meta: 'Anexo ao Eixo I · Janeiro 2026',       desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining, Biotecnologia marinha e Deep-Sea Tech. Com roteiro faseado até 2050.', file: 'UNIR_Eixo_I_Anexo_B_Alternativas_Minerais', slug: 'alternativas-mineracao-marinha' },
@@ -138,74 +154,190 @@
       { id: 'digital',       icon: '🛡️', title: 'Justiça Digital',                    subtitle: 'Identidade Digital e Responsabilização de Plataformas', meta: 'Documento Programático · Janeiro 2026', desc: 'Sistema Nacional de Identidade Digital Verificada. Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global.', file: 'UNIR_Justica_Digital', slug: 'justica-digital' }
     ];
 
+    // Seamless Zero-Flash Article Loader (SPA Router)
+    function loadArticleSeamlessly(targetUrl, docSlug) {
+      var docPage = document.getElementById('docPage');
+      var articleView = document.getElementById('articleView');
+      var siteFooter = document.getElementById('siteFooter');
+
+      fetch(targetUrl)
+        .then(function(res) { return res.text(); })
+        .then(function(html) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(html, 'text/html');
+          
+          // Extract elements cleanly without duplicate cloning
+          var articleNav = doc.querySelector('.article-nav');
+          var progress = doc.querySelector('.reader__progress');
+          var article = doc.querySelector('.reader');
+          var prevNext = doc.querySelector('.article-prevnext');
+          
+          var container = document.createElement('div');
+          if (articleNav) container.appendChild(articleNav.cloneNode(true));
+          if (progress) container.appendChild(progress.cloneNode(true));
+          if (article) container.appendChild(article.cloneNode(true));
+          if (prevNext) container.appendChild(prevNext.cloneNode(true));
+
+          // Ensure title morph view-transition-name matches exact clicked doc
+          var heroTitle = container.querySelector('.article-hero__title');
+          var matchedDoc = documentos.find(function(d) { return d.slug === docSlug; });
+          if (heroTitle && matchedDoc) {
+            heroTitle.style.viewTransitionName = 'doc-title-' + matchedDoc.id;
+          }
+
+          var performSwap = function() {
+            docPage.style.display = 'none';
+            siteFooter.style.display = 'none';
+            articleView.innerHTML = '';
+            articleView.appendChild(container);
+            articleView.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            initLoadedArticleScripts(articleView);
+          };
+
+          if (document.startViewTransition) {
+            document.startViewTransition(performSwap);
+          } else {
+            performSwap();
+          }
+
+          history.pushState({ view: 'article', slug: docSlug, url: targetUrl }, '', targetUrl);
+        })
+        .catch(function() {
+          // Fallback if fetch fails
+          window.location.href = targetUrl;
+        });
+    }
+
+    function showGridSeamlessly() {
+      var docPage = document.getElementById('docPage');
+      var articleView = document.getElementById('articleView');
+      var siteFooter = document.getElementById('siteFooter');
+
+      var performSwap = function() {
+        articleView.style.display = 'none';
+        articleView.innerHTML = '';
+        docPage.style.display = 'block';
+        siteFooter.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+
+      if (document.startViewTransition) {
+        document.startViewTransition(performSwap);
+      } else {
+        performSwap();
+      }
+
+      history.pushState({ view: 'grid' }, '', BASE + '/documentos/');
+    }
+
+    function initLoadedArticleScripts(container) {
+      // Re-attach event listeners on dynamic article
+      var backBtn = container.querySelector('.reader__back');
+      if (backBtn) {
+        backBtn.onclick = function(e) {
+          e.preventDefault();
+          showGridSeamlessly();
+        };
+      }
+
+      // Re-attach progress bar listener
+      var bar = container.querySelector('#progressFill');
+      if (bar) {
+        window.addEventListener('scroll', function() {
+          var h = document.documentElement;
+          var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+          bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        });
+      }
+
+      // Re-attach TOC observer
+      var tocLinks = container.querySelectorAll('.reader__toc-link');
+      var headings = container.querySelectorAll('.reader__section[id]');
+      if (headings.length) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              tocLinks.forEach(function(l) { l.classList.remove('reader__toc-link--active'); });
+              var link = container.querySelector('.reader__toc-link[href="#' + e.target.id + '"]');
+              if (link) link.classList.add('reader__toc-link--active');
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        headings.forEach(function(h) { observer.observe(h); });
+      }
+    }
+
     function renderCards() {
       var grid = document.getElementById('docGrid');
       grid.innerHTML = '';
       documentos.forEach(function(doc) {
-        var vtName = 'doc-' + doc.id;
+        var vtName = 'doc-title-' + doc.id;
+        var targetUrl = BASE + '/documentos/' + doc.slug + '/';
         var card = document.createElement('div');
         card.className = 'doc-card';
+        card.style.cursor = 'pointer';
+        card.onclick = function(e) {
+          if (e.target.tagName === 'A' && e.target.hasAttribute('download')) return;
+          e.preventDefault();
+          loadArticleSeamlessly(targetUrl, doc.slug);
+        };
         card.innerHTML =
           '<div class="doc-card__icon">' + doc.icon + '</div>' +
           '<div class="doc-card__title" style="view-transition-name:' + vtName + '">' + doc.title + '</div>' +
           '<div class="doc-card__meta">' + doc.meta + '</div>' +
           '<div class="doc-card__desc">' + doc.desc + '</div>' +
           '<div class="doc-card__actions">' +
-            '<a href="' + BASE + '/documentos/' + doc.slug + '/" class="btn btn--primary">Ler Online</a>' +
-            '<a href="' + DOCS + '/' + doc.file + '.docx" class="btn btn--outline" download>Download</a>' +
+            '<a href="' + targetUrl + '" class="btn btn--primary" onclick="event.preventDefault(); loadArticleSeamlessly(\'' + targetUrl + '\', \'' + doc.slug + '\');">Ler Online →</a>' +
+            '<a href="' + DOCS + '/' + doc.file + '.docx" class="btn btn--outline" download onclick="event.stopPropagation();">Download</a>' +
           '</div>';
         grid.appendChild(card);
       });
     }
 
-    function openReader(docId) {
-      var doc = documentos.find(function(d) { return d.id === docId; });
-      if (!doc) return;
+    // Handle Browser Back / Forward buttons
+    window.onpopstate = function(e) {
+      if (e.state && e.state.view === 'article') {
+        loadArticleSeamlessly(e.state.url, e.state.slug);
+      } else {
+        showGridSeamlessly();
+      }
+    };
 
-      var modal = document.getElementById('readerModal');
-      var content = document.getElementById('readerContent');
-      content.innerHTML = '<p style="color:#999;text-align:center;padding:60px 0;">A carregar...</p>';
-      modal.classList.add('modal-overlay--open');
-      document.body.style.overflow = 'hidden';
-      modal.scrollTop = 0;
-
-      fetch(DOCS + '/' + doc.file + '.html')
-        .then(function(r) { return r.text(); })
-        .then(function(html) {
-          var parser = new DOMParser();
-          var d = parser.parseFromString(html, 'text/html');
-          content.innerHTML = d.body.innerHTML;
-
-          // Progress bar tracks modal scroll, not document
-          var bar = document.getElementById('progressFill');
-          if (bar) {
-            modal._progressActive = true;
-            modal.addEventListener('scroll', function() {
-              if (!modal._progressActive) return;
-              var pct = (modal.scrollTop / (modal.scrollHeight - modal.clientHeight)) * 100;
-              bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
-            });
-          }
-        })
-        .catch(function() {
-          content.innerHTML = '<p style="color:#e53935;text-align:center;padding:40px;">Erro ao carregar.</p>';
-        });
+    // Dark Mode Theme Logic
+    function initTheme() {
+      var savedTheme = localStorage.getItem('unir_theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        updateThemeUI(false);
+      }
     }
 
-    function closeReader() {
-      var modal = document.getElementById('readerModal');
-      modal._progressActive = false;
-      modal.classList.remove('modal-overlay--open');
-      document.body.style.overflow = '';
-      document.getElementById('readerContent').innerHTML = '';
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('unir_theme', 'light');
+        updateThemeUI(false);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('unir_theme', 'dark');
+        updateThemeUI(true);
+      }
     }
 
-    document.getElementById('readerModal').addEventListener('click', function(e) {
-      if (e.target === this) closeReader();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeReader();
-    });
+    function updateThemeUI(isDark) {
+      document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+        btn.innerHTML = (isDark ? '☀️' : '🌙') + ' <span>' + (isDark ? 'Modo Claro' : 'Modo Escuro') + '</span>';
+      });
+    }
+    initTheme();
+    document.addEventListener('DOMContentLoaded', initTheme);
 
     renderCards();
 

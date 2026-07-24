@@ -1,539 +1,887 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Portugal no Mundo Multipolar — UNIR</title>
-<meta name="description" content="Documento estrategico do UNIR. Conhece as propostas e o programa.">
-<meta property="og:title" content="Portugal no Mundo Multipolar — UNIR">
-<meta property="og:description" content="Documento estrategico do partido UNIR.">
-<meta property="og:type" content="article">
-<meta name="theme-color" content="#0D47A1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../css/style.css" id="mainStylesheet">
-<link rel="stylesheet" href="../../css/reader.css" id="readerStylesheet">
-<script>
-(function(){var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
-var s=document.getElementById('mainStylesheet');if(s)s.href=b+'/css/style.css';
-var r=document.getElementById('readerStylesheet');if(r)r.href=b+'/css/reader.css';
-})();
-</script>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
-<style>
-  /* ── View Transition: morph article title between pages ── */
-  .reader__title { view-transition-name: doc-multipolar; }
-  ::view-transition-old(doc-multipolar) { animation: vt-out 0.2s ease-out forwards; }
-  ::view-transition-new(doc-multipolar) { animation: vt-in 0.3s ease-out forwards; }
-  @keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
-  @keyframes vt-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portugal no Mundo Multipolar - UNIR</title>
+  <meta name="description"
+    content="Estratégia Lusófona e Tecnológica 2035 do UNIR: Reposicionamento geopolítico, autonomia digital, alianças com Brasil, China e PALOPs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" id="mainStylesheet">
+  <link rel="stylesheet" href="../../css/reader.css" id="readerStylesheet">
 
-  /* Smoother cross-fade for the rest of the page */
-  ::view-transition-old(root) { animation: vt-page-out 0.15s ease-out forwards; }
-  ::view-transition-new(root) { animation: vt-page-in 0.25s ease-out forwards; }
-  @keyframes vt-page-out { to { opacity: 0.4; } }
-  @keyframes vt-page-in { from { opacity: 0.6; } to { opacity: 1; } }
+  <style>
+    .article-hero__title {
+      view-transition-name: doc-multipolar;
+    }
 
-  /* Breadcrumb */
-  .article-nav { max-width:1100px; margin:0 auto; padding:24px 32px 0; }
-  .article-breadcrumb { font-size:0.82rem; color:#9E9E9E; margin-bottom:4px; }
-  .article-breadcrumb a { color:#0D47A1; text-decoration:none; }
-  .article-breadcrumb a:hover { text-decoration:underline; }
+    ::view-transition-old(doc-multipolar) {
+      animation: vt-out 0.2s ease-out forwards;
+    }
 
-  @media(max-width:900px){ .article-nav { padding-left:16px; padding-right:16px; } }
-</style>
+    ::view-transition-new(doc-multipolar) {
+      animation: vt-in 0.3s ease-out forwards;
+    }
+
+    @keyframes vt-out {
+      to {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes vt-in {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <div class="nav__inner container">
-    <a href="/" class="nav__logo">
-      <span class="nav__logo-icon">⚡</span>
-      <span class="nav__logo-text">UNIR</span>
-    </a>
-    <div class="nav__links" id="navLinks">
-      <a href="/" class="nav__link">Inicio</a>
-      <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
-      <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+  <nav class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-icon">⚡</span>
+        <span class="nav__logo-text">UNIR</span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/" class="nav__link">Início</a>
+        <a href="/documentos/" class="nav__link nav__link--cta">Documentos</a>
+        <a href="/candidatar/" class="nav__link nav__link--secondary">Integrar</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro" style="margin-left: 8px;">
+          <span>🌙</span> <span>Modo Escuro</span>
+        </button>
+      </div>
+      <button class="nav__hamburger" id="navToggle" aria-label="Menu de Navegação">☰</button>
     </div>
-    <button class="nav__hamburger" id="navToggle" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
-
-<div class="article-nav">
-  <div class="article-breadcrumb">
-    <a href="/">Inicio</a> / <a href="/documentos/">Documentos</a> / <strong>Portugal no Mundo Multipolar</strong>
-  </div>
-</div>
-
-<div class="reader__progress" id="progressBar"><div class="reader__progress-fill" id="progressFill"></div></div>
-
-<article class="reader">
-
-<aside class="reader__sidebar">
-  <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Indice</button>
-  <nav class="reader__toc" id="tocNav">
-    <h4 class="reader__toc-title">Indice</h4>
-    <ol>
-<li><a href="#1-resumo-executivo" class="reader__toc-link">1. Resumo Executivo</a></li>
-<li><a href="#2-contexto-geopolitico-o-fim-do-unipolarismo" class="reader__toc-link">2. Contexto Geopolitico</a></li>
-<li><a href="#3-portugal-na-encruzilhada-dependencias-e-oportunidades" class="reader__toc-link">3. Portugal na Encruzilhada</a></li>
-<li><a href="#4-pilar-i---reducao-da-dependencia-estrategica-dos-eua" class="reader__toc-link">4. Pilar I — Reducao Dep. EUA</a></li>
-<li class="reader__toc-link--sub"><a href="#41-defesa-e-soberania-militar" class="reader__toc-link">4.1. Defesa</a></li>
-<li class="reader__toc-link--sub"><a href="#42-tecnologia-e-infraestrutura-digital" class="reader__toc-link">4.2. Tecnologia</a></li>
-<li class="reader__toc-link--sub"><a href="#43-diplomacia-e-alinhamento" class="reader__toc-link">4.3. Diplomacia</a></li>
-<li><a href="#5-pilar-ii---parceria-estrategica-com-a-china" class="reader__toc-link">5. Pilar II — China</a></li>
-<li class="reader__toc-link--sub"><a href="#51-oportunidades" class="reader__toc-link">5.1. Oportunidades</a></li>
-<li class="reader__toc-link--sub"><a href="#52-salvaguardas-obrigatorias" class="reader__toc-link">5.2. Salvaguardas</a></li>
-<li class="reader__toc-link--sub"><a href="#53-areas-prioritarias-para-cooperacao" class="reader__toc-link">5.3. Areas Prioritarias</a></li>
-<li><a href="#6-pilar-iii---brasil-como-socio-preferencial" class="reader__toc-link">6. Pilar III — Brasil</a></li>
-<li><a href="#7-pilar-iv---palops-e-a-lusofonia" class="reader__toc-link">7. Pilar IV — PALOPs</a></li>
-<li><a href="#8-pilar-v---africa-como-proximo-horizonte" class="reader__toc-link">8. Pilar V — Africa</a></li>
-<li><a href="#9-eixo-transversal---tecnologia-e-estado-inteligente" class="reader__toc-link">9. Eixo Transversal</a></li>
-<li><a href="#10-plano-de-implementacao-2026-2035" class="reader__toc-link">10. Plano Implementacao</a></li>
-<li><a href="#11-analise-de-riscos-e-mitigacao" class="reader__toc-link">11. Analise Riscos</a></li>
-<li><a href="#12-conclusao-e-proximos-passos" class="reader__toc-link">12. Conclusao</a></li>
-    </ol>
   </nav>
-</aside>
 
-<div class="reader__body">
-
-<a href="/documentos/" class="reader__back">&larr; Voltar aos Documentos</a>
-
-<header class="reader__header">
-<h1 class="reader__title">PORTUGAL NO MUNDO MULTIPOLAR</h1>
-</header>
-
-<div class="reader__content">
-<details class="reader__section" open id="1-resumo-executivo">
-<summary class="reader__section-title">1. Resumo Executivo</summary>
-<div class="reader__section-body">
-<p>Portugal encontra-se perante uma encruzilhada estratégica: manter a dependência externa atual ou afirmar-se como um pivô soberano no novo ordenamento multipolar. Esta proposta delineia um reposicionamento crítico para os próximos dez anos.</p>
-<p class="reader__topic">A estratégia visa consolidar Portugal como:</p>
-<ul class="reader__pillar-list">
-<li><strong>Pólo Logístico e Tecnológico:</strong> Interligando a Europa, África e América Latina.</li>
-<li><strong>Liderança Lusófona:</strong> Transformando a língua portuguesa num ativo geopolítico de alto valor.</li>
-<li><strong>Estado Inteligente:</strong> Implementação de governação automatizada e planeamento de longo prazo.</li>
-<li><strong>Soberania Diplomática:</strong> Capacidade de interlocução direta com potências emergentes sem intermediação.</li>
-</ul>
-<p>A estratégia assenta em 5 pilares e 1 eixo transversal, com metas concretas para 2030 e 2035.</p>
-
-</div>
-</details>
-<details class="reader__section" open id="2-contexto-geopolitico-o-fim-do-unipolarismo">
-<summary class="reader__section-title">2. Contexto Geopolítico: O Fim do Unipolarismo</summary>
-<div class="reader__section-body">
-<p>O mundo está a transitar de uma ordem unipolar (liderança EUA, 1991-2022) para uma ordem multipolar com 3-5 grandes centros de poder:</p>
-<p class="reader__topic">Implicações para Portugal:</p>
-<p>Países médios como Portugal ganham margem de manobra - já não são forçados a alinhamento total com um bloco.</p>
-<p>O valor de países com pontes culturais/linguísticas (português) sobe - somos intermediários naturais.</p>
-<p>A tecnologia é o novo campo de batalha geopolítico - controlar infraestrutura digital é soberania.</p>
-<table class="reader__table">
-<tr><th>Centro de Poder</th><th>Moeda/Reserva</th><th>Bloco Militar</th><th>Tecnologia</th></tr>
-<tr><td>EUA</td><td>USD</td><td>NATO</td><td>Silicon Valley</td></tr>
-<tr><td>China</td><td>RMB (CIPS)</td><td>BRI+</td><td>Shenzhen/HW</td></tr>
-<tr><td>UE</td><td>EUR</td><td>NATO (dependente)</td><td>Diversa</td></tr>
-<tr><td>Rússia</td><td>CNY/RUB</td><td>OSC</td><td>Limitada</td></tr>
-<tr><td>Índia</td><td>INR</td><td>Neutro</td><td>Bengaluru</td></tr>
-</table>
-
-</div>
-</details>
-<details class="reader__section" open id="3-portugal-na-encruzilhada-dependencias-e-oportunidades">
-<summary class="reader__section-title">3. Portugal na Encruzilhada: Dependências e Oportunidades</summary>
-<div class="reader__section-body">
-
-<h5 class="reader__subsubsection" id="dependencias-atuais">Dependências Atuais</h5>
-<table class="reader__table">
-<tr><th>Dimensão</th><th>Dependência</th><th>Risco</th></tr>
-<tr><td>Defesa</td><td>NATO/EUA (Lajes, F-35)</td><td>Perda de autonomia decisória</td></tr>
-<tr><td>Tecnologia</td><td>Cloud americana (AWS/Azure/GCP)</td><td>Sanções, vazamento dados</td></tr>
-<tr><td>Finanças</td><td>SWIFT, Visa/MC</td><td>Congelamento ativos</td></tr>
-<tr><td>Energia</td><td>Gás natural (diverso, mas importado)</td><td>Volatilidade preços</td></tr>
-<tr><td>Alimentar</td><td>Importação 40% consumo</td><td>Choque externo</td></tr>
-</table>
-<h5 class="reader__subsubsection" id="oportunidades-inexploradas">Oportunidades Inexploradas</h5>
-<table class="reader__table">
-<tr><th>Oportunidade</th><th>Ativo Português</th><th>Potencial</th></tr>
-<tr><td>Hub Europa-África</td><td>Proximidade, língua, estabilidade</td><td>Centro logístico e financeiro</td></tr>
-<tr><td>Lusofonia global</td><td>260M falantes, 9 países</td><td>Mercado, influência, alianças</td></tr>
-<tr><td>Data centers</td><td>Energia renovável, cabos submarinos</td><td>Hub de dados europeu</td></tr>
-<tr><td>Tecnologia soberana</td><td>Talento, universidades, custos</td><td>Alternativa europeia</td></tr>
-<tr><td>Mar português</td><td>ZEE 1.8M km², Atlântico</td><td>Recursos, energia, defesa</td></tr>
-</table>
-
-</div>
-</details>
-<details class="reader__section" open id="4-pilar-i---reducao-da-dependencia-estrategica-dos-eua">
-<summary class="reader__section-title">4. Pilar I - Redução da Dependência Estratégica dos EUA</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="41-defesa-e-soberania-militar">4.1. Defesa e Soberania Militar</h4>
-<p>Situação atual: Portugal está integrado no sistema de defesa americano através da NATO, da utilização da Base das Lajes (Açores) e da aquisição de aeronaves F-35.</p>
-<p class="reader__topic">Proposta UNIR:</p>
-<p class="reader__topic">Diversificação de Fornecedores:</p>
-<p>Manutenção dos compromissos com o F-35, complementada por sistemas europeus (França, Suécia, Alemanha) para reduzir a dependência tecnológica única.</p>
-<p>Estabelecimento de uma parceria estratégica com o Brasil para a patrulha marítima conjunta e vigilância do Atlântico Sul.</p>
-<p>Avaliação de alternativas como o Rafale ou o Gripen para garantir a soberania operacional em diversos cenários.</p>
-<p class="reader__topic">Revisão do Acordo da Base das Lajes:</p>
-<p>Negociação de um novo equilíbrio contratual que assegure um benefício mútuo transparente e robusto.</p>
-<p>Exigência de contrapartidas económicas e transferência tecnológica direta para a região e para o país.</p>
-<p>Meta: Conclusão da revisão até 2028.</p>
-<p class="reader__topic">Indústria Nacional de Defesa:</p>
-<p>Fomento de um ecossistema de startups portuguesas focado em drones e sistemas autónomos de última geração.</p>
-<p>Elevação da Cibersegurança ao estatuto de quinto domínio militar prioritário.</p>
-<p>Criação de joint ventures com parceiros brasileiros e europeus para o desenvolvimento conjunto de hardware e software militar.</p>
-<h4 class="reader__subsection" id="42-tecnologia-e-infraestrutura-digital">4.2. Tecnologia e Infraestrutura Digital</h4>
-<p class="reader__topic">Proposta UNIR:</p>
-<p class="reader__topic">Cloud Soberana Portuguesa</p>
-<p>Data centers em Portugal com dados do Estado obrigatoriamente em território nacional.</p>
-<p>Parceria tecnológica com a Europa (Gaia-X) e alternativas não-americanas.</p>
-<p class="reader__topic">Sistemas de Pagamentos Alternativos</p>
-<p>Integração com o sistema chinês CIPS (como alternativa de backup).</p>
-<p>Foco no desenvolvimento do sistema europeu de pagamentos (EPI).</p>
-<p class="reader__topic">Diversificação da Dependência de Cloud Americana</p>
-<p>Obrigatoriedade legal para o setor público: utilização de cloud europeia ou portuguesa.</p>
-<p>Incentivos a empresas portuguesas de cloud e hosting.</p>
-<h4 class="reader__subsection" id="43-diplomacia-e-alinhamento">4.3. Diplomacia e Alinhamento</h4>
-<p class="reader__topic">Proposta UNIR:</p>
-<ul class="reader__pillar-list">
-<li><strong>Autonomia Decisória:</strong> O voto português na ONU passa a ser pautado pelo interesse nacional, abandonando o alinhamento automático com o bloco ocidental.</li>
-<li><strong>Abstenção Estratégica:</strong> Adoção de postura neutra em resoluções geopolíticas polarizadoras (ex: conflitos regionais, sanções extra-ONU).</li>
-<li><strong>Diplomacia de Mediação:</strong> Reforço do papel de Portugal como mediador global, capitalizando na posição histórica de neutralidade ativa (ex: conflito Israel-Palestina).</li>
-</ul>
-
-</div>
-</details>
-<details class="reader__section" open id="5-pilar-ii---parceria-estrategica-com-a-china">
-<summary class="reader__section-title">5. Pilar II - Parceria Estratégica com a China</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="51-oportunidades">5.1. Oportunidades</h4>
-<p>A China é o maior parceiro comercial de África, o maior credor de infraestrutura global, e o principal competidor tecnológico dos EUA. Ignorá-la é irrealista. A questão não é &quot;com ou sem China&quot; - é como.</p>
-<p class="reader__topic">Oportunidades para Portugal:</p>
-<table class="reader__table">
-<tr><th>Área Estratégica</th><th>Oportunidade de Cooperação</th></tr>
-<tr><td>Infraestrutura</td><td>BRI - financiamento chinês para portos, ferrovias, data centers em Portugal e PALOPs</td></tr>
-<tr><td>Tecnologia</td><td>Huawei/ZTE para 5G em PALOPs (mercados que a Europa ignora)</td></tr>
-<tr><td>Finanças</td><td>Acesso ao CIPS (alternativa SWIFT), financiamento chinês para projetos lusófonos</td></tr>
-<tr><td>Investimento</td><td>Fundos soberanos chineses para projetos portugueses de energia, tech, infraestrutura</td></tr>
-<tr><td>Turismo</td><td>Corredor China-Macau-Portugal (já existente, expandir)</td></tr>
-</table>
-<h4 class="reader__subsection" id="52-salvaguardas-obrigatorias">5.2. Salvaguardas Obrigatórias</h4>
-<p class="reader__topic">Proposta UNIR - princípios contratuais para qualquer acordo com a China:</p>
-<ul class="reader__pillar-list">
-<li><strong>Cláusula de tribunal europeu —</strong> disputas resolvidas em tribunal europeu, não chinês</li>
-<li><strong>Exclusividade proibida —</strong> não aceitar cláusulas que impeçam parcerias com outros países</li>
-<li><strong>Due diligence obrigatória —</strong> qualquer investimento chinês &gt;€10M requer auditoria independente de segurança nacional</li>
-<li><strong>Transferência de tecnologia —</strong> % do investimento deve ser em transferência de know-how e formação</li>
-<li><strong>Reversibilidade —</strong> possibilidade de saída do contrato sem penalização desproporcional</li>
-</ul>
-<h4 class="reader__subsection" id="53-areas-prioritarias-para-cooperacao">5.3. Áreas Prioritárias para Cooperação</h4>
-<ul class="reader__pillar-list">
-<li><strong>Macau como plataforma —</strong> reforçar Macau como hub de ligação China-PALOPs (Macau já é a plataforma linguística oficial da China para os PALOPs)</li>
-<li><strong>Tecnologia para PALOPs —</strong> parcerias China-Portugal para levar infraestrutura digital aos PALOPs</li>
-<li><strong>Energia renovável —</strong> investimento chinês em solar/eólica portuguesa e nos PALOPs</li>
-<li><strong>Educação —</strong> bolsas de estudo na China para estudantes portugueses e PALOPs (já existem, expandir)</li>
-</ul>
-
-</div>
-</details>
-<details class="reader__section" open id="6-pilar-iii---brasil-como-socio-preferencial">
-<summary class="reader__section-title">6. Pilar III - Brasil como Sócio Preferencial</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="61-o-erro-historico">6.1. O Erro Histórico</h4>
-<p>Portugal e Brasil tratam-se mutuamente como primos distantes - quando deviam ser parceiros estratégicos. O Brasil é a nona maior economia do mundo, o maior país lusófono, e o parceiro natural de Portugal no Atlântico.</p>
-<h4 class="reader__subsection" id="62-proposta-unir---acordo-estrategico-portugal-brasil">6.2. Proposta UNIR - Acordo Estratégico Portugal-Brasil</h4>
-
-<h4 class="reader__subsection" id="dimensao-economica">Dimensão económica:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Acordo de dupla tributação mais favorável —</strong> reduzir custos de transação entre empresas portuguesas e brasileiras</li>
-<li><strong>Facilitação de investimento —</strong> fundo luso-brasileiro de inovação (€500M, coinvestimento público-privado)</li>
-<li><strong>Hub de exportação —</strong> Portugal como porta de entrada de produtos brasileiros na Europa e África</li>
-<li><strong>Startups —</strong> programa de intercâmbio Brasil-Portugal para scale-ups tech</li>
-</ul>
-<h4 class="reader__subsection" id="dimensao-tecnologica">Dimensão tecnológica:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Data centers conjuntos —</strong> Portugal como hub de dados brasileiros para a Europa (latência, RGPD compliance)</li>
-<li><strong>Cibersegurança —</strong> centro luso-brasileiro de cibersegurança para o Atlântico</li>
-<li><strong>IA e espaço —</strong> cooperação em IA aplicada e programa espacial conjunto (satélites para monitorização do Atlântico)</li>
-</ul>
-<h4 class="reader__subsection" id="dimensao-geopolitica">Dimensão geopolítica:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Voz conjunta na ONU e OMC —</strong> coordenação de posições em fóruns multilaterais</li>
-<li><strong>Defesa do Atlântico Sul —</strong> patrulha conjunta de ZEEs (Portugal + Brasil + PALOPs atlânticos)</li>
-<li><strong>CPLP revitalizada —</strong> transformar CPLP de clube de conversa em bloco económico com objetivos vinculativos</li>
-</ul>
-<h4 class="reader__subsection" id="dimensao-social">Dimensão social:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Vistos para talento —</strong> fast-track para profissionais tech brasileiros virem para Portugal</li>
-<li><strong>Reconhecimento automático de qualificações —</strong> acabar com a burocracia de equivalências</li>
-<li><strong>Dupla cidadania facilitada —</strong> processo simplificado para descendentes</li>
-</ul>
-<h4 class="reader__subsection" id="63-a-jogada-imediata">6.3. A Jogada Imediata</h4>
-<p>Aproveitar o momento: o Brasil está a afirmar-se globalmente (BRICS, COP30 em 2025, liderança ambiental). Portugal deve apresentar uma proposta concreta de parceria estratégica antes que outros países europeus (França, Alemanha) o façam primeiro.</p>
-
-</div>
-</details>
-<details class="reader__section" open id="7-pilar-iv---palops-e-a-lusofonia">
-<summary class="reader__section-title">7. Pilar IV - PALOPs e a Lusofonia</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="71-o-ativo-mais-subvalorizado-de-portugal">7.1. O Ativo Mais Subvalorizado de Portugal</h4>
-<p class="reader__topic">Portugal é o único país europeu com:</p>
-<p>Língua oficial comum a 9 países (Angola, Brasil, Cabo Verde, Guiné-Bissau, Guiné Equatorial, Moçambique, Portugal, São Tomé, Timor)</p>
-<p class="reader__topic">260 milhões de falantes</p>
-<p>Comunidades diaspóricas significativas em todos os continentes</p>
-<p class="reader__topic">Relações históricas e institucionais profundas</p>
-<h4 class="reader__subsection" id="72-proposta-unir---nova-politica-para-os-palops">7.2. Proposta UNIR - Nova Política para os PALOPs</h4>
-
-<h4 class="reader__subsection" id="educacao-como-soft-power">Educação como soft power:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Bolsa Lusófona —</strong> 10.000 bolsas anuais para estudantes PALOPs em universidades portuguesas (custo estimado: €50M/ano - retorno em influência e laços pessoais)</li>
-<li><strong>Formação técnica —</strong> institutos politécnicos portugueses em PALOPs (formação em TI, engenharia, saúde)</li>
-<li><strong>Escolas portuguesas no estrangeiro —</strong> expandir rede de ensino português em África</li>
-</ul>
-<h4 class="reader__subsection" id="economia-e-investimento">Economia e investimento:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Linha de crédito especial —</strong> €1.000M para empresas portuguesas investirem nos PALOPs</li>
-<li><strong>Zonas económicas especiais lusófonas —</strong> parques industriais em PALOPs com incentivos fiscais e ligação logística a Portugal</li>
-<li><strong>Digitalização dos PALOPs —</strong> levar internet, cloud, identidade digital e e-government aos PALOPs (com empresas portuguesas)</li>
-</ul>
-<h4 class="reader__subsection" id="defesa-e-seguranca">Defesa e segurança:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Acordos de formação militar —</strong> treino de forças armadas PALOPs por Portugal (soft power militar, contra-influência de potências terceiras)</li>
-<li><strong>Patrulha conjunta do Atlântico —</strong> monitorização de ZEEs, combate à pirataria e pesca ilegal</li>
-<li><strong>Cibersegurança lusófona —</strong> rede de cooperação em cibersegurança entre países lusófonos</li>
-</ul>
-<h4 class="reader__subsection" id="mobilidade">Mobilidade:</h4>
-<ul class="reader__pillar-list">
-<li><strong>Vistos CPLP —</strong> circulação facilitada entre países lusófonos (já existe Acordo de Mobilidade CPLP, implementar totalmente)</li>
-<li><strong>Portabilidade de direitos —</strong> segurança social, saúde, e reconhecimento de qualificações entre PALOPs + Portugal</li>
-</ul>
-<h4 class="reader__subsection" id="73-cplp-reformada">7.3. CPLP Reformada</h4>
-<p>A CPLP precisa de passar de clube diplomático a bloco económico com objetivos vinculativos:</p>
-<p class="reader__topic">Secretariado executivo com poder real</p>
-<p>Metas concretas de comércio intra-CPLP (atualmente &lt;5% do comércio total dos membros)</p>
-<p>Fundo de desenvolvimento CPLP (modelo Banco Asiático de Investimento em Infraestrutura)</p>
-<p class="reader__topic">Passaporte CPLP (facilitar circulação de pessoas)</p>
-
-</div>
-</details>
-<details class="reader__section" open id="8-pilar-v---africa-como-proximo-horizonte">
-<summary class="reader__section-title">8. Pilar V - África como Próximo Horizonte</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="81-a-corrida-a-africa">8.1. A Corrida a África</h4>
-<p>África é o próximo grande motor da economia global: 1.5 mil milhões de pessoas em 2030, crescimento acima da média global, digitalização a saltar fases (leapfrog), recursos críticos para a transição energética (lítio, cobalto, terras raras).</p>
-<p>Portugal compete com França, China, Rússia, Turquia, Índia e EUA por influência em África.</p>
-<h4 class="reader__subsection" id="82-vantagem-competitiva-portuguesa">8.2. Vantagem Competitiva Portuguesa</h4>
-<table class="reader__table">
-<tr><th>Comparação</th><th>França</th><th>China</th><th>Portugal</th></tr>
-<tr><td>Língua</td><td>Francês (26 países)</td><td>Mandarim (nenhum em África)</td><td>Português (6 países)</td></tr>
-<tr><td>Perceção local</td><td>Predador (CFA, Françafrique)</td><td>Parceiro (mas endividamento)</td><td>Pequeno, não ameaçador</td></tr>
-<tr><td>Diaspora</td><td>Limitada</td><td>Limitada</td><td>Grande e integrada</td></tr>
-<tr><td>Soft power</td><td>Cultura, educação</td><td>Infraestrutura</td><td>Relações pessoais, históricas</td></tr>
-</table>
-<h4 class="reader__subsection" id="83-proposta-unir---estrategia-portuguesa-para-africa">8.3. Proposta UNIR - Estratégia Portuguesa para África</h4>
-<p class="reader__topic">Foco 1 - PALOPs como base (Pilar IV) Foco 2 - Países não lusófonos estratégicos:</p>
-<p>Nigéria - maior economia africana, petróleo, população jovem. Parceria energética + tech</p>
-<p class="reader__topic">África do Sul - logística, mineração, hub regional</p>
-<p class="reader__topic">Quénia/Ruanda - tech hubs do leste africano</p>
-<p>Marrocos - porta de entrada para Norte de África, energia renovável, fosfatos</p>
-<p class="reader__topic">Foco 3 - Portugal como hub:</p>
-<ul class="reader__pillar-list">
-<li><strong>Logística —</strong> portos portugueses como porta de entrada de produtos africanos na Europa</li>
-<li><strong>Financeiro —</strong> Lisboa como hub financeiro para investimento em África (estabilidade, regulação europeia, língua)</li>
-<li><strong>Tecnológico —</strong> data centers em Portugal para backup e processamento de dados africanos</li>
-<li><strong>Educação —</strong> Portugal como destino educativo para elites africanas (como França faz com a França, mas melhor)</li>
-</ul>
-
-</div>
-</details>
-<details class="reader__section" open id="9-eixo-transversal---tecnologia-e-estado-inteligente">
-<summary class="reader__section-title">9. Eixo Transversal - Tecnologia e Estado Inteligente</summary>
-<div class="reader__section-body">
-
-<h4 class="reader__subsection" id="91-a-visao">9.1. A Visão</h4>
-<p>Portugal precisa de usar a tecnologia não como um fim, mas como ferramenta de soberania e eficiência. O Estado Português deve ser o mais automatizado, transparente e eficiente da Europa.</p>
-<h4 class="reader__subsection" id="92-proposta-unir---estado-inteligente-smart-state">9.2. Proposta UNIR - Estado Inteligente (Smart State)</h4>
-<p class="reader__topic">Automação da Administração Pública:</p>
-<ul class="reader__pillar-list">
-<li><strong>Identidade digital universal —</strong> um cidadão, uma identidade digital que serve para tudo (finanças, saúde, educação, voto, empresa)</li>
-<li><strong>Processos automáticos —</strong> qualquer interação com o Estado que não requeira discricionariedade humana é automatizada (licenças, registos, declarações)</li>
-<li><strong>Zero papel - 2030 é o ano zero:</strong> documentos físicos deixam de ser necessários para qualquer processo público</li>
-</ul>
-<p class="reader__topic">Dados como infraestrutura nacional:</p>
-<ul class="reader__pillar-list">
-<li><strong>Open data por defeito —</strong> todos os dados públicos são abertos, exceto segurança nacional e privacidade</li>
-<li><strong>Data lake nacional —</strong> dados do Estado centralizados e acessíveis para tomada de decisão baseada em evidência</li>
-<li><strong>IA na administração pública —</strong> algoritmos para deteção de fraude, otimização de recursos, planeamento urbano</li>
-</ul>
-<p class="reader__topic">Cibersegurança como domínio soberano:</p>
-<ul class="reader__pillar-list">
-<li><strong>Centro Nacional de Cibersegurança reforçado —</strong> com capacidade ofensiva e defensiva</li>
-<li><strong>Cloud soberana —</strong> dados do Estado em servidores em Portugal, geridos por empresas portuguesas ou europeias</li>
-<li><strong>Formação em cibersegurança —</strong> obrigatória em todas as escolas secundárias</li>
-</ul>
-<p class="reader__topic">Planeamento a longo prazo:</p>
-<ul class="reader__pillar-list">
-<li><strong>Gabinete de Planeamento Estratégico —</strong> independente de ciclos eleitorais, com horizonte 10-20 anos</li>
-<li><strong>Orçamento plurianual —</strong> 70% do orçamento é comprometido a 4 anos (blinda projetos estratégicos)</li>
-<li><strong>Métricas de sucesso públicas —</strong> cada ministério tem KPIs públicos e é avaliado trimestralmente</li>
-</ul>
-
-</div>
-</details>
-<details class="reader__section" open id="10-plano-de-implementacao-2026-2035">
-<summary class="reader__section-title">10. Plano de Implementação (2026-2035)</summary>
-<div class="reader__section-body">
-
-<h5 class="reader__subsubsection" id="fase-1-2026-2028---fundacao">Fase 1 (2026-2028) - Fundação</h5>
-<table class="reader__table">
-<tr><th>Ação</th><th>Prazo</th><th>Responsável</th></tr>
-<tr><td>Apresentar white paper ao UNIR e recolher feedback</td><td>Q3 2026</td><td>Coordenação</td></tr>
-<tr><td>Acordo dupla tributação Portugal-Brasil</td><td>2027</td><td>MNE + Finanças</td></tr>
-<tr><td>Lançar programa Bolsa Lusófona (3.000 bolsas piloto)</td><td>2027</td><td>MECI</td></tr>
-<tr><td>Identidade digital universal (piloto 100K cidadãos)</td><td>2028</td><td>AMA</td></tr>
-<tr><td>Reforma da CPLP - secretariado executivo com poder</td><td>2028</td><td>MNE</td></tr>
-<tr><td>Acordo formação militar com PALOPs</td><td>2028</td><td>MDN</td></tr>
-<tr><td>Cloud soberana - primeiro data center estatal</td><td>2028</td><td>Transição Digital</td></tr>
-</table>
-<h5 class="reader__subsubsection" id="fase-2-2029-2032---expansao">Fase 2 (2029-2032) - Expansão</h5>
-<table class="reader__table">
-<tr><th>Ação</th><th>Prazo</th><th>Responsável</th></tr>
-<tr><td>Bolsa Lusófona em escala (10.000 bolsas/ano)</td><td>2029</td><td>MECI</td></tr>
-<tr><td>Reconhecimento automático de qualificações Brasil-Portugal</td><td>2029</td><td>MECI + MNE</td></tr>
-<tr><td>Patrulha conjunta ZEEs Atlântico Sul</td><td>2030</td><td>MDN</td></tr>
-<tr><td>Zero papel na administração pública</td><td>2030</td><td>AMA</td></tr>
-<tr><td>Data lake nacional operacional</td><td>2031</td><td>Governo</td></tr>
-<tr><td>Fundo luso-africano de investimento (€500M)</td><td>2031</td><td>MNE + Finanças</td></tr>
-<tr><td>Estado Inteligente - 50% processos automatizados</td><td>2032</td><td>AMA</td></tr>
-</table>
-<h5 class="reader__subsubsection" id="fase-3-2033-2035---consolidacao">Fase 3 (2033-2035) - Consolidação</h5>
-<table class="reader__table">
-<tr><th>Ação</th><th>Prazo</th><th>Responsável</th></tr>
-<tr><td>Portugal como hub de dados África-Europa</td><td>2033</td><td>Transição Digital</td></tr>
-<tr><td>CPLP como bloco económico com metas vinculativas</td><td>2034</td><td>MNE</td></tr>
-<tr><td>Portugal entre os 10 países mais digitalizados do mundo (UN E-Government Index)</td><td>2035</td><td>Governo</td></tr>
-<tr><td>Autossuficiência energética (80% renováveis)</td><td>2035</td><td>Ambiente e Energia</td></tr>
-</table>
-
-</div>
-</details>
-<details class="reader__section" open id="11-analise-de-riscos-e-mitigacao">
-<summary class="reader__section-title">11. Análise de Riscos e Mitigação</summary>
-<div class="reader__section-body">
-<table class="reader__table">
-<tr><th>Risco</th><th>Probabilidade</th><th>Impacto</th><th>Mitigação</th></tr>
-<tr><td>Pressão EUA contra aproximação China/Rússia</td><td>Alta</td><td>Alto</td><td>Não cortar relações, apenas diversificar. Discurso público baseado em &quot;interesse nacional&quot;, não anti-americano</td></tr>
-<tr><td>Instabilidade em PALOPs (golpes, conflitos)</td><td>Média</td><td>Alto</td><td>Diversificar investimento entre PALOPs, não concentrar. Cláusulas de força maior contratuais</td></tr>
-<tr><td>Reação negativa da UE</td><td>Média</td><td>Médio</td><td>Alinhar com países do sul da UE (Espanha, Itália, Grécia) que têm interesses semelhantes</td></tr>
-<tr><td>Brasil instável politicamente</td><td>Média</td><td>Médio</td><td>Acordos com instituições, não com governos. Cláusulas de continuidade</td></tr>
-<tr><td>China usar dívida como arma</td><td>Baixa</td><td>Alto</td><td>Seguir modelo de salvaguardas (secção 5.2). Limitar exposição a &lt;15% da dívida pública</td></tr>
-<tr><td>Oposição interna (partidos + media)</td><td>Alta</td><td>Médio</td><td>Comunicação clara: &quot;não é anti-EUA, é pró-Portugal&quot;. Métricas concretas de benefício</td></tr>
-</table>
-
-</div>
-</details>
-<details class="reader__section" open id="12-conclusao-e-proximos-passos">
-<summary class="reader__section-title">12. Conclusão e Próximos Passos</summary>
-<div class="reader__section-body">
-<p>Portugal tem uma janela de oportunidade única nos próximos 10 anos. O mundo está a reconfigurar-se, e países médios com ativos estratégicos (língua, posição geográfica, história) podem ganhar influência desproporcional ao seu tamanho.</p>
-<p>O UNIR pode ser o partido que traduz esta visão em política concreta.</p>
-<h5 class="reader__subsubsection" id="proximos-passos-imediatos">Próximos passos imediatos:</h5>
-<p class="reader__topic">Validar este white paper internamente no UNIR</p>
-<p>Criar versões setoriais (white paper Defesa, white paper Tecnologia, white paper PALOPs, white paper Brasil)</p>
-<p class="reader__topic">Iniciar contactos (ver Plano de Networking anexo)</p>
-<p>Produzir comunicação pública - artigos, entrevistas, presença em eventos</p>
-<p>Propor moção estratégica no próximo congresso do UNIR</p>
-<p>Este documento não substitui nem modifica os documentos fundadores do UNIR. É uma proposta complementar de estratégia geopolítica e tecnológica para discussão interna.</p>
-<p>Anexo: Plano de Networking - Contactos Estratégicos e Abordagem</p>
-
-</div>
-</details>
-</div>
-
-<footer class="reader__footer">
-  <p>Documento Estrategico &middot; UNIR &mdash; Unidos pela Nacao, Inovacao e Responsabilidade</p>
-</footer>
-
-</div>
-</article>
-
-<div class="article-prevnext">
-  <a href="#" class="article-prevnext--disabled">&larr; Anterior</a>
-  <a href="/documentos/manifesto-fundador/">Proximo: Manifesto Fundador &rarr;</a>
-</div>
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="nav__logo-text">UNIR</span>
-      <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+  <div class="article-nav">
+    <div class="article-breadcrumb">
+      <a href="/">Início</a> / <a href="/documentos/">Documentos</a> / <strong>Portugal no Mundo Multipolar</strong>
     </div>
-    <div class="footer__links">
-      <a href="/" class="footer__link">Inicio</a>
-      <a href="/documentos/" class="footer__link">Documentos</a>
-      <a href="/candidatar/" class="footer__link">Integrar</a>
+    <div class="article-actions">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar Tema Claro / Escuro">
+        <span id="themeIcon">🌙</span> <span id="themeLabel">Modo Escuro</span>
+      </button>
+      <button class="share-btn" onclick="shareArticle()" aria-label="Partilhar este artigo">
+        🔗 Partilhar
+      </button>
     </div>
-    <p class="footer__copy">Feito em Portugal. Por cidadaos. Para cidadaos.</p>
   </div>
-</footer>
 
-<script>
-(function(){var b=window.location.pathname.replace(/\/[^/]*\/?$/,'').replace(/\/[^/]*\/?$/,'');
-document.querySelectorAll('a[href^="/"]').forEach(function(l){
-var h=l.getAttribute('href');if(h.startsWith('//')||h.startsWith('http')||h.startsWith('/#'))return;
-if(h==='/'){l.setAttribute('href',b+'/');return}
-if(h.startsWith('/documentos')){l.setAttribute('href',b+'/documentos/');return}
-if(h.startsWith('/candidatar')){l.setAttribute('href',b+'/candidatar/');return}
-});
-})();
-</script>
+  <div class="reader__progress" id="progressBar">
+    <div class="reader__progress-fill" id="progressFill"></div>
+  </div>
 
-<script>
-(function(){
-  // Progress bar
-  var bar=document.getElementById('progressFill');
-  if(bar){window.addEventListener('scroll',function(){var h=document.documentElement;
-    var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-    bar.style.width=Math.min(100,Math.max(0,pct))+'%';});}
+  <article class="reader">
 
-  // TOC IntersectionObserver
-  var tocLinks=document.querySelectorAll('.reader__toc-link');
-  var headings=document.querySelectorAll('.reader__section[id],.reader__subsection[id]');
-  if(headings.length){
-    var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){
-      if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('reader__toc-link--active');});
-      var link=document.querySelector('.reader__toc-link[href="#'+e.target.id+'"]');
-      if(link)link.classList.add('reader__toc-link--active');}
-    });},{rootMargin:'-10% 0px -75% 0px'});
-    headings.forEach(function(h){observer.observe(h);});
-  }
+    <aside class="reader__sidebar">
+      <button class="reader__toc-toggle" id="tocToggle" aria-expanded="false">Índice do Documento</button>
+      <nav class="reader__toc" id="tocNav">
+        <h4 class="reader__toc-title">Índice de Conteúdos</h4>
+        <ol>
+          <li><a href="#1-resumo-executivo" class="reader__toc-link">1. Resumo Executivo</a></li>
+          <li><a href="#2-contexto-geopolitico-o-fim-do-unipolarismo" class="reader__toc-link">2. Contexto
+              Geopolítico</a></li>
+          <li><a href="#3-portugal-na-encruzilhada-dependencias-e-oportunidades" class="reader__toc-link">3. Portugal na
+              Encruzilhada</a></li>
+          <li><a href="#4-pilar-i---reducao-da-dependencia-estrategica-dos-eua" class="reader__toc-link">4. Pilar I -
+              Redução Dep. EUA</a></li>
+          <li class="reader__toc-link--sub"><a href="#41-defesa-e-soberania-militar" class="reader__toc-link">4.1.
+              Defesa &amp; Soberania</a></li>
+          <li class="reader__toc-link--sub"><a href="#42-tecnologia-e-infraestrutura-digital"
+              class="reader__toc-link">4.2. Tecnologia Digital</a></li>
+          <li class="reader__toc-link--sub"><a href="#43-diplomacia-e-alinhamento" class="reader__toc-link">4.3.
+              Diplomacia</a></li>
+          <li><a href="#5-pilar-ii---parceria-estrategica-com-a-china" class="reader__toc-link">5. Pilar II - Parceria
+              China</a></li>
+          <li class="reader__toc-link--sub"><a href="#51-oportunidades" class="reader__toc-link">5.1. Oportunidades</a>
+          </li>
+          <li class="reader__toc-link--sub"><a href="#52-salvaguardas-obrigatorias" class="reader__toc-link">5.2.
+              Salvaguardas</a></li>
+          <li class="reader__toc-link--sub"><a href="#53-areas-prioritarias-para-cooperacao"
+              class="reader__toc-link">5.3. Áreas Prioritárias</a></li>
+          <li><a href="#6-pilar-iii---brasil-como-socio-preferencial" class="reader__toc-link">6. Pilar III - Brasil</a>
+          </li>
+          <li><a href="#7-pilar-iv---palops-e-a-lusofonia" class="reader__toc-link">7. Pilar IV - PALOPs &amp;
+              Lusofonia</a></li>
+          <li><a href="#8-pilar-v---africa-como-proximo-horizonte" class="reader__toc-link">8. Pilar V - África</a></li>
+          <li><a href="#9-eixo-transversal---tecnologia-e-estado-inteligente" class="reader__toc-link">9. Eixo
+              Transversal (Tech)</a></li>
+          <li><a href="#10-plano-de-implementacao-2026-2035" class="reader__toc-link">10. Roteiro 2026-2035</a></li>
+          <li><a href="#11-analise-de-riscos-e-mitigacao" class="reader__toc-link">11. Análise de Riscos</a></li>
+          <li><a href="#12-conclusao-e-proximos-passos" class="reader__toc-link">12. Conclusão &amp; Passos</a></li>
+        </ol>
+      </nav>
+    </aside>
 
-  // Mobile TOC toggle
-  var tocToggle=document.getElementById('tocToggle');
-  var tocNav=document.getElementById('tocNav');
-  if(tocToggle&&tocNav){
-    tocToggle.addEventListener('click',function(){
-      var open=!tocNav.classList.contains('reader__toc--open');
-      tocNav.classList.toggle('reader__toc--open',open);
-      tocToggle.classList.toggle('reader__toc-toggle--open',open);
-      tocToggle.setAttribute('aria-expanded',open?'true':'false');
-    });
-  }
+    <div class="reader__body">
 
-  // Hamburger menu
-  document.getElementById('navToggle').addEventListener('click',function(){
-    document.getElementById('navLinks').classList.toggle('nav__links--open');});
-  document.querySelectorAll('.nav__link').forEach(function(l){
-    l.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('nav__links--open');});});
-})();
-</script>
+      <a href="/documentos/" class="reader__back"
+        onclick="event.preventDefault(); navigateWithTransition('/documentos/');">← Voltar aos Documentos</a>
+
+      <header class="article-hero">
+        <span class="article-hero__badge">🌐 Estratégia Geopolítica &amp; Tecnológica</span>
+        <h1 class="article-hero__title" style="view-transition-name: doc-title-multipolar;">Portugal no Mundo Multipolar</h1>
+        <p class="article-hero__subtitle">Estratégia Lusófona e Tecnológica 2035 - Reposicionamento Estratégico,
+          Autonomia Digital e Alianças Globais</p>
+        <div class="article-hero__meta">
+          <span class="article-hero__meta-item">⏱️ ~15 min de leitura</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">📅 Maio 2026</span>
+          <span class="article-hero__meta-dot"></span>
+          <span class="article-hero__meta-item">🏛️ UNIR - Comissão de Relações Internacionais</span>
+        </div>
+      </header>
+
+      <!-- Key Takeaways Component -->
+      <div class="article-takeaways">
+        <div class="article-takeaways__title">
+          💡 Pontos-Chave &amp; Princípios Fundamentais
+        </div>
+        <ul class="article-takeaways__list">
+          <li class="article-takeaways__item"><strong>Redução da dependência dos EUA:</strong> Diversificação da defesa,
+            fornecedores tecnológicos e criação de infraestrutura cloud soberana.</li>
+          <li class="article-takeaways__item"><strong>Parceria pragmática com a China:</strong> Investimento estrutural
+            com salvaguardas contratuais rigorosas e fiscalização europeia.</li>
+          <li class="article-takeaways__item"><strong>Brasil como parceiro prioritário:</strong> Aliança Atlântica
+            Lusófona em defesa marítima, energia e ecossistema de inovação.</li>
+          <li class="article-takeaways__item"><strong>Espaço CPLP &amp; PALOPs:</strong> Afirmação de Portugal como
+            ponte geopolítica e hub tecnológico entre África e Europa.</li>
+          <li class="article-takeaways__item"><strong>Estado Inteligente 2035:</strong> Modernização digital com zero
+            papel na administração pública e automatização de 50% dos processos estatais.</li>
+        </ul>
+      </div>
+
+      <!-- Section 1 -->
+      <details class="reader__section" open id="1-resumo-executivo">
+        <summary class="reader__section-title">
+          1. Resumo Executivo
+          <a href="#1-resumo-executivo" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '1-resumo-executivo')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>O mundo ocidental dominado pelos EUA está em declínio relativo. O futuro geopolítico é multipolar -
+            dominado por blocos regionais (EUA, China, Índia, UE, Bloco Lusófono/Sul Global). Portugal continua a atuar
+            como se estivesse em 1995: alinhamento automático com os EUA, negligência da Lusofonia como ativo
+            estratégico e dependência tecnológica total de fornecedores americanos.</p>
+
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">🎯 Tese Central da Proposta UNIR</div>
+            <p style="margin:0;">Portugal deve transitar de um <strong>alinhamento automático com os EUA</strong> para
+              um <strong>posicionamento soberano, pragmático e pluricêntrico</strong>, capitalizando na Lusofonia (260M
+              pessoas), no Atlântico e na tecnologia para ser o hub de ligação entre a Europa, a África e a Ásia.</p>
+          </div>
+
+          <p>Este documento apresenta a proposta do UNIR para reconfigurar a política externa, a defesa, a economia e a
+            infraestrutura tecnológica de Portugal para a era multipolar (2026-2035).</p>
+        </div>
+      </details>
+
+      <!-- Section 2 -->
+      <details class="reader__section" open id="2-contexto-geopolitico-o-fim-do-unipolarismo">
+        <summary class="reader__section-title">
+          2. Contexto Geopolítico: O Fim do Unipolarismo
+          <a href="#2-contexto-geopolitico-o-fim-do-unipolarismo" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '2-contexto-geopolitico-o-fim-do-unipolarismo')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>O sistema internacional pós-1989 (hegemonia americana) acabou. Emergiram 3-5 grandes centros de poder com
+            esferas de influência bem definidas:</p>
+
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Centro de Poder</th>
+                  <th>Esfera de Influência</th>
+                  <th>Estratégia Dominante</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>EUA / AUKUS</strong></td>
+                  <td>Américas, Pacífico, Europa Ocidental</td>
+                  <td>Contenção da China, unilateralismo económico, extraterritorialidade jurídica</td>
+                </tr>
+                <tr>
+                  <td><strong>China / BRICS+</strong></td>
+                  <td>Ásia-Pacífico, África, América Latina</td>
+                  <td>Iniciativa Belt and Road (BRI), diplomacia de infraestruturas, CIPS (sistema pagamentos)</td>
+                </tr>
+                <tr>
+                  <td><strong>União Europeia</strong></td>
+                  <td>Europa Ocidental e Central</td>
+                  <td>Regulamentação (GDPR, AI Act), mas dependência militar dos EUA e energética externa</td>
+                </tr>
+                <tr>
+                  <td><strong>Índia / Sul Global</strong></td>
+                  <td>Oceano Índico, Não-Alinhados</td>
+                  <td>Multialinhamento estratégico, foco em crescimento interno, pragmatismo comercial</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Países médios que tentam manter o alinhamento exclusivo com os EUA ficam vulneráveis: dependem de sanções
+            americanas, perdem acesso a mercados emergentes e são forçados a escolher lados em conflitos que não lhes
+            dizem respeito.</p>
+        </div>
+      </details>
+
+      <!-- Section 3 -->
+      <details class="reader__section" open id="3-portugal-na-encruzilhada-dependencias-e-oportunidades">
+        <summary class="reader__section-title">
+          3. Portugal na Encruzilhada: Dependências e Oportunidades
+          <a href="#3-portugal-na-encruzilhada-dependencias-e-oportunidades" class="anchor-link"
+            title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '3-portugal-na-encruzilhada-dependencias-e-oportunidades')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h4 class="reader__subsubsection" id="dependencias-atuais">Dependências Atuais Críticas</h4>
+
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Setor</th>
+                  <th>Dependência Principal</th>
+                  <th>Vulnerabilidade Crítica</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Defesa</strong></td>
+                  <td>NATO / EUA (Base das Lajes, frota F-35)</td>
+                  <td>Perda de autonomia decisória e operacional em teatros próprios</td>
+                </tr>
+                <tr>
+                  <td><strong>Tecnologia</strong></td>
+                  <td>Cloud americana (AWS / Azure / GCP)</td>
+                  <td>Risco de sanções, extraterritorialidade (US CLOUD Act) e fugas de dados</td>
+                </tr>
+                <tr>
+                  <td><strong>Finanças</strong></td>
+                  <td>Rede SWIFT, Visa / Mastercard</td>
+                  <td>Vulnerabilidade a congelamento de ativos por decisões externas</td>
+                </tr>
+                <tr>
+                  <td><strong>Energia</strong></td>
+                  <td>Gás natural (fontes diversas, mas 100% importado)</td>
+                  <td>Volatilidade extrema de preços e choque de fornecimento internacional</td>
+                </tr>
+                <tr>
+                  <td><strong>Alimentação</strong></td>
+                  <td>Importação de 40% do consumo interno</td>
+                  <td>Choques de oferta em rotas internacionais de mercadorias</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="reader__subsubsection" id="oportunidades-inexploradas">Oportunidades Inexploradas</h4>
+
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Oportunidade</th>
+                  <th>Ativo Português Estratégico</th>
+                  <th>Potencial de Impacto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hub Europa-África</strong></td>
+                  <td>Proximidade geográfica, língua, estabilidade política</td>
+                  <td>Polo de atração logística, financeiro e diplomático</td>
+                </tr>
+                <tr>
+                  <td><strong>Lusofonia Global</strong></td>
+                  <td>260M de falantes, 9 países continentais</td>
+                  <td>Acesso a mercado integrado, votos na ONU e alianças de matérias-primas</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Centers &amp; Cabos</strong></td>
+                  <td>Energia renovável, amarrações de cabos submarinos</td>
+                  <td>Centro europeu de processamento soberano de dados</td>
+                </tr>
+                <tr>
+                  <td><strong>Tecnologia Soberana</strong></td>
+                  <td>Talento nacional, universidades, rácio custo-qualidade</td>
+                  <td>Desenvolvimento de alternativa tecnológica europeia</td>
+                </tr>
+                <tr>
+                  <td><strong>Mar Português</strong></td>
+                  <td>ZEE de 1.8M km², localização atlântica</td>
+                  <td>Vigilância marítima, recursos biotecnológicos e energia offshore</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 4 -->
+      <details class="reader__section" open id="4-pilar-i---reducao-da-dependencia-estrategica-dos-eua">
+        <summary class="reader__section-title">
+          4. Pilar I - Redução da Dependência Estratégica dos EUA
+          <a href="#4-pilar-i---reducao-da-dependencia-estrategica-dos-eua" class="anchor-link"
+            title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '4-pilar-i---reducao-da-dependencia-estrategica-dos-eua')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h3 class="reader__subsection" id="41-defesa-e-soberania-militar">
+            4.1. Defesa e Soberania Militar
+            <a href="#41-defesa-e-soberania-militar" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '41-defesa-e-soberania-militar')">#</a>
+          </h3>
+          <p>Situação atual: Portugal está totalmente integrado no sistema de defesa americano através da NATO, da
+            utilização da Base das Lajes (Açores) e da aquisição de aeronaves F-35.</p>
+
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">🏛️ Propostas UNIR para a Defesa Soberana:</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Diversificação de Fornecedores:</strong> Manutenção dos compromissos com o F-35, mas
+                complementada por sistemas europeus (França, Suécia, Alemanha) para reduzir a dependência tecnológica
+                única. Estabelecimento de parceria estratégica com o Brasil para patrulha marítima do Atlântico Sul.
+              </li>
+              <li><strong>Revisão do Acordo da Base das Lajes:</strong> Negociação de um novo equilíbrio contratual com
+                exigência de contrapartidas económicas diretas e transferência tecnológica para os Açores e Continente
+                até 2028.</li>
+              <li><strong>Indústria Nacional de Defesa:</strong> Fomento de startups portuguesas focadas em drones,
+                autonomia marítima e cibersegurança como 5º domínio militar prioritário.</li>
+            </ul>
+          </div>
+
+          <h3 class="reader__subsection" id="42-tecnologia-e-infraestrutura-digital">
+            4.2. Tecnologia e Infraestrutura Digital
+            <a href="#42-tecnologia-e-infraestrutura-digital" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '42-tecnologia-e-infraestrutura-digital')">#</a>
+          </h3>
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">💻 Propostas UNIR para a Autonomia Digital:</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Cloud Soberana Portuguesa:</strong> Construção de data centers em solo nacional com
+                obrigatoriedade legal de dados do Estado residirem em território português. Parceria tecnológica com o
+                ecossistema europeu Gaia-X.</li>
+              <li><strong>Sistemas de Pagamentos de Backup:</strong> Integração com o sistema europeu EPI e
+                desenvolvimento de pontes com o sistema CIPS como garantia de continuidade financeira.</li>
+              <li><strong>Descontinuação da Dependência Exclusiva:</strong> Incentivos fiscais para empresas nacionais
+                de hosting e obrigatoriedade de infraestrutura europeia na administração pública.</li>
+            </ul>
+          </div>
+
+          <h3 class="reader__subsection" id="43-diplomacia-e-alinhamento">
+            4.3. Diplomacia e Alinhamento Pluricêntrico
+            <a href="#43-diplomacia-e-alinhamento" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '43-diplomacia-e-alinhamento')">#</a>
+          </h3>
+          <ul class="reader__pillar-list">
+            <li><strong>Autonomia Decisória:</strong> O voto português na ONU passa a ser pautado exclusivamente pelo
+              interesse nacional, abandonando o alinhamento automático.</li>
+            <li><strong>Abstenção Estratégica:</strong> Postura de neutralidade em resoluções geopolíticas polarizadoras
+              e sanções unilaterais fora do âmbito das Nações Unidas.</li>
+            <li><strong>Diplomacia de Mediação:</strong> Afirmação de Portugal como construtor de pontes neutras em
+              conflitos internacionais, alavancando a tradição diplomática pacífica.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Section 5 -->
+      <details class="reader__section" open id="5-pilar-ii---parceria-estrategica-com-a-china">
+        <summary class="reader__section-title">
+          5. Pilar II - Parceria Estratégica Pragmática com a China
+          <a href="#5-pilar-ii---parceria-estrategica-com-a-china" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '5-pilar-ii---parceria-estrategica-com-a-china')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h3 class="reader__subsection" id="51-oportunidades">
+            5.1. Oportunidades Comerciais e Tecnológicas
+            <a href="#51-oportunidades" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '51-oportunidades')">#</a>
+          </h3>
+          <p>A China é o maior parceiro comercial de África e um líder global em infraestruturas e tecnologias verdes.
+            Ignorá-la por motivos ideológicos prejudica o desenvolvimento nacional. A questão fundamental é como
+            cooperar protegendo os interesses nacionais.</p>
+
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Área Estratégica</th>
+                  <th>Oportunidade de Cooperação com a China</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Infraestrutura</strong></td>
+                  <td>Co-financiamento BRI para expansão portuária, ferrovias e hubs de dados em Portugal e PALOPs</td>
+                </tr>
+                <tr>
+                  <td><strong>Tecnologia &amp; 5G</strong></td>
+                  <td>Parcerias industriais para modernização digital de telecomunicações em mercados lusófonos</td>
+                </tr>
+                <tr>
+                  <td><strong>Finanças</strong></td>
+                  <td>Diversificação de reservas e acesso a linhas de crédito alternativas para investimento produtivo
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Energia Renovável</strong></td>
+                  <td>Joint ventures para produção de componentes solares e eólicos em território português</td>
+                </tr>
+                <tr>
+                  <td><strong>Turismo &amp; Cultura</strong></td>
+                  <td>Expansão do corredor direto Macau-Lisboa para fluxos turísticos e de capital</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="reader__subsection" id="52-salvaguardas-obrigatorias">
+            5.2. Salvaguardas Blindadas de Segurança Nacional
+            <a href="#52-salvaguardas-obrigatorias" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '52-salvaguardas-obrigatorias')">#</a>
+          </h3>
+          <div class="article-callout article-callout--warning">
+            <div class="article-callout__title">⚠️ Princípios Contratuais Inegociáveis (Proposta UNIR):</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Jurisdição Europeia Oblíqua:</strong> Resolução de qualquer litígio obrigatoriamente em
+                tribunais europeus neutros.</li>
+              <li><strong>Proibição de Exclusividade:</strong> Vedada qualquer cláusula que impeça parcerias paralelas
+                com outros países ou blocos.</li>
+              <li><strong>Auditoria Independente de Segurança:</strong> Qualquer investimento estrangeiro superior a
+                €10M em setores críticos exige validação pelo Conselho de Segurança Nacional.</li>
+              <li><strong>Transferência de Tecnologia:</strong> Exigência de 30% do montante investido atribuído a
+                know-how e formação de quadros portugueses.</li>
+              <li><strong>Reversibilidade Contratual:</strong> Direito de resgate da infraestrutura em caso de violação
+                de soberania.</li>
+            </ul>
+          </div>
+
+          <h3 class="reader__subsection" id="53-areas-prioritarias-para-cooperacao">
+            5.3. Áreas Prioritárias de Atuação
+            <a href="#53-areas-prioritarias-para-cooperacao" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '53-areas-prioritarias-para-cooperacao')">#</a>
+          </h3>
+          <ul class="reader__pillar-list">
+            <li><strong>Macau como Plataforma Triangulada:</strong> Potenciar Macau como centro logístico e financeiro
+              oficial de ligação entre a China e os países da CPLP.</li>
+            <li><strong>Transição Energética Conjunta:</strong> Atração de fábricas de baterias e módulos solares de
+              última geração para o complexo industrial de Sines.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Section 6 -->
+      <details class="reader__section" open id="6-pilar-iii---brasil-como-socio-preferencial">
+        <summary class="reader__section-title">
+          6. Pilar III - Brasil como Sócio Preferencial
+          <a href="#6-pilar-iii---brasil-como-socio-preferencial" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '6-pilar-iii---brasil-como-socio-preferencial')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <h3 class="reader__subsection" id="61-o-erro-historico">
+            6.1. O Erro Histórico e a Nova Visão
+            <a href="#61-o-erro-historico" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '61-o-erro-historico')">#</a>
+          </h3>
+          <p>Portugal e o Brasil mantiveram historicamente relações afetivas mas diplomaticamente superficiais. O Brasil
+            é a 9ª maior economia global e a maior potência da América do Sul. A aliança estratégica com o Brasil deve
+            ser o pilar mestre da projeção internacional de Portugal.</p>
+
+          <h3 class="reader__subsection" id="62-proposta-unir---acordo-estrategico-portugal-brasil">
+            6.2. Eixos do Acordo Estratégico Portugal-Brasil
+            <a href="#62-proposta-unir---acordo-estrategico-portugal-brasil" class="anchor-link" title="Copiar link"
+              onclick="copyAnchorLink(event, '62-proposta-unir---acordo-estrategico-portugal-brasil')">#</a>
+          </h3>
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">🇧🇷 Parceria Bissectorial Integrada:</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Cooperação na Defesa Marítima:</strong> Desenvolvimento conjunto da aeronave KC-390,
+                submarinos e patrulhamento coordenado da bacia do Atlântico Sul.</li>
+              <li><strong>Livre Circulação de Profissionais &amp; Talentos:</strong> Reconhecimento automático de
+                diplomas de engenharia, medicina e tecnologia entre os dois estados.</li>
+              <li><strong>Ponte Tecnológica de Startups:</strong> Facilitação de capital e acesso de empresas
+                brasileiras ao mercado único europeu via Lisboa e Porto.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 7 -->
+      <details class="reader__section" open id="7-pilar-iv---palops-e-a-lusofonia">
+        <summary class="reader__section-title">
+          7. Pilar IV - PALOPs e a Lusofonia como Ativo Global
+          <a href="#7-pilar-iv---palops-e-a-lusofonia" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '7-pilar-iv---palops-e-a-lusofonia')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>A CPLP necessita de transitar de uma comunidade essencialmente cultural para um <strong>bloco de cooperação
+              económica e tecnológica efetivo</strong>.</p>
+
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">🌍 Reforma Estrutural da CPLP:</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Fundo Luso-Africano de Desenvolvimento (€500M):</strong> Financiamento conjunto de
+                infraestruturas digitais e energia solar em Angola, Moçambique, Cabo Verde, Guiné-Bissau e São Tomé.
+              </li>
+              <li><strong>Programa Bolsa Lusófona de Inovação:</strong> Concessão de 10.000 bolsas de estudos
+                universitárias de ponta para talentos dos PALOPs em universidades portuguesas.</li>
+              <li><strong>Rede de Fibra Óptica Lusófona:</strong> Cabos submarinos dedicados a interligar todos os
+                países de língua portuguesa com soberania de tráfego.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 8 -->
+      <details class="reader__section" open id="8-pilar-v---africa-como-proximo-horizonte">
+        <summary class="reader__section-title">
+          8. Pilar V - África como Próximo Horizonte Tecnológico
+          <a href="#8-pilar-v---africa-como-proximo-horizonte" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '8-pilar-v---africa-como-proximo-horizonte')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>África é o continente com a população mais jovem e a taxa de urbanização e digitalização com maior
+            crescimento no mundo. Portugal dispõe de uma vantagem competitiva única para ser a porta de entrada europeia
+            do ecossistema tecnológico africano.</p>
+
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">🚀 Iniciativas Estratégicas para África:</div>
+            <ul class="reader__pillar-list">
+              <li><strong>Hub de Inovação África-Europa:</strong> Criação de zonas francas tecnológicas em Portugal para
+                capacitação de engenheiros africanos.</li>
+              <li><strong>Exportação de GovTech Soberana:</strong> Transferência do modelo de e-Government português
+                para países parceiros em África.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 9 -->
+      <details class="reader__section" open id="9-eixo-transversal---tecnologia-e-estado-inteligente">
+        <summary class="reader__section-title">
+          9. Eixo Transversal - Tecnologia e Estado Inteligente
+          <a href="#9-eixo-transversal---tecnologia-e-estado-inteligente" class="anchor-link"
+            title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '9-eixo-transversal---tecnologia-e-estado-inteligente')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>A soberania geopolítica no século XXI depende da autonomia tecnológica. O UNIR propõe a transformação da
+            Administração Pública num <strong>Estado Inteligente e Automatizado</strong>.</p>
+
+          <ul class="reader__pillar-list">
+            <li><strong>Zero Papel até 2030:</strong> Eliminação integral de trâmites em papel nos serviços públicos.
+            </li>
+            <li><strong>Data Lake Nacional Descentralizado:</strong> Arquitetura de dados unificada sob regência estrita
+              do GDPR e supervisão judicial.</li>
+            <li><strong>Identidade Digital Universal:</strong> Sistema soberano de autenticação sem intermediação de
+              plataformas privadas terceiras.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Section 10 -->
+      <details class="reader__section" open id="10-plano-de-implementacao-2026-2035">
+        <summary class="reader__section-title">
+          10. Plano de Implementação Roteiro (2026-2035)
+          <a href="#10-plano-de-implementacao-2026-2035" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '10-plano-de-implementacao-2026-2035')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="article-timeline">
+            <div class="timeline-step">
+              <div class="timeline-step__year">Fase 1 (2026-2028)</div>
+              <div class="timeline-step__content">
+                <div class="timeline-step__title">Fundação e Legislação de Soberania</div>
+                <div class="timeline-step__meta">• Criação da Cloud Soberana Estatal<br>• Revisão do Acordo da Base das
+                  Lajes<br>• Lançamento do Programa Bolsa Lusófona (3.000 bolsas)</div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-step__year">Fase 2 (2029-2032)</div>
+              <div class="timeline-step__content">
+                <div class="timeline-step__title">Expansão de Alianças e Infraestrutura</div>
+                <div class="timeline-step__meta">• Reconhecimento automático de qualificações com o Brasil<br>•
+                  Lançamento do Fundo Luso-Africano (€500M)<br>• Automatização de 50% dos processos administrativos
+                  estatais</div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-step__year">Fase 3 (2033-2035)</div>
+              <div class="timeline-step__content">
+                <div class="timeline-step__title">Consolidação do Hub Multipolar</div>
+                <div class="timeline-step__meta">• Portugal no Top 10 Mundial do UN E-Government Index<br>•
+                  Autossuficiência energética de renováveis a 80%<br>• Consolidação da CPLP como bloco económico
+                  integrado</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 11 -->
+      <details class="reader__section" open id="11-analise-de-riscos-e-mitigacao">
+        <summary class="reader__section-title">
+          11. Análise de Riscos e Mitigação
+          <a href="#11-analise-de-riscos-e-mitigacao" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '11-analise-de-riscos-e-mitigacao')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Risco Potencial</th>
+                  <th>Probabilidade</th>
+                  <th>Impacto</th>
+                  <th>Estratégia de Mitigação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pressão diplomática dos EUA contra aproximação à China</strong></td>
+                  <td><span class="badge-risk badge-risk--high">Alta</span></td>
+                  <td><span class="badge-risk badge-risk--high">Alto</span></td>
+                  <td>Discurso focado em "Interesse Nacional" e não anti-americano. Transparência e salvaguardas
+                    públicas.</td>
+                </tr>
+                <tr>
+                  <td><strong>Instabilidade política em países parceiros (PALOPs)</strong></td>
+                  <td><span class="badge-risk badge-risk--medium">Média</span></td>
+                  <td><span class="badge-risk badge-risk--high">Alto</span></td>
+                  <td>Diversificação de investimento entre múltiplos países do bloco sem concentração de risco.</td>
+                </tr>
+                <tr>
+                  <td><strong>Resistência de reguladores da União Europeia</strong></td>
+                  <td><span class="badge-risk badge-risk--medium">Média</span></td>
+                  <td><span class="badge-risk badge-risk--medium">Médio</span></td>
+                  <td>Alinhamento com países do Sul da Europa (Espanha, Itália, Grécia) com interesses geoestratégicos
+                    análogos.</td>
+                </tr>
+                <tr>
+                  <td><strong>Uso de dívida por investidores estrangeiros como alavanca</strong></td>
+                  <td><span class="badge-risk badge-risk--low">Baixa</span></td>
+                  <td><span class="badge-risk badge-risk--high">Alto</span></td>
+                  <td>Aplicação estrita das salvaguardas contratuais limitando exposição a &lt;15% da dívida pública.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Oposição partidária interna e ruído mediático</strong></td>
+                  <td><span class="badge-risk badge-risk--high">Alta</span></td>
+                  <td><span class="badge-risk badge-risk--medium">Médio</span></td>
+                  <td>Comunicação pedagógica clara baseada em dados e métricas concretas de benefício económico
+                    nacional.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <!-- Section 12 -->
+      <details class="reader__section" open id="12-conclusao-e-proximos-passos">
+        <summary class="reader__section-title">
+          12. Conclusão e Próximos Passos
+          <a href="#12-conclusao-e-proximos-passos" class="anchor-link" title="Copiar link da secção"
+            onclick="copyAnchorLink(event, '12-conclusao-e-proximos-passos')">#</a>
+        </summary>
+        <div class="reader__section-body">
+          <p>Portugal tem uma janela de oportunidade histórica nos próximos 10 anos. O mundo está a reconfigurar-se e
+            países com ativos estratégicos únicos (língua global, posição atlantista, estabilidade) podem ganhar uma
+            relevância internacional desproporcional ao seu tamanho.</p>
+
+          <div class="article-callout article-callout--primary">
+            <div class="article-callout__title">📌 Próximos Passos Imediatos da Agenda UNIR:</div>
+            <ul class="reader__pillar-list">
+              <li>Validar este white paper estrategicamente nas comissões internas do UNIR.</li>
+              <li>Produzir cadernos setoriais específicos (Defesa Marítima, Tecnologia Soberana, Relações CPLP).</li>
+              <li>Iniciar rondas diplomáticas e empresariais de auscultação.</li>
+              <li>Submeter Moção Estratégica no próximo Congresso Nacional do UNIR.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </article>
+
+  <div class="article-prevnext">
+    <a href="#" class="article-prevnext--disabled">← Anterior</a>
+    <a href="/documentos/manifesto-fundador/">Próximo: Manifesto Fundador →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-text">UNIR</span>
+        <p class="footer__tagline">Um partido feito por pessoas. Para pessoas.</p>
+      </div>
+      <div class="footer__links">
+        <a href="/" class="footer__link">Início</a>
+        <a href="/documentos/" class="footer__link">Documentos</a>
+        <a href="/candidatar/" class="footer__link">Integrar</a>
+      </div>
+      <p class="footer__copy">Feito em Portugal. Por cidadãos. Para cidadãos.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-notification">Link copiado para a área de transferência!</div>
+
+  <script>
+    (function () {
+      var b = window.location.pathname.replace(/\/[^/]*\/?$/, '').replace(/\/[^/]*\/?$/, '');
+      document.querySelectorAll('a[href^="/"]').forEach(function (l) {
+        var h = l.getAttribute('href');
+        if (h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (h === '/') { l.setAttribute('href', b + '/'); return; }
+        if (h.startsWith('/documentos')) { l.setAttribute('href', b + '/documentos/'); return; }
+        if (h.startsWith('/candidatar')) { l.setAttribute('href', b + '/candidatar/'); return; }
+      });
+    })();
+
+    function initTheme() {
+      var savedTheme = localStorage.getItem('unir_theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        updateThemeUI(false);
+      }
+    }
+
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('unir_theme', 'light');
+        updateThemeUI(false);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('unir_theme', 'dark');
+        updateThemeUI(true);
+      }
+    }
+
+    function updateThemeUI(isDark) {
+      document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+        btn.innerHTML = (isDark ? '☀️' : '🌙') + ' <span>' + (isDark ? 'Modo Claro' : 'Modo Escuro') + '</span>';
+      });
+    }
+    initTheme();
+    document.addEventListener('DOMContentLoaded', initTheme);
+
+    function copyAnchorLink(event, id) {
+      event.preventDefault();
+      event.stopPropagation();
+      var url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url).then(function () {
+        showToast('Link da secção copiado!');
+        history.pushState(null, null, '#' + id);
+      }).catch(function () {
+        showToast('Erro ao copiar link');
+      });
+    }
+
+    function shareArticle() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Portugal no Mundo Multipolar - UNIR',
+          text: 'Confira a estratégia geopolítica e tecnológica do UNIR para 2035.',
+          url: window.location.href
+        }).catch(function () { });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          showToast('Link do artigo copiado!');
+        });
+      }
+    }
+
+    function navigateWithTransition(url) {
+      if (document.startViewTransition) {
+        document.startViewTransition(function () {
+          window.location.href = url;
+        });
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('toast-notification--show');
+      setTimeout(function () {
+        toast.classList.remove('toast-notification--show');
+      }, 2600);
+    }
+
+    (function () {
+      var bar = document.getElementById('progressFill');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var h = document.documentElement;
+          var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+          bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        });
+      }
+
+      var tocLinks = document.querySelectorAll('.reader__toc-link');
+      var headings = document.querySelectorAll('.reader__section[id]');
+      if (headings.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              tocLinks.forEach(function (l) { l.classList.remove('reader__toc-link--active'); });
+              var link = document.querySelector('.reader__toc-link[href="#' + e.target.id + '"]');
+              if (link) link.classList.add('reader__toc-link--active');
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        headings.forEach(function (h) { observer.observe(h); });
+      }
+
+      var tocToggle = document.getElementById('tocToggle');
+      var tocNav = document.getElementById('tocNav');
+      if (tocToggle && tocNav) {
+        tocToggle.addEventListener('click', function () {
+          var open = !tocNav.classList.contains('reader__toc--open');
+          tocNav.classList.toggle('reader__toc--open', open);
+          tocToggle.classList.toggle('reader__toc-toggle--open', open);
+          tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+          navLinks.classList.toggle('nav__links--open');
+        });
+      }
+    })();
+  </script>
 
 </body>
+
 </html>
