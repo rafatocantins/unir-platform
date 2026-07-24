@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UNIR - Documentos e Programa</title>
-  <meta name="description" content="Conhece o programa do UNIR. Documentos estratégicos, whitepapers e propostas para um Portugal diferente.">
+  <meta name="description" content="Conhece o programa do UNIR. Documentos estratégicos, whitepapers e propostas.">
   <meta property="og:title" content="UNIR - Documentos e Programa">
   <meta property="og:description" content="Whitepapers e documentos estratégicos do UNIR.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0D47A1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" id="mainStylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" id="mainStylesheet">
   <script>
     (function() {
       var base = window.location.pathname.replace(/\/[^/]*\/?$/, '');
@@ -22,46 +22,12 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
   <style>
-    .doc-page {
-      padding: 120px 0 80px;
-      background: #f5f5f5;
-      min-height: 100vh;
-    }
-    .doc-page__title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #212121;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .doc-page__subtitle {
-      font-size: 1.05rem;
-      color: #616161;
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
-    }
-    .doc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .doc-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .doc-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
+    .doc-page { padding: 120px 0 80px; background: #f5f5f5; min-height: 100vh; }
+    .doc-page__title { font-size: 2.2rem; font-weight: 800; color: #212121; text-align: center; margin-bottom: 8px; }
+    .doc-page__subtitle { font-size: 1.05rem; color: #616161; text-align: center; max-width: 600px; margin: 0 auto 48px; line-height: 1.6; }
+    .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+    .doc-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .doc-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
     .doc-card__icon { font-size: 2rem; margin-bottom: 12px; }
     .doc-card__title { font-size: 1.1rem; font-weight: 700; color: #212121; margin-bottom: 4px; line-height: 1.3; }
     .doc-card__meta { font-size: 0.8rem; color: #9e9e9e; margin-bottom: 12px; }
@@ -69,102 +35,33 @@
     .doc-card__actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .doc-card__actions .btn { font-size: 0.85rem; padding: 8px 20px; }
 
-    /* ── MODAL BLOG ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-      overflow-y: auto;
-    }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; }
     .modal-overlay--open { display: block; }
-    .modal-blog {
-      max-width: 780px;
-      margin: 60px auto;
-      background: #fff;
-      border-radius: 12px;
-      position: relative;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
-    .modal-close {
-      position: sticky;
-      top: 16px;
-      float: right;
-      margin: 16px 20px;
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 50%;
-      width: 36px; height: 36px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #616161;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-close:hover { background: #f5f5f5; color: #212121; }
-    .modal-body {
-      padding: 48px 56px 56px;
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 1rem;
-      line-height: 1.85;
-      color: #333;
-    }
-    .modal-body h1 {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: #1a365d;
-      margin: 0 0 8px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    .modal-body h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a365d;
-      margin: 36px 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #e8edf3;
-    }
-    .modal-body h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #212121;
-      margin: 28px 0 8px;
-    }
-    .modal-body p { margin: 0 0 16px; }
-    .modal-body ul, .modal-body ol { padding-left: 24px; margin: 0 0 20px; }
-    .modal-body li { margin-bottom: 6px; }
-    .modal-body strong { color: #1a365d; }
-    .modal-body blockquote {
-      border-left: 4px solid #1a365d;
-      margin: 24px 0;
-      padding: 12px 20px;
-      background: #f0f4f8;
-      font-style: italic;
-      color: #424242;
-      border-radius: 0 8px 8px 0;
-    }
-    .modal-body hr {
-      border: none;
-      border-top: 1px solid #e0e0e0;
-      margin: 32px 0;
-    }
+    .modal-content { max-width: 820px; margin: 50px auto; background: #fff; border-radius: 12px; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+    .modal-close { position: sticky; top: 16px; float: right; margin: 16px 20px; background: #fff; border: 1px solid #ddd; border-radius: 50%; width: 36px; height: 36px; font-size: 1.2rem; cursor: pointer; color: #616161; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .modal-close:hover { background: #f5f5f5; }
+
+    /* ── Blog content inside modal ── */
+    .reader { padding: 56px 64px 64px; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.85; color: #2d2d2d; }
+    .reader h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #1a365d; margin: 40px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #e8edf3; }
+    .reader h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #333; margin: 28px 0 10px; }
+    .reader p { margin: 0 0 16px; }
+    .reader ul, .reader ol { padding-left: 24px; margin: 0 0 20px; }
+    .reader li { margin-bottom: 6px; }
+    .reader strong { color: #1a365d; }
+    .reader table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.88rem; }
+    .reader th, .reader td { border: 1px solid #c5cdd8; padding: 9px 14px; text-align: left; vertical-align: top; }
+    .reader th { background: #1a365d; color: #fff; font-weight: 600; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    .reader tr:nth-child(even) { background: #f4f6f9; }
+    .reader blockquote { border-left: 4px solid #1a365d; margin: 24px 0; padding: 14px 22px; background: #eef2f7; font-style: italic; color: #444; border-radius: 0 8px 8px 0; }
+    .reader hr { border: none; border-top: 1px solid #d5dbe3; margin: 36px 0; }
 
     @media (max-width: 640px) {
       .doc-page { padding: 100px 0 60px; }
       .doc-page__title { font-size: 1.6rem; }
       .doc-grid { grid-template-columns: 1fr; }
-      .modal-blog { margin: 20px; border-radius: 8px; }
-      .modal-body { padding: 32px 24px; }
-      .modal-body h1 { font-size: 1.5rem; }
-      .modal-body h2 { font-size: 1.2rem; }
+      .modal-content { margin: 20px; border-radius: 8px; }
+      .reader { padding: 32px 20px; font-size: 16px; }
     }
   </style>
 </head>
@@ -193,9 +90,9 @@
   </section>
 
   <div class="modal-overlay" id="readerModal">
-    <div class="modal-blog">
+    <div class="modal-content">
       <button class="modal-close" onclick="closeReader()">✕</button>
-      <div class="modal-body" id="modalBody"></div>
+      <div class="reader" id="readerContent"></div>
     </div>
   </div>
 
@@ -227,18 +124,18 @@
     })();
   </script>
 
-  <script src="../docs/whitepapers/conteudos.js"></script>
-
   <script>
+    // ── JSON "base de dados" ──
     var BASE = window.location.pathname.replace(/\/[^/]*\/?$/, '');
+    var DOCS = BASE + '/docs/whitepapers';
 
     var documentos = [
-      { id: 'whitepaper-geral', icon: '🌍', title: 'Portugal no Mundo Multipolar', subtitle: 'Estratégia Lusófona e Tecnológica 2035', meta: 'Documento Estratégico · Maio 2026', desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', contentKey: 'multipolar', url_download: BASE + '/docs/whitepapers/WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR.docx', tipo: 'DOCX (208 KB)' },
-      { id: 'manifesto', icon: '⚡', title: 'Manifesto Fundador', subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade', meta: 'Documento Fundacional · Janeiro 2026', desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças. Assenta em Soluções Reais, rejeitando o espectro esquerda-direita tradicional.', contentKey: 'manifesto', url_download: BASE + '/docs/whitepapers/UNIR_Manifesto_Fundador.docx', tipo: 'DOCX (18 KB)' },
-      { id: 'eixo-soberania', icon: '⚓', title: 'Portugal 90%', subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul', meta: 'Documento Programático · Janeiro 2026', desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech. Assume a moratória nacional de mineração em mar profundo até 2050.', contentKey: 'soberania', url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar.docx', tipo: 'DOCX (202 KB)' },
-      { id: 'alternativas-mar', icon: '🔄', title: 'Alternativas à Mineração Marinha', subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech', meta: 'Anexo ao Eixo I · Janeiro 2026', desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining (reciclagem de metais críticos), Biotecnologia marinha (fármacos e materiais) e Deep-Sea Tech (robótica e dados oceânicos). Com roteiro faseado até 2050.', contentKey: 'alternativas', url_download: BASE + '/docs/whitepapers/UNIR_Eixo_I_Anexo_B_Alternativas_Minerais.docx', tipo: 'DOCX (198 KB)' },
-      { id: 'justica-transparencia', icon: '⚖️', title: 'Reforma da Justiça e Transparência', subtitle: 'IA nos Tribunais, Combate à Corrupção', meta: 'Documento Programático · Janeiro 2026', desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa. A corrupção custa a Portugal €18,2 mil milhões/ano.', contentKey: 'justica', url_download: BASE + '/docs/whitepapers/UNIR_Reforma_Justica_Transparencia.docx', tipo: 'DOCX (21 KB)' },
-      { id: 'justica-digital', icon: '🛡️', title: 'Justiça Digital', subtitle: 'Identidade Digital e Responsabilização de Plataformas', meta: 'Documento Programático · Janeiro 2026', desc: 'Sistema Nacional de Identidade Digital Verificada (SNIDV). Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global para plataformas que incumprirem.', contentKey: 'digital', url_download: BASE + '/docs/whitepapers/UNIR_Justica_Digital.docx', tipo: 'DOCX (21 KB)' }
+      { id: 'multipolar',    icon: '🌍', title: 'Portugal no Mundo Multipolar',      subtitle: 'Estratégia Lusófona e Tecnológica 2035',     meta: 'Documento Estratégico · Maio 2026',    desc: 'Reposicionamento de Portugal como hub tecnológico e geopolítico no mundo multipolar. 5 pilares: redução da dependência dos EUA, parceria com China com salvaguardas, Brasil como sócio preferencial, lusofonia como ativo global, e Estado Inteligente.', file: 'WHITEPAPER_PORTUGAL_MUNDO_MULTIPOLAR_UNIR' },
+      { id: 'manifesto',     icon: '⚡', title: 'Manifesto Fundador',                  subtitle: 'UNIR — Unidos pela Nação, Inovação e Responsabilidade', meta: 'Documento Fundacional · Janeiro 2026',  desc: 'O documento que funda o movimento UNIR. 6 eixos programáticos: Soberania e Defesa, Saúde, Educação, Imigração, Justiça e Transparência, Gestão e Finanças.', file: 'UNIR_Manifesto_Fundador' },
+      { id: 'soberania',     icon: '⚓', title: 'Portugal 90%',                       subtitle: 'Domínio Marítimo, Dissuasão e Economia Azul', meta: 'Documento Programático · Janeiro 2026', desc: 'Estratégia integrada para a soberania marítima: domínio de informação, capacidade de interceção, proteção de infraestruturas críticas e deep-sea tech.', file: 'UNIR_Eixo_I_Portugal_90_Soberania_Defesa_Mar' },
+      { id: 'alternativas',  icon: '🔄', title: 'Alternativas à Mineração Marinha',   subtitle: 'Urban Mining, Biotecnologia e Deep-Sea Tech',  meta: 'Anexo ao Eixo I · Janeiro 2026',       desc: 'Três alternativas estratégicas à mineração comercial em mar profundo: Urban Mining, Biotecnologia marinha e Deep-Sea Tech. Com roteiro faseado até 2050.', file: 'UNIR_Eixo_I_Anexo_B_Alternativas_Minerais' },
+      { id: 'justica',       icon: '⚖️', title: 'Reforma da Justiça e Transparência', subtitle: 'IA nos Tribunais, Combate à Corrupção',        meta: 'Documento Programático · Janeiro 2026', desc: 'Reforma estrutural do sistema judicial português. IA para acelerar processos, cruzamento de dados fiscais/patrimoniais para combater corrupção, simplificação legislativa.', file: 'UNIR_Reforma_Justica_Transparencia' },
+      { id: 'digital',       icon: '🛡️', title: 'Justiça Digital',                    subtitle: 'Identidade Digital e Responsabilização de Plataformas', meta: 'Documento Programático · Janeiro 2026', desc: 'Sistema Nacional de Identidade Digital Verificada. Verificação obrigatória de identidade em grandes plataformas, banimentos judiciais efetivos, e multas até 6% da faturação global.', file: 'UNIR_Justica_Digital' }
     ];
 
     function renderCards() {
@@ -247,46 +144,42 @@
       documentos.forEach(function(doc) {
         var card = document.createElement('div');
         card.className = 'doc-card';
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-
-        var actionsHTML = '<button class="btn btn--primary" onclick="openReader(\'' + doc.id + '\')">Ler Online</button>';
-        actionsHTML += '<a href="' + doc.url_download + '" class="btn btn--outline" download>Download (' + doc.tipo + ')</a>';
-
         card.innerHTML =
           '<div class="doc-card__icon">' + doc.icon + '</div>' +
           '<div class="doc-card__title">' + doc.title + '</div>' +
           '<div class="doc-card__meta">' + doc.meta + '</div>' +
           '<div class="doc-card__desc">' + doc.desc + '</div>' +
-          '<div class="doc-card__actions">' + actionsHTML + '</div>';
-
+          '<div class="doc-card__actions">' +
+            '<button class="btn btn--primary" onclick="openReader(\'' + doc.id + '\')">Ler Online</button>' +
+            '<a href="' + DOCS + '/' + doc.file + '.docx" class="btn btn--outline" download>Download</a>' +
+          '</div>';
         grid.appendChild(card);
-
-        setTimeout(function() {
-          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100);
       });
     }
 
     function openReader(docId) {
       var doc = documentos.find(function(d) { return d.id === docId; });
-      if (!doc || !doc.contentKey) return;
+      if (!doc) return;
 
       var modal = document.getElementById('readerModal');
-      var body = document.getElementById('modalBody');
-      var content = window.CONTEUDOS[doc.contentKey];
-
-      if (!content) {
-        body.innerHTML = '<p>Conteudo nao encontrado.</p>';
-      } else {
-        body.innerHTML = '<h1>' + doc.title + '</h1><p style="color:#9e9e9e;font-size:0.9rem;margin-bottom:32px;">' + doc.subtitle + '</p>' + content;
-      }
-
+      var content = document.getElementById('readerContent');
+      content.innerHTML = '<p style="color:#999;text-align:center;padding:60px 0;">A carregar...</p>';
       modal.classList.add('modal-overlay--open');
       document.body.style.overflow = 'hidden';
       modal.scrollTop = 0;
+
+      fetch(DOCS + '/' + doc.file + '.html')
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          var parser = new DOMParser();
+          var d = parser.parseFromString(html, 'text/html');
+          // Remove style tags to avoid conflicts, keep everything else
+          d.querySelectorAll('style').forEach(function(s) { s.remove(); });
+          content.innerHTML = d.body.innerHTML;
+        })
+        .catch(function() {
+          content.innerHTML = '<p style="color:#e53935;text-align:center;padding:40px;">Erro ao carregar.</p>';
+        });
     }
 
     function closeReader() {
