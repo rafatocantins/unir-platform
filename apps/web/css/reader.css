@@ -136,12 +136,11 @@
   list-style: none; padding-left: 0; margin: 8px 0 20px;
 }
 .reader__pillar-list li {
-  position: relative; padding: 6px 0 6px 16px; margin-bottom: 6px;
-  border-left: 2px solid #E3F2FD;
+  position: relative; padding: 5px 0 5px 20px; margin-bottom: 4px;
 }
 .reader__pillar-list li::before {
-  content: ''; position: absolute; left: -5px; top: 13px;
-  width: 8px; height: 8px; border-radius: 50%; background: #0D47A1;
+  content: ''; position: absolute; left: 0; top: 12px;
+  width: 7px; height: 7px; border-radius: 50%; background: #0D47A1;
 }
 .reader__pillar-list li strong {
   color: #0D47A1; font-weight: 700;

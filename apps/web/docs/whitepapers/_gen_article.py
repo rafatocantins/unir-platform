@@ -115,19 +115,58 @@ def is_topic(text):
         return True
     return False
 
-def is_pillar_item(text):
-    """'Term: description' pattern — convert to styled list item."""
+def is_bullet_like(text):
+    """Detect paragraphs that start with '- ' and should be list items."""
     t = text.strip()
-    if ':' not in t:
+    return bool(re.match(r'^- ', t))
+
+def is_pillar_item(text):
+    """Detect 'Term: desc' or 'Term - desc' patterns — convert to styled list items.
+    Returns (term, desc, separator) where separator is ':' or '-'."""
+    t = text.strip()
+
+    # Topics take priority — don't convert them to pillar items
+    if is_topic(t):
         return None
-    parts = t.split(':', 1)
-    term = parts[0].strip()
-    desc = parts[1].strip() if len(parts) > 1 else ''
-    if len(term) > 60:
-        return None
-    if len(desc) < 3:
-        return None
-    return (term, desc)
+
+    # Pattern 1: "Term: description"
+    if ':' in t:
+        parts = t.split(':', 1)
+        term = parts[0].strip()
+        desc = parts[1].strip() if len(parts) > 1 else ''
+        if len(term) <= 60 and len(desc) >= 3:
+            return (term, desc, ':')
+
+    # Pattern 2: "Term - description"
+    if ' - ' in t:
+        parts = t.split(' - ', 1)
+        term = parts[0].strip()
+        desc = parts[1].strip() if len(parts) > 1 else ''
+        if len(term) <= 60 and len(desc) >= 3 and not re.search(r'[.!?]', term):
+            if len(term.split()) <= 8:
+                return (term, desc, '-')
+
+    return None
+
+def preprocess_bullets(items):
+    """Convert bullet-like paragraphs (starting with '- ') to actual bullet items."""
+    result = []
+    i = 0
+    while i < len(items):
+        item = items[i]
+        if item.get('type') == 'p' and is_bullet_like(item.get('text', '')):
+            # Collect consecutive bullet-like paragraphs
+            bullets = []
+            while i < len(items) and items[i].get('type') == 'p' and is_bullet_like(items[i].get('text', '')):
+                text = items[i]['text'].strip()
+                text = re.sub(r'^- ', '', text)  # strip the leading dash
+                bullets.append(text)
+                i += 1
+            result.append({'type': 'ul', 'items': bullets})
+        else:
+            result.append(item)
+            i += 1
+    return result
 
 def merge_pillar_lists(items):
     """Group consecutive p elements that are pillar items into pillar_list blocks."""
@@ -169,6 +208,7 @@ def render_table(rows):
     return f'<table class="reader__table">\n{html_rows}</table>'
 
 def render_content(items, section_anchor=''):
+    items = preprocess_bullets(items)
     items = merge_pillar_lists(items)
     lines = []
     for item in items:
@@ -181,8 +221,10 @@ def render_content(items, section_anchor=''):
             lines.append(f'<ul>\n{lis}\n</ul>')
         elif item['type'] == 'pillar_list':
             lis = ''
-            for term, desc in item['items']:
-                lis += f'<li><strong>{html_mod.escape(term)}:</strong> {html_mod.escape(desc)}</li>\n'
+            for entry in item['items']:
+                term, desc, sep = entry
+                sep_str = ':' if sep == ':' else ' —'
+                lis += f'<li><strong>{html_mod.escape(term)}{sep_str}</strong> {html_mod.escape(desc)}</li>\n'
             lines.append(f'<ul class="reader__pillar-list">\n{lis}</ul>')
     for ti, anchor in TABLE_PLACEMENT.items():
         if anchor == section_anchor:
