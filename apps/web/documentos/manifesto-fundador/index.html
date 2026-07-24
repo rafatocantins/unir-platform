@@ -201,6 +201,51 @@
             <li class="article-takeaways__item"><strong>Responsabilidade:</strong> Quem governa presta contas com
               métricas de desempenho claras.</li>
           </ul>
+
+          <h3 class="reader__subsection" id="matriz-eixos-estrategicos">Matriz dos 6 Eixos Estratégicos</h3>
+          <div class="table-responsive">
+            <table class="reader__table">
+              <thead>
+                <tr>
+                  <th>Eixo Estratégico</th>
+                  <th>Medida Central</th>
+                  <th>Objetivo Principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Eixo I: Soberania &amp; Mar</strong></td>
+                  <td>Plano Portugal 90% &amp; Hub Aeroespacial Beja-Algarve</td>
+                  <td>Autonomia atlântica e tecnologia submarina</td>
+                </tr>
+                <tr>
+                  <td><strong>Eixo II: Saúde</strong></td>
+                  <td>Automação IA do trabalho administrativo (50%)</td>
+                  <td>Libertar profissionais para o cuidado do doente</td>
+                </tr>
+                <tr>
+                  <td><strong>Eixo III: Educação</strong></td>
+                  <td>IA e Ensino Adaptativo personalizado</td>
+                  <td>Literacia crítica e capacitação tecnológica</td>
+                </tr>
+                <tr>
+                  <td><strong>Eixo IV: Imigração</strong></td>
+                  <td>Controlo Activo e Integração Funcional</td>
+                  <td>Equilíbrio laboral e acolhimento digno com regras</td>
+                </tr>
+                <tr>
+                  <td><strong>Eixo V: Justiça</strong></td>
+                  <td>Cruzamento Patrimonial &amp; Transparência Total</td>
+                  <td>Combate implacável à corrupção e celeridade</td>
+                </tr>
+                <tr>
+                  <td><strong>Eixo VI: Gestão &amp; Finanças</strong></td>
+                  <td>Estado Plataforma e Fiscalidade Competitiva</td>
+                  <td>Eliminação do desperdício e atração de investimento</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </details>
 
@@ -333,8 +378,8 @@
   </article>
 
   <div class="article-prevnext">
-    <a href="/documentos/justica-digital/"
-      onclick="event.preventDefault(); navigateWithTransition('/documentos/justica-digital/');">← Justiça Digital</a>
+    <a href="/documentos/portugal-mundo-multipolar/"
+      onclick="event.preventDefault(); navigateWithTransition('/documentos/portugal-mundo-multipolar/');">← Portugal no Mundo Multipolar</a>
     <a href="/documentos/portugal-90/"
       onclick="event.preventDefault(); navigateWithTransition('/documentos/portugal-90/');">Portugal 90% →</a>
   </div>
@@ -358,13 +403,15 @@
 
   <script>
     (function () {
-      var b = window.location.pathname.replace(/\/[^/]*\/?$/, '').replace(/\/[^/]*\/?$/, '');
+      var match = window.location.pathname.match(/^(.*?)\/documentos\//);
+      var b = match ? match[1] : '';
+      if (!b) return;
       document.querySelectorAll('a[href^="/"]').forEach(function (l) {
         var h = l.getAttribute('href');
-        if (h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
-        if (h === '/') { l.setAttribute('href', b + '/'); return; }
-        if (h.startsWith('/documentos')) { l.setAttribute('href', b + '/documentos/'); return; }
-        if (h.startsWith('/candidatar')) { l.setAttribute('href', b + '/candidatar/'); return; }
+        if (!h || h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (!h.startsWith(b)) {
+          l.setAttribute('href', b + h);
+        }
       });
     })();
 
@@ -427,12 +474,16 @@
     }
 
     function navigateWithTransition(url) {
+      var match = window.location.pathname.match(/^(.*?)\/documentos\//);
+      var b = match ? match[1] : '';
+      var targetUrl = (b && url.startsWith('/') && !url.startsWith(b)) ? (b + url) : url;
+
       if (document.startViewTransition) {
         document.startViewTransition(function () {
-          window.location.href = url;
+          window.location.href = targetUrl;
         });
       } else {
-        window.location.href = url;
+        window.location.href = targetUrl;
       }
     }
 

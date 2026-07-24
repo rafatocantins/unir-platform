@@ -291,14 +291,16 @@
       document.querySelectorAll('a[href^="/"]').forEach(function(link) {
         const href = link.getAttribute('href');
         if (href.startsWith('//') || href.startsWith('http') || href.startsWith('/#')) return;
-        if (href === '/candidatar' || href.startsWith('/candidatar')) {
+        if (href === '/candidatar' || href === '/candidatar/') {
           link.setAttribute('href', BASE_PATH_CAND + '/candidatar/');
-        } else if (href === '/documentos' || href.startsWith('/documentos')) {
+        } else if (href.startsWith('/candidatar/')) {
+          link.setAttribute('href', BASE_PATH_CAND + href);
+        } else if (href === '/documentos' || href === '/documentos/') {
           link.setAttribute('href', BASE_PATH_CAND + '/documentos/');
+        } else if (href.startsWith('/documentos/')) {
+          link.setAttribute('href', BASE_PATH_CAND + href);
         } else if (href === '/') {
           link.setAttribute('href', BASE_PATH_CAND + '/');
-        } else if (href.startsWith('/#')) {
-          link.setAttribute('href', BASE_PATH_CAND + href);
         }
       });
     });

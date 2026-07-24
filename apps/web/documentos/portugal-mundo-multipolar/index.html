@@ -724,8 +724,8 @@
   </article>
 
   <div class="article-prevnext">
-    <a href="#" class="article-prevnext--disabled">← Anterior</a>
-    <a href="/documentos/manifesto-fundador/">Próximo: Manifesto Fundador →</a>
+    <a href="/documentos/" onclick="event.preventDefault(); navigateWithTransition('/documentos/');">← Todos os Documentos</a>
+    <a href="/documentos/manifesto-fundador/" onclick="event.preventDefault(); navigateWithTransition('/documentos/manifesto-fundador/');">Manifesto Fundador →</a>
   </div>
 
   <footer class="footer">
@@ -747,13 +747,15 @@
 
   <script>
     (function () {
-      var b = window.location.pathname.replace(/\/[^/]*\/?$/, '').replace(/\/[^/]*\/?$/, '');
+      var match = window.location.pathname.match(/^(.*?)\/documentos\//);
+      var b = match ? match[1] : '';
+      if (!b) return;
       document.querySelectorAll('a[href^="/"]').forEach(function (l) {
         var h = l.getAttribute('href');
-        if (h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
-        if (h === '/') { l.setAttribute('href', b + '/'); return; }
-        if (h.startsWith('/documentos')) { l.setAttribute('href', b + '/documentos/'); return; }
-        if (h.startsWith('/candidatar')) { l.setAttribute('href', b + '/candidatar/'); return; }
+        if (!h || h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (!h.startsWith(b)) {
+          l.setAttribute('href', b + h);
+        }
       });
     })();
 
@@ -817,12 +819,16 @@
     }
 
     function navigateWithTransition(url) {
+      var match = window.location.pathname.match(/^(.*?)\/documentos\//);
+      var b = match ? match[1] : '';
+      var targetUrl = (b && url.startsWith('/') && !url.startsWith(b)) ? (b + url) : url;
+
       if (document.startViewTransition) {
         document.startViewTransition(function () {
-          window.location.href = url;
+          window.location.href = targetUrl;
         });
       } else {
-        window.location.href = url;
+        window.location.href = targetUrl;
       }
     }
 

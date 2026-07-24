@@ -130,13 +130,15 @@
   <script>
     // ── Relative Path Normalizer ──
     (function(){
-      var base = window.location.pathname.replace(/\/[^/]*\/?$/, '');
+      var match = window.location.pathname.match(/^(.*?)\/documentos\/?/);
+      var b = match ? match[1] : '';
+      if (!b) return;
       document.querySelectorAll('a[href^="/"]').forEach(function(l){
         var h = l.getAttribute('href');
-        if (h.startsWith('//')||h.startsWith('http')||h.startsWith('/#')) return;
-        if (h === '/') { l.setAttribute('href', base + '/'); return; }
-        if (h.startsWith('/documentos')) { l.setAttribute('href', base + '/documentos/'); return; }
-        if (h.startsWith('/candidatar')) { l.setAttribute('href', base + '/candidatar/'); return; }
+        if (!h || h.startsWith('//') || h.startsWith('http') || h.startsWith('/#')) return;
+        if (!h.startsWith(b)) {
+          l.setAttribute('href', b + h);
+        }
       });
     })();
   </script>

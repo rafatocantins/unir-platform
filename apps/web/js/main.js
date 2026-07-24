@@ -12,13 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (href.startsWith('//') || href.startsWith('http')) return;
     // Se for uma âncora tipo /#assinar, manter
     if (href.startsWith('/#')) return;
-    // Se for /candidatar, prefixar com o caminho base
-    if (href === '/candidatar' || href.startsWith('/candidatar')) {
+    if (href === '/candidatar' || href === '/candidatar/') {
       link.setAttribute('href', BASE_PATH + '/candidatar/');
+    } else if (href.startsWith('/candidatar/')) {
+      link.setAttribute('href', BASE_PATH + href);
     }
-    // Se for /documentos
-    if (href === '/documentos' || href.startsWith('/documentos')) {
+
+    if (href === '/documentos' || href === '/documentos/') {
       link.setAttribute('href', BASE_PATH + '/documentos/');
+    } else if (href.startsWith('/documentos/')) {
+      link.setAttribute('href', BASE_PATH + href);
     }
     // Se for /, apontar para a raiz com /unir-platform/
     if (href === '/') {
